@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bt47f480f6v2m"]
+
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="1_66a8n"]
+[ext_resource type="Script" uid="uid://jed40pxrtoi0" path="res://assets/scripts/ui/pause_menu.gd" id="2_234u8"]
+
+[node name="PauseMenu" type="Control" unique_id=2126174629]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_66a8n")
+script = ExtResource("2_234u8")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1114318620]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -26.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=816930680]
+layout_mode = 2
+
+[node name="Return" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1239698979]
+layout_mode = 2
+text = "Return To Game"
+
+[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer" unique_id=371246816]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1716048075]
+layout_mode = 2
+text = "Exit Level"
+
+[connection signal="button_up" from="PanelContainer/VBoxContainer/Return" to="." method="_on_return_button_up"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bp7t14ahm42r0"]
+
+[ext_resource type="Script" uid="uid://emtx5qvt641j" path="res://assets/scripts/portal.gd" id="1_df2nl"]
+[ext_resource type="Texture2D" uid="uid://b1vqxwy0ili2x" path="res://assets/sprites/Dimensional_Portal.png" id="2_df2nl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbnmw"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqcjr"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uv18"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myewq"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15oso"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i07l"]
+atlas = ExtResource("2_df2nl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ncgj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbnmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uv18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myewq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15oso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i07l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2nl"]
+size = Vector2(20, 48)
+
+[node name="Portal" type="Area2D" unique_id=1162363435]
+z_index = -10
+collision_layer = 16777216
+script = ExtResource("1_df2nl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2095371607]
+position = Vector2(-0.99999994, 0)
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_3ncgj")
+autoplay = "default"
+frame_progress = 0.0027131108
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1780373334]
+shape = SubResource("RectangleShape2D_df2nl")
+
+[node name="Destination" type="Marker2D" parent="." unique_id=1046921905]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=53245909]
+rect = Rect2(-10, -24, 20, 48)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="ready" from="." to="." method="_on_ready"]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bo7jce8jve4ek"]
+
+[ext_resource type="Texture2D" uid="uid://drjkgcvxhaiuf" path="res://assets/sprites/health_potion_atlas.png" id="1_6rlrt"]
+[ext_resource type="Script" uid="uid://bwv4bcjli3fm0" path="res://assets/scripts/health_potion.gd" id="1_rwsyk"]
+
+[sub_resource type="Animation" id="Animation_6rlrt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rwsyk"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 16.0, 32.0, 48.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wgh65"]
+_data = {
+&"RESET": SubResource("Animation_6rlrt"),
+&"idle": SubResource("Animation_rwsyk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rlrt"]
+size = Vector2(13, 13)
+
+[node name="HealthPotion" type="Area2D" unique_id=1958753493]
+collision_layer = 65536
+script = ExtResource("1_rwsyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=465711034]
+texture = ExtResource("1_6rlrt")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=298498463]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_wgh65")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046148366]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_6rlrt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

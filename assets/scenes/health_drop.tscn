@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c8o0tlyj7kojd"]
+
+[ext_resource type="Script" uid="uid://swvfdr4l3us" path="res://assets/scripts/health_drop.gd" id="1_788vl"]
+[ext_resource type="Texture2D" uid="uid://bg7ld5do3bc8m" path="res://assets/sprites/blood_drop_spritesheet.png" id="2_788vl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujlxn"]
+atlas = ExtResource("2_788vl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udrnk"]
+atlas = ExtResource("2_788vl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jn3q"]
+atlas = ExtResource("2_788vl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mobr7"]
+atlas = ExtResource("2_788vl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysy60"]
+atlas = ExtResource("2_788vl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j5ia"]
+atlas = ExtResource("2_788vl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo5yh"]
+atlas = ExtResource("2_788vl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy285"]
+atlas = ExtResource("2_788vl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvti8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujlxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udrnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jn3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mobr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysy60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j5ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo5yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy285")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asdgv"]
+radius = 4.0
+
+[node name="HealthDrop" type="Area2D" unique_id=784018675]
+collision_layer = 65536
+script = ExtResource("1_788vl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=331880894]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_wvti8")
+autoplay = "default"
+frame_progress = 0.7762142
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=925491394]
+shape = SubResource("CircleShape2D_asdgv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1187389415]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1191892945]
+rect = Rect2(-6, -6, 12, 12)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

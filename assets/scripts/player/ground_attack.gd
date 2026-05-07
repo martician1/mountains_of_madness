@@ -1,0 +1,70 @@
+extends PlayerState
+class_name GroundAttackState
+
+@onready var player: Player = get_owner()
+var combo = 0
+enum QueuedAction {
+	ATTACK,
+	CROUCH
+}
+var action_queue : Array[QueuedAction] = []
+@onready var animator: CollisionAnimator = %CollisionAnimator
+@onready var state_machine: PlayerStateMachine = %StateMachine
+var has_current_attack_finished := false
+
+func enter() -> void:
+	player.velocity.x = 0
+
+	action_queue.clear()
+	combo = 0
+	assert(player.max_ground_attack_combo > 0, "Invalid entering of attack state - player.max_attack_combo <= 0")
+	start_attack()
+
+func exit() -> void:
+	assert(has_current_attack_finished)
+	player.attack_cooldown_timer.start()
+	action_queue.clear()
+
+func update(delta: float) -> State:
+	player.attack_enemies(combo == player.max_ground_attack_combo)
+	if not player.is_on_floor():
+		player.velocity += player.get_gravity() * delta
+
+	player.move_and_slide()
+	return self
+
+func handle_input() -> State:
+	if Input.is_action_just_pressed("attack"):
+		action_queue.append(QueuedAction.ATTACK)
+	if Input.is_action_just_pressed("crouch"):
+		action_queue.append(QueuedAction.CROUCH)
+	
+	if not has_current_attack_finished:
+		return self
+	
+	# TODO: optimize this because it's O(n) for arrays
+	var action = action_queue.pop_front()
+	while action == QueuedAction.ATTACK:
+		if combo < player.max_ground_attack_combo:
+			start_attack()
+			return self
+		action = action_queue.pop_front()
+	if action == QueuedAction.CROUCH:
+		var next_action = action_queue[0] if action_queue.size() != 0 else null
+		if next_action == QueuedAction.ATTACK:
+			return %CrouchAttack
+
+	return state_machine.decide_next_state()
+
+func start_attack():
+	has_current_attack_finished = false
+	combo += 1
+	animator.update()
+	await animator.animation_finished
+	has_current_attack_finished = true
+
+func get_animation() -> String:
+	if has_current_attack_finished:
+		return ""
+	var attack_number = (combo - 1) % 3 + 1
+	return "attack_" + str(attack_number)

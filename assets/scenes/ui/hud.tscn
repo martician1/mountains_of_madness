@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://d08e45pcgksn5"]
+
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="1_fkaho"]
+[ext_resource type="Script" uid="uid://oycshi5frqsy" path="res://assets/scripts/ui/hud.gd" id="2_mig6y"]
+[ext_resource type="StyleBox" uid="uid://d0tj07q6l7a63" path="res://assets/resources/hud_top_left_style_box_flat.tres" id="3_k1qim"]
+[ext_resource type="Texture2D" uid="uid://dnlavms6q3ve2" path="res://assets/sprites/ui/dark_prince_portrait.png" id="3_wpn6b"]
+[ext_resource type="Script" uid="uid://cpexm8jqhjoq2" path="res://assets/scripts/ui/health_bar.gd" id="5_25gpa"]
+[ext_resource type="Script" uid="uid://4og2sn1476wv" path="res://assets/scripts/ui/mana_bar.gd" id="6_25gpa"]
+[ext_resource type="Texture2D" uid="uid://cl0xarsn1fwwh" path="res://assets/sprites/ui/wind_charge.png" id="6_wpn6b"]
+[ext_resource type="Script" uid="uid://bfwcn0wfjuyi6" path="res://assets/scripts/ui/top_left_bar.gd" id="8_ckp1a"]
+
+[sub_resource type="GDScript" id="GDScript_78wrq"]
+script/source = "extends PanelContainer
+
+func _ready():
+	GameManager.player_changed.connect(_on_player_changed)
+	_on_player_changed(null, GameManager.player)
+
+func _on_player_changed(old_player: Player, new_player: Player):
+	if old_player:
+		old_player.selected_super_attack_changed.disconnect(_on_selected_super_attack_change)
+	if new_player:
+		new_player.selected_super_attack_changed.connect(_on_selected_super_attack_change)
+	_on_selected_super_attack_change(
+		old_player.selected_super_attack if old_player else null,
+		new_player.selected_super_attack if new_player else null
+	)
+
+func _on_selected_super_attack_change(_old: SuperAttackData, _new: SuperAttackData):
+	update_super_attack()
+
+func update_super_attack():
+	var player := GameManager.player
+	if player and player.selected_super_attack:
+		$SuperAttackTexture.texture = player.selected_super_attack.ui_texture
+"
+
+[node name="HUD" type="Control" unique_id=1066277096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fkaho")
+script = ExtResource("2_mig6y")
+
+[node name="TopLeftBar" type="Container" parent="." unique_id=602172886]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.025
+anchor_right = 0.089
+anchor_bottom = 0.158
+offset_left = 0.03999996
+offset_right = 0.040000916
+offset_bottom = 0.11999893
+script = ExtResource("8_ckp1a")
+
+[node name="PlayerHead" type="PanelContainer" parent="TopLeftBar" unique_id=506105669]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_k1qim")
+
+[node name="TextureRect" type="TextureRect" parent="TopLeftBar/PlayerHead" unique_id=509721853]
+layout_mode = 2
+texture = ExtResource("3_wpn6b")
+expand_mode = 3
+
+[node name="HealthBar" type="PanelContainer" parent="TopLeftBar" unique_id=965216564]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_k1qim")
+script = ExtResource("5_25gpa")
+
+[node name="Background" type="ColorRect" parent="TopLeftBar/HealthBar" unique_id=330083211]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Health" type="ColorRect" parent="TopLeftBar/HealthBar" unique_id=281015054]
+layout_mode = 2
+color = Color(1, 0, 0, 1)
+
+[node name="SuperAttack" type="PanelContainer" parent="TopLeftBar" unique_id=1438234622]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_k1qim")
+script = SubResource("GDScript_78wrq")
+
+[node name="SuperAttackTexture" type="TextureRect" parent="TopLeftBar/SuperAttack" unique_id=1407815298]
+layout_mode = 2
+texture = ExtResource("6_wpn6b")
+expand_mode = 3
+
+[node name="ManaBar" type="PanelContainer" parent="TopLeftBar" unique_id=703902534]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_k1qim")
+script = ExtResource("6_25gpa")
+
+[node name="Background" type="ColorRect" parent="TopLeftBar/ManaBar" unique_id=424875678]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Mana" type="ColorRect" parent="TopLeftBar/ManaBar" unique_id=310571266]
+layout_mode = 2
+color = Color(1, 0, 1, 1)
+
+[node name="Threshold" type="PanelContainer" parent="TopLeftBar/ManaBar" unique_id=1433921835]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_k1qim")
+
+[node name="MenuButton" type="Button" parent="." unique_id=1097455819]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -66.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 34.0
+grow_horizontal = 0
+theme = ExtResource("1_fkaho")
+text = "MENU"
+
+[connection signal="button_up" from="MenuButton" to="." method="_on_menu_button_button_up"]

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://v57g525rviso"]
+
+[ext_resource type="Texture2D" uid="uid://dagb2v8e7emnc" path="res://assets/sprites/trap_platform_atlas_transparent.png" id="1_34rvj"]
+[ext_resource type="Script" uid="uid://che6a2hfoldsk" path="res://assets/scripts/trapdoor.gd" id="1_mv48x"]
+[ext_resource type="Script" uid="uid://bfocx5t5xt5c8" path="res://assets/scripts/trap_area.gd" id="2_34rvj"]
+
+[sub_resource type="Animation" id="Animation_34rvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r3ykt"]
+resource_name = "close"
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [96.0, 64.0, 32.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mv48x"]
+resource_name = "open"
+length = 1.0000334
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 32.0, 64.0, 96.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3ykt"]
+_data = {
+&"RESET": SubResource("Animation_34rvj"),
+&"close": SubResource("Animation_r3ykt"),
+&"open": SubResource("Animation_mv48x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34rvj"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv48x"]
+size = Vector2(32, 2)
+
+[node name="Trapdoor" type="StaticBody2D" unique_id=2086724424]
+collision_layer = 256
+script = ExtResource("1_mv48x")
+time_to_open = 1.0
+time_to_recover = 1.0
+time_to_close = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222412840]
+texture = ExtResource("1_34rvj")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=789058447]
+libraries/ = SubResource("AnimationLibrary_r3ykt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668823647]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_34rvj")
+
+[node name="TrapArea" type="Area2D" parent="." unique_id=175748055 node_paths=PackedStringArray("animation_player", "trapdoor_collision_shape", "trap_area_collision_shape", "trapdoor")]
+collision_layer = 256
+script = ExtResource("2_34rvj")
+animation_player = NodePath("../AnimationPlayer")
+trapdoor_collision_shape = NodePath("../CollisionShape2D")
+trap_area_collision_shape = NodePath("CollisionShape2D")
+trapdoor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapArea" unique_id=168477792]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_mv48x")
+debug_color = Color(0.8252861, 0.32435504, 0.599737, 0.41960785)
+
+[connection signal="body_entered" from="TrapArea" to="TrapArea" method="_on_body_entered"]

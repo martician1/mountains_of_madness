@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PinData" format=3 uid="uid://bq0k203hy3is4"]
+
+[ext_resource type="Script" uid="uid://byt0i575tcts3" path="res://assets/scripts/ui/pin_data.gd" id="1_11upu"]
+[ext_resource type="Texture2D" uid="uid://brmcyqpu23xmd" path="res://assets/sprites/Red Imp.png" id="2_74qjk"]
+[ext_resource type="Texture2D" uid="uid://dkfo5b6ktpqhj" path="res://assets/sprites/swords.png" id="3_fqwru"]
+[ext_resource type="Texture2D" uid="uid://ubm7re4mva52" path="res://assets/sprites/Skull&Bones - FrodoUndead.png" id="4_3wykn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wlwb"]
+atlas = ExtResource("2_74qjk")
+region = Rect2(35, 65, 85, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4qlh"]
+atlas = ExtResource("3_fqwru")
+region = Rect2(259, 323, 1401, 1273)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujvk5"]
+atlas = ExtResource("4_3wykn")
+region = Rect2(200, 292, 55, 58)
+
+[resource]
+script = ExtResource("1_11upu")
+textures = Array[Texture2D]([SubResource("AtlasTexture_0wlwb"), SubResource("AtlasTexture_c4qlh"), SubResource("AtlasTexture_ujvk5")])
+metadata/_custom_type_script = "uid://byt0i575tcts3"

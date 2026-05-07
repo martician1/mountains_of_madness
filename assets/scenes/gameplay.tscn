@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bhstgewpvygl6"]
+
+[ext_resource type="PackedScene" uid="uid://d08e45pcgksn5" path="res://assets/scenes/ui/hud.tscn" id="2_un4qs"]
+[ext_resource type="PackedScene" uid="uid://ud1ccqupae6o" path="res://assets/scenes/background_light.tscn" id="3_17b01"]
+[ext_resource type="PackedScene" uid="uid://dukh4yp0436e1" path="res://assets/scenes/background_dark.tscn" id="4_0hf1u"]
+
+[node name="Gameplay" type="Node2D" unique_id=83325804 groups=["levels"]]
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=19325689]
+
+[node name="HUD" parent="UILayer" unique_id=1066277096 instance=ExtResource("2_un4qs")]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1085663894]
+layer = -100
+follow_viewport_enabled = true
+
+[node name="BackgroundLight" parent="BackgroundLayer" unique_id=1818668340 instance=ExtResource("3_17b01")]
+visible = false
+position = Vector2(2, 0)
+
+[node name="BackgroundLight2" parent="BackgroundLayer" unique_id=1763850958 instance=ExtResource("4_0hf1u")]

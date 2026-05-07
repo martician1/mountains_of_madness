@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://mk5hr5vpn2p4"]
+
+[ext_resource type="Script" uid="uid://fv8npraxw44l" path="res://assets/scripts/mana_ball.gd" id="1_okcor"]
+[ext_resource type="Texture2D" uid="uid://bmt1hjclhpieq" path="res://assets/sprites/mana_drop_spritesheet.png" id="2_okcor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okcor"]
+atlas = ExtResource("2_okcor")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1svot"]
+atlas = ExtResource("2_okcor")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sota0"]
+atlas = ExtResource("2_okcor")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vk13"]
+atlas = ExtResource("2_okcor")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxadr"]
+atlas = ExtResource("2_okcor")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00v7b"]
+atlas = ExtResource("2_okcor")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq0ef"]
+atlas = ExtResource("2_okcor")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phscd"]
+atlas = ExtResource("2_okcor")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvti8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okcor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1svot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sota0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vk13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxadr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00v7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq0ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phscd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asdgv"]
+radius = 4.0
+
+[node name="ManaBall" type="Area2D" unique_id=784018675]
+collision_layer = 65536
+script = ExtResource("1_okcor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=331880894]
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_wvti8")
+autoplay = "default"
+frame_progress = 0.8121475
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=925491394]
+shape = SubResource("CircleShape2D_asdgv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1187389415]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1542258096]
+rect = Rect2(-6, -6, 12, 12)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://p88c4ja410oo"]
+
+[ext_resource type="Script" uid="uid://cqtjn3gsngnto" path="res://assets/scripts/moving_platform.gd" id="1_uml16"]
+[ext_resource type="Texture2D" uid="uid://b85v7a1l6jlec" path="res://assets/sprites/moving_platform.png" id="2_jby5p"]
+
+[sub_resource type="Curve2D" id="Curve2D_eevdr"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnoey"]
+size = Vector2(32, 4)
+
+[node name="MovingPlatform" type="Path2D" unique_id=1176521805 node_paths=PackedStringArray("path_follow_2d")]
+curve = SubResource("Curve2D_eevdr")
+script = ExtResource("1_uml16")
+path_time = 2.0
+ease = 2
+path_follow_2d = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1597509873]
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=999216433]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1514352464]
+collision_layer = 256
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1852158384]
+texture = ExtResource("2_jby5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=739273951]
+shape = SubResource("RectangleShape2D_cnoey")

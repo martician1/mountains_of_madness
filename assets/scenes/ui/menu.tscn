@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://dv8esbh7f2g8u"]
+
+[ext_resource type="Script" uid="uid://cyx2heg25y4fi" path="res://assets/scripts/menu.gd" id="1_xuqax"]
+[ext_resource type="Texture2D" uid="uid://bk8ymx43enuwq" path="res://assets/sprites/menu_background.png" id="2_q8r6g"]
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="3_l0v2w"]
+[ext_resource type="PackedScene" uid="uid://csmcbw274tdur" path="res://assets/scenes/ui/pin.tscn" id="4_0wlwb"]
+[ext_resource type="Resource" uid="uid://bq0k203hy3is4" path="res://assets/resources/menu_pin_data.tres" id="5_q8r6g"]
+
+[node name="Menu" type="Control" unique_id=426951561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xuqax")
+start_from_level_menu = true
+
+[node name="Background" type="TextureRect" parent="." unique_id=1073606244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_q8r6g")
+expand_mode = 1
+
+[node name="StartMenu" type="Control" parent="." unique_id=2095244905]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu" unique_id=272027405]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -46.0
+offset_right = 64.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="StartMenu/VBoxContainer" unique_id=1928418477]
+layout_mode = 2
+theme = ExtResource("3_l0v2w")
+text = "START"
+
+[node name="SettingsButton" type="Button" parent="StartMenu/VBoxContainer" unique_id=1845224762]
+layout_mode = 2
+theme = ExtResource("3_l0v2w")
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="StartMenu/VBoxContainer" unique_id=1059400241]
+layout_mode = 2
+theme = ExtResource("3_l0v2w")
+text = "QUIT
+"
+
+[node name="LevelMenu" type="Control" parent="." unique_id=1070232884]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="LevelMenu" unique_id=80899834]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 328.0
+offset_right = 68.0
+offset_bottom = 356.0
+theme = ExtResource("3_l0v2w")
+text = "BACK"
+
+[node name="Pin10" parent="LevelMenu" unique_id=65156346 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 110.0
+offset_right = 322.0
+offset_bottom = 140.0
+pin_data = ExtResource("5_q8r6g")
+variant = 2
+
+[node name="Pin9" parent="LevelMenu" unique_id=1766948345 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 129.0
+offset_right = 364.0
+offset_bottom = 159.0
+pin_data = ExtResource("5_q8r6g")
+
+[node name="Pin8" parent="LevelMenu" unique_id=149714828 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 139.0
+offset_right = 316.0
+offset_bottom = 169.0
+pin_data = ExtResource("5_q8r6g")
+variant = 1
+
+[node name="Pin7" parent="LevelMenu" unique_id=188961863 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 153.0
+offset_right = 295.0
+offset_bottom = 183.0
+pin_data = ExtResource("5_q8r6g")
+
+[node name="Pin6" parent="LevelMenu" unique_id=592108306 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 324.0
+offset_top = 171.0
+offset_right = 344.0
+offset_bottom = 201.0
+pin_data = ExtResource("5_q8r6g")
+
+[node name="Pin5" parent="LevelMenu" unique_id=292486355 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 194.0
+offset_right = 320.0
+offset_bottom = 224.0
+pin_data = ExtResource("5_q8r6g")
+variant = 2
+
+[node name="Pin4" parent="LevelMenu" unique_id=176347607 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 213.0
+offset_right = 280.0
+offset_bottom = 243.0
+pin_data = ExtResource("5_q8r6g")
+
+[node name="Pin3" parent="LevelMenu" unique_id=1582333494 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 243.0
+offset_right = 262.0
+offset_bottom = 273.0
+pin_data = ExtResource("5_q8r6g")
+variant = 1
+
+[node name="Pin2" parent="LevelMenu" unique_id=283159754 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 270.0
+offset_right = 304.0
+offset_bottom = 300.0
+pin_data = ExtResource("5_q8r6g")
+level_path = "res://assets/scenes/levels/level_2.tscn"
+
+[node name="Pin" parent="LevelMenu" unique_id=312753358 instance=ExtResource("4_0wlwb")]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 300.0
+offset_right = 348.0
+offset_bottom = 330.0
+pin_data = ExtResource("5_q8r6g")
+level_path = "res://assets/scenes/levels/level_1.tscn"
+
+[connection signal="button_up" from="StartMenu/VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="StartMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="StartMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="button_up" from="LevelMenu/BackButton" to="." method="_on_back_button_button_up"]

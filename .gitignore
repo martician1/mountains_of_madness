@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# copyrighted assets
+assets/sprites/Dark Knight 2
+assets/sprites/GandalfHardcore Hell Asset Pack 32x32
+assets/sprites/**/*.zip

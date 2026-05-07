@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://csmcbw274tdur"]
+
+[ext_resource type="Texture2D" uid="uid://4j3du165y5ke" path="res://assets/sprites/pin_wide.png" id="1_fp0o5"]
+[ext_resource type="Script" uid="uid://ccub7v20xeh3p" path="res://assets/scripts/ui/pin.gd" id="2_fp0o5"]
+
+[node name="Pin" type="TextureRect" unique_id=283159754]
+offset_right = 20.0
+offset_bottom = 30.0
+pivot_offset_ratio = Vector2(0.5, 1)
+texture = ExtResource("1_fp0o5")
+expand_mode = 1
+script = ExtResource("2_fp0o5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1878754570]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.333
+anchor_right = 0.5
+anchor_bottom = 0.333
+offset_left = -6.0
+offset_top = -5.99
+offset_right = 6.0
+offset_bottom = 6.01
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
