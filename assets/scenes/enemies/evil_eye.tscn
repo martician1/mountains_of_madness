@@ -423,6 +423,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gsmlj"]
+radius = 18.0
 height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwxyq"]

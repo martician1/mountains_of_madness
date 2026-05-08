@@ -1,10 +1,13 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal died
+
 var last_hit: HitData
 
-@export var mana_ball_despawn_time := 4.0
-@export var mana_ball_fadeout_time := 1.0
+@export var drop_despawn_time := 4.0
+@export var drop_fadeout_time := 1.0
+@export var drop_mana_probability := 0.9
 
 @export var damage: int
 @export var health := 1:
@@ -16,6 +19,8 @@ var direction := Vector2(0,0)
 
 var hell_charge_scene: PackedScene = preload("res://assets/scenes/hell_charge.tscn")
 var mana_ball_scene: PackedScene = preload("res://assets/scenes/mana_ball.tscn")
+var health_drop_scene: PackedScene = preload("res://assets/scenes/health_drop.tscn")
+
 
 @export var shield_cooldown_time := 0.2
 var is_shield_active := false
@@ -42,14 +47,15 @@ func get_descendants_in_group(parent: Node, group: String, result: Array[Node] =
 	return result
 
 func die():
-	var mana_ball: ManaBall = mana_ball_scene.instantiate()
+	var drop = mana_ball_scene.instantiate() if randf() < drop_mana_probability else health_drop_scene.instantiate()
 	var spawnpoint := self.find_child("ManaBallSpawnpoint") as Marker2D
 	var spawn_position := spawnpoint.global_position if spawnpoint != null else self.global_position
-	mana_ball.global_position = spawn_position
-	mana_ball.despawn_time = mana_ball_despawn_time
-	mana_ball.fadeout_time = mana_ball_fadeout_time
-	GameManager.level.add_child(mana_ball)
+	drop.global_position = spawn_position
+	drop.despawn_time = drop_despawn_time
+	drop.fadeout_time = drop_fadeout_time
+	GameManager.level.add_child(drop)
 	GameManager.player.enemies_killed += 1
+	died.emit()
 	queue_free()
 
 func hit_player():

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bpy1g8kuvsprs"]
+
+[ext_resource type="Script" uid="uid://b3rosxylds3mo" path="res://assets/scripts/levels/deathmatch_arena.gd" id="1_r63u7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ouy4"]
+size = Vector2(32, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r63u7"]
+size = Vector2(32, 640)
+
+[node name="DeathmatchArena" type="Node2D" unique_id=1740717039]
+script = ExtResource("1_r63u7")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=170125393]
+collision_layer = 256
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=319311778]
+position = Vector2(-16, -320)
+shape = SubResource("RectangleShape2D_3ouy4")
+disabled = true
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1559079303]
+collision_layer = 256
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1172744085]
+position = Vector2(16, -320)
+shape = SubResource("RectangleShape2D_r63u7")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=41314781]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dv8esbh7f2g8u"]
 
-[ext_resource type="Script" uid="uid://cyx2heg25y4fi" path="res://assets/scripts/menu.gd" id="1_xuqax"]
+[ext_resource type="Script" uid="uid://cyx2heg25y4fi" path="res://assets/scripts/ui/menu.gd" id="1_xuqax"]
 [ext_resource type="Texture2D" uid="uid://bk8ymx43enuwq" path="res://assets/sprites/menu_background.png" id="2_q8r6g"]
 [ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="3_l0v2w"]
 [ext_resource type="PackedScene" uid="uid://csmcbw274tdur" path="res://assets/scenes/ui/pin.tscn" id="4_0wlwb"]
@@ -153,6 +153,7 @@ offset_right = 262.0
 offset_bottom = 273.0
 pin_data = ExtResource("5_q8r6g")
 variant = 1
+level_path = "res://assets/scenes/levels/level_3.tscn"
 
 [node name="Pin2" parent="LevelMenu" unique_id=283159754 instance=ExtResource("4_0wlwb")]
 layout_mode = 0

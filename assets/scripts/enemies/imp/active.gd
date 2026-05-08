@@ -22,9 +22,7 @@ func update(_delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	var last_hit = imp.take_last_hit()
-	if last_hit != null:
-		imp.health -= last_hit.damage
+	if imp.process_last_hit():
 		if imp.health <= 0:
 			return %Dying
 	return self

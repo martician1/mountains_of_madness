@@ -1,0 +1,286 @@
+[gd_scene format=4 uid="uid://c432b0np5nelf"]
+
+[ext_resource type="Script" uid="uid://dwq4b44gy72dj" path="res://assets/scripts/levels/level.gd" id="1_jddol"]
+[ext_resource type="TileSet" uid="uid://bx57wxgs00rbm" path="res://assets/resources/tileset.tres" id="1_ydnoq"]
+[ext_resource type="PackedScene" uid="uid://bpy1g8kuvsprs" path="res://assets/scenes/levels/deathmatch_arena.tscn" id="2_x8kg0"]
+[ext_resource type="PackedScene" uid="uid://bxf6vj33he1h6" path="res://assets/scenes/tooltip.tscn" id="4_2guls"]
+[ext_resource type="Script" uid="uid://bntxugmg0p15i" path="res://assets/scripts/enemies/spawnwave.gd" id="4_3xxnt"]
+[ext_resource type="PackedScene" uid="uid://mk5hr5vpn2p4" path="res://assets/scenes/mana_ball.tscn" id="5_l6tgs"]
+[ext_resource type="Script" uid="uid://bdlp0m143rprt" path="res://assets/scripts/enemies/enemy_spawn.gd" id="5_pv0wj"]
+[ext_resource type="PackedScene" uid="uid://qpoe144uru2c" path="res://assets/scenes/enemies/zombie.tscn" id="6_pv0wj"]
+[ext_resource type="PackedScene" uid="uid://chy0l7gaa7imn" path="res://assets/scenes/enemies/evil_eye.tscn" id="7_cp335"]
+[ext_resource type="PackedScene" uid="uid://ckbx2qjexkmu0" path="res://assets/scenes/enemies/imp.tscn" id="8_tf3s5"]
+
+[sub_resource type="Resource" id="Resource_cp335"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_pv0wj"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_0kdo3"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 5.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_jv0of"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 5.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_jcxhs"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 10.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_ditno"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 10.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_tf3s5"]
+script = ExtResource("4_3xxnt")
+spawns = Array[ExtResource("5_pv0wj")]([SubResource("Resource_cp335"), SubResource("Resource_pv0wj"), SubResource("Resource_0kdo3"), SubResource("Resource_jv0of"), SubResource("Resource_jcxhs"), SubResource("Resource_ditno")])
+metadata/_custom_type_script = "uid://bntxugmg0p15i"
+
+[sub_resource type="Resource" id="Resource_3456x"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+scene = ExtResource("7_cp335")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_015fx"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_p7d34"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 5.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_r6yob"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 5.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_qufib"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 6.0
+scene = ExtResource("7_cp335")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_0fock"]
+script = ExtResource("4_3xxnt")
+spawns = Array[ExtResource("5_pv0wj")]([SubResource("Resource_3456x"), SubResource("Resource_015fx"), SubResource("Resource_p7d34"), SubResource("Resource_r6yob"), SubResource("Resource_qufib")])
+metadata/_custom_type_script = "uid://bntxugmg0p15i"
+
+[sub_resource type="Resource" id="Resource_sgovl"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+scene = ExtResource("7_cp335")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_oxuod"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+scene = ExtResource("7_cp335")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_dt0dr"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 1.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_d2a3r"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 1.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_ospcj"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 6.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_c52jw"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 6.0
+scene = ExtResource("6_pv0wj")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_gme72"]
+script = ExtResource("4_3xxnt")
+spawns = Array[ExtResource("5_pv0wj")]([SubResource("Resource_sgovl"), SubResource("Resource_oxuod"), SubResource("Resource_dt0dr"), SubResource("Resource_d2a3r"), SubResource("Resource_ospcj"), SubResource("Resource_c52jw")])
+metadata/_custom_type_script = "uid://bntxugmg0p15i"
+
+[sub_resource type="Resource" id="Resource_4aesy"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn3")
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_gk1se"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn4")
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_g4mji"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 3.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_am1li"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 3.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_e7vyj"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn5")
+delay = 6.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_8nsd5"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn6")
+delay = 6.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_d48w6"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn1")
+delay = 9.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_pijia"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn2")
+delay = 9.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_07goa"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn7")
+delay = 9.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_y3pmq"]
+script = ExtResource("5_pv0wj")
+spawn = NodePath("Spawn8")
+delay = 9.0
+scene = ExtResource("8_tf3s5")
+metadata/_custom_type_script = "uid://bdlp0m143rprt"
+
+[sub_resource type="Resource" id="Resource_rf1rp"]
+script = ExtResource("4_3xxnt")
+spawns = Array[ExtResource("5_pv0wj")]([SubResource("Resource_4aesy"), SubResource("Resource_gk1se"), SubResource("Resource_g4mji"), SubResource("Resource_am1li"), SubResource("Resource_e7vyj"), SubResource("Resource_8nsd5"), SubResource("Resource_d48w6"), SubResource("Resource_pijia"), SubResource("Resource_07goa"), SubResource("Resource_y3pmq")])
+metadata/_custom_type_script = "uid://bntxugmg0p15i"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8kg0"]
+size = Vector2(92, 279.5)
+
+[node name="Level3" type="Node2D" unique_id=2017733999 node_paths=PackedStringArray("bottom_left", "top_right")]
+script = ExtResource("1_jddol")
+bottom_left = NodePath("BottomLeft")
+top_right = NodePath("TopRight")
+metadata/_custom_type_script = "uid://dwq4b44gy72dj"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1899746051]
+tile_map_data = PackedByteArray("AAAAAAAAAQAHAAUAAAAAAP//AQAKAAYAAAABAAAAAQAHAAUAAAABAAEAAQABAAUAAAACAAEAAQAHAAMAAAADAAEAAQAHAAMAAAAEAAEAAQABAAUAAAAEAAAAAQABAAMAAAAFAAEAAQABAAUAAAAGAAEAAQABAAUAAAAHAAEAAQAHAAMAAAAIAAEAAQABAAUAAAAIAAAAAQABAAMAAAAIAP//AQAKAAYAAAAJAAAAAQABAAMAAAAKAAAAAQAHAAUAAAALAAAAAQAHAAUAAAAMAAAAAQAHAAUAAAANAAAAAQAHAAUAAAANAP//AQAJAAYAAAAOAAAAAQAHAAUAAAAPAAAAAQAHAAUAAAAQAAAAAQABAAMAAAARAAAAAQAHAAUAAAASAAAAAQAHAAUAAAATAAEAAQAHAAMAAAATAAAAAQAHAAUAAAAHAAAAAQAHAAUAAAAGAAAAAQABAAMAAAAFAAAAAQABAAMAAAADAAAAAQAHAAUAAAACAAAAAQABAAMAAAAAAAEAAQABAAUAAAAKAAEAAQAHAAMAAAAJAAEAAQAHAAMAAAALAAEAAQAHAAMAAAAMAAEAAQABAAUAAAANAAEAAQAHAAMAAAAOAAEAAQAHAAMAAAAPAAEAAQABAAUAAAAQAAEAAQAHAAMAAAARAAEAAQAHAAMAAAASAAEAAQABAAUAAAAUAAAAAQAHAAUAAAAVAAAAAQAHAAUAAAAVAP//AQANAAAAAAAWAAAAAQAHAAUAAAAXAAAAAQABAAMAAAAYAAAAAQAHAAUAAAAZAAAAAQABAAMAAAAZAP//AQANAAAAAAAaAAAAAQABAAMAAAAbAAAAAQABAAMAAAAcAAAAAQAHAAUAAAAdAAAAAQAHAAUAAAAdAP//AQAJAAYAAAAeAAAAAQAHAAUAAAAfAAAAAQABAAMAAAAfAAEAAQAHAAMAAAAeAAEAAQAHAAMAAAAdAAEAAQABAAUAAAAcAAEAAQABAAUAAAAbAAEAAQAHAAMAAAAaAAEAAQAHAAMAAAAZAAEAAQABAAUAAAAYAAEAAQAHAAMAAAAXAAEAAQAHAAMAAAAWAAEAAQAHAAMAAAAVAAEAAQABAAUAAAAUAAEAAQAHAAMAAAAgAAAAAQACAAMAAAAgAP//AQALAAYAAAAgAAEAAQACAAUAAAD8/wAAAQAGAAUAAAD9/wAAAQAHAAUAAAD+/wAAAQABAAMAAAD//wAAAQAHAAUAAAD//wEAAQABAAUAAAD+/wEAAQAHAAMAAAD9/wEAAQAHAAMAAAD8/wEAAQABAAUAAAAXAP//BQAAAAAAAAAQAP//BQAAAAAAAAD8////AQACAAQAAAD9////BQAAAAAAAAD8//7/AQAGAAQAAAD8//3/AQAGAAMAAAD7////AQAIAAQAAAD7/wAAAQAIAAQAAAD7/wEAAQAAAAUAAAD7//7/AQAIAAQAAAD7//3/AQAAAAQAAAD8//z/AQAGAAUAAAD7//z/AQAAAAQAAAD7//v/AQAAAAQAAAD8//v/AQAGAAQAAAD8//r/AQACAAQAAAD9//3/AQAHAAMAAAD+//3/AQACAAUAAAD+//z/AQACAAMAAAD9//z/AQAHAAUAAAD7//r/AQAIAAQAAAD7//n/AQAAAAQAAAD8//n/AQACAAQAAAD7//j/AQAIAAQAAAD7//f/AQAAAAQAAAD7//b/AQAAAAQAAAD7//X/AQAAAAMAAAD8//X/AQACAAMAAAD8//T/AQAJAAYAAAD8//b/AQACAAQAAAD8//f/AQAGAAQAAAD8//j/AQAGAAQAAAARAPr/AQAAAAMAAAARAPv/AQAAAAUAAAASAPv/AQACAAUAAAASAPr/AQACAAMAAAASAPn/AQALAAYAAAAMAP3/AQAJAAQAAAANAP3/AQAEAAUAAAAOAP3/AQALAAQAAAA=")
+tile_set = ExtResource("1_ydnoq")
+
+[node name="BottomLeft" type="Marker2D" parent="." unique_id=842751792]
+position = Vector2(-96, 32)
+
+[node name="TopRight" type="Marker2D" parent="." unique_id=1123061799]
+position = Vector2(1088, -613)
+
+[node name="DeathmatchArena" parent="." unique_id=1740717039 node_paths=PackedStringArray("trigger_area", "level") instance=ExtResource("2_x8kg0")]
+position = Vector2(576, 32)
+trigger_area = NodePath("../Area2D")
+spawnwaves = Array[ExtResource("4_3xxnt")]([SubResource("Resource_tf3s5"), SubResource("Resource_0fock"), SubResource("Resource_gme72"), SubResource("Resource_rf1rp")])
+level = NodePath("..")
+
+[node name="Spawn1" type="Marker2D" parent="DeathmatchArena" unique_id=1336237258]
+position = Vector2(-320, -96)
+
+[node name="Spawn2" type="Marker2D" parent="DeathmatchArena" unique_id=1799887413]
+position = Vector2(320, -96)
+
+[node name="Spawn3" type="Marker2D" parent="DeathmatchArena" unique_id=1649621873]
+position = Vector2(-320, -208)
+
+[node name="Spawn4" type="Marker2D" parent="DeathmatchArena" unique_id=1941326595]
+position = Vector2(320, -208)
+
+[node name="Spawn5" type="Marker2D" parent="DeathmatchArena" unique_id=1153638562]
+position = Vector2(-320, -320)
+
+[node name="Spawn6" type="Marker2D" parent="DeathmatchArena" unique_id=297416859]
+position = Vector2(320, -320)
+
+[node name="Spawn7" type="Marker2D" parent="DeathmatchArena" unique_id=931248677]
+position = Vector2(-160, -360)
+
+[node name="Spawn8" type="Marker2D" parent="DeathmatchArena" unique_id=1353423848]
+position = Vector2(160, -360)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1584999756]
+position = Vector2(496, -142)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1570595327]
+shape = SubResource("RectangleShape2D_x8kg0")
+
+[node name="Tooltips" type="Node2D" parent="." unique_id=373349898]
+
+[node name="Tooltip" parent="Tooltips" unique_id=1335772439 instance=ExtResource("4_2guls")]
+position = Vector2(80, -24)
+text = "It's a little too quiet here..."
+
+[node name="Tooltip2" parent="Tooltips" unique_id=689478446 instance=ExtResource("4_2guls")]
+position = Vector2(240, -24)
+text = "Could this be an ambush???"
+
+[node name="ManaBalls" type="Node2D" parent="." unique_id=2053434743]
+
+[node name="ManaBall" parent="ManaBalls" unique_id=784018675 instance=ExtResource("5_l6tgs")]
+position = Vector2(-80, -144)
+
+[node name="ManaBall2" parent="ManaBalls" unique_id=1321982341 instance=ExtResource("5_l6tgs")]
+position = Vector2(-48, -144)
