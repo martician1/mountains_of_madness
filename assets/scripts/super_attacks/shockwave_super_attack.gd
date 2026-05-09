@@ -13,11 +13,19 @@ func _center_sprite() -> void:
 
 func hit_enemies() -> void:
 	var camera := get_viewport().get_camera_2d()
-	var rect := get_viewport().get_visible_rect()
-	rect.position = camera.get_screen_center_position() - rect.size / 2.0
 
-	for enemy in get_tree().get_nodes_in_group("enemy"):
-		if rect.has_point(enemy.global_position):
+	var shape := RectangleShape2D.new()
+	shape.size = get_viewport().get_visible_rect().size
+
+	var query := PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.transform = Transform2D(0.0, camera.get_screen_center_position())
+	query.collision_mask = 1 << 26 # hurtbox
+	query.collide_with_areas = true
+
+	for hurtbox in get_world_2d().direct_space_state.intersect_shape(query).map(func(r): return r["collider"]):
+		var enemy = hurtbox.owner as Enemy
+		if enemy != null:
 			enemy.register_hit(
 				HitData.new(self, camera.get_screen_center_position(), damage, knockback)
 			)
