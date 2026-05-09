@@ -51,7 +51,7 @@ func load_level(path: String):
 
 	get_tree().change_scene_to_node(gameplay_scene.instantiate())
 
-	level_start_time = Time.get_unix_time_from_system()
+	level_start_time = int(Time.get_unix_time_from_system())
 
 func reload_level():
 	load_level(level_path)
@@ -62,7 +62,7 @@ func quit_level():
 	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 
 func fail_level():
-	level_finish_time = Time.get_unix_time_from_system()
+	level_finish_time = int(Time.get_unix_time_from_system())
 	var fail_level_menu: FailLevelMenu = fail_level_menu_scene.instantiate()
 
 	fail_level_menu.enemies_killed = player.enemies_killed
@@ -72,7 +72,7 @@ func fail_level():
 	get_tree().root.add_child(fail_level_menu)
 
 func _on_level_finished():
-	level_finish_time = Time.get_unix_time_from_system()
+	level_finish_time = int(Time.get_unix_time_from_system())
 	var end_level_menu: EndLevelMenu = end_level_menu_scene.instantiate()
 
 	end_level_menu.enemies_killed = player.enemies_killed

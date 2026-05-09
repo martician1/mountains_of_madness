@@ -96,7 +96,7 @@ func reset_stats():
 	damage_received = 0
 	damage_dealt = 0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_burning:
 		register_hit(HitData.new(self, global_position, 1, Vector2.ZERO))
 
@@ -110,10 +110,10 @@ func _ready() -> void:
 
 func _on_level_changed(_old_level: Level, new_level: Level):
 	if new_level != null:
-		camera.limit_bottom = new_level.bottom_left.position.y
-		camera.limit_left = new_level.bottom_left.position.x
-		camera.limit_top = new_level.top_right.position.y
-		camera.limit_right = new_level.top_right.position.x
+		camera.limit_bottom = int(new_level.bottom_left.position.y)
+		camera.limit_left = int(new_level.bottom_left.position.x)
+		camera.limit_top = int(new_level.top_right.position.y)
+		camera.limit_right = int(new_level.top_right.position.x)
 
 func _exit_tree() -> void:
 	GameManager.level_changed.disconnect(_on_level_changed)

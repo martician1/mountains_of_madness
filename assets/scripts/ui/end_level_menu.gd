@@ -9,7 +9,6 @@ extends CanvasLayer
 func _ready() -> void:
 	%EnemiesKilled.text = str(enemies_killed)
 	%DamageRatio.text = str(damage_ratio)
-	@warning_ignore("integer_division")
 	%TimeTaken.text = "%02d:%02d" % [time_in_seconds / 60, time_in_seconds % 60]
 	await get_tree().create_tween().tween_property(%Background, "color:a", 1.0, background_fade_in_time).finished
 	

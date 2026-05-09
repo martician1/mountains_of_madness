@@ -39,10 +39,10 @@ var health_drop_scene: PackedScene = preload("res://assets/scenes/health_drop.ts
 @export var shield_cooldown_time := 0.2
 var is_shield_active := false
 
-func shoot_hell_charge(initial_position: Vector2, velocity: Vector2):
+func shoot_hell_charge(initial_position: Vector2, charge_velocity: Vector2):
 	var hell_charge: HellCharge = hell_charge_scene.instantiate()
 	hell_charge.global_position = initial_position
-	hell_charge.velocity = velocity
+	hell_charge.velocity = charge_velocity
 	GameManager.level.add_child(hell_charge)
 
 func get_first_parent_in_group(group: String) -> Node:
@@ -98,12 +98,13 @@ func take_last_hit() -> HitData:
 
 func process_last_hit() -> bool:
 	var last_hit = take_last_hit()
-	if last_hit != null:
-		health -= last_hit.damage
-		GameManager.player.damage_dealt += last_hit.damage
-		apply_knockback(last_hit.knockback, sign(global_position.x - last_hit.from_position.x))
-		return true
-	return false
+	if last_hit == null:
+		return false
+
+	health -= last_hit.damage
+	GameManager.player.damage_dealt += last_hit.damage
+	apply_knockback(last_hit.knockback, sign(global_position.x - last_hit.from_position.x))
+	return true
 
 func register_hit(hit_data: HitData):
 	call_deferred("_register_hit", hit_data)
