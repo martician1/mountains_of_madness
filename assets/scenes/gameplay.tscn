@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bhstgewpvygl6"]
 
+[ext_resource type="Script" uid="uid://dbcyn03iia0wp" path="res://assets/scripts/gameplay.gd" id="1_1pg7n"]
 [ext_resource type="PackedScene" uid="uid://d08e45pcgksn5" path="res://assets/scenes/ui/hud.tscn" id="2_un4qs"]
 [ext_resource type="PackedScene" uid="uid://ud1ccqupae6o" path="res://assets/scenes/background_light.tscn" id="3_17b01"]
 [ext_resource type="PackedScene" uid="uid://dukh4yp0436e1" path="res://assets/scenes/background_dark.tscn" id="4_0hf1u"]
 
 [node name="Gameplay" type="Node2D" unique_id=83325804 groups=["levels"]]
+script = ExtResource("1_1pg7n")
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=19325689]
 

@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dwet45qf1xvxm" path="res://assets/scripts/player/plunge_attack.gd" id="12_86pyr"]
 [ext_resource type="Script" uid="uid://c4p4v240wafdb" path="res://assets/scripts/player/landing.gd" id="13_8l2ex"]
 [ext_resource type="Script" uid="uid://0utl20adl21h" path="res://assets/scripts/player/hurt.gd" id="14_vn88y"]
-[ext_resource type="Script" uid="uid://beyywdikkg1j4" path="res://assets/scripts/player/oneshot_animation_state.gd" id="15_rt1xo"]
+[ext_resource type="Script" uid="uid://guqym2tv7iey" path="res://assets/scripts/player/dying.gd" id="15_rt1xo"]
 [ext_resource type="Script" uid="uid://lovcbugfx10l" path="res://assets/scripts/player/super_attack.gd" id="16_avvtr"]
 [ext_resource type="Texture2D" uid="uid://g51ohx10oe70" path="res://assets/sprites/Dark Knight 2/Sprites/AirAttack1.png" id="17_tstuq"]
 [ext_resource type="Texture2D" uid="uid://csefk3s1mbagg" path="res://assets/sprites/Dark Knight 2/Sprites/AirAttack2.png" id="18_r2oq8"]

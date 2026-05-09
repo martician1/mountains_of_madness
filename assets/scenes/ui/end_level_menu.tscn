@@ -237,16 +237,19 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="Control" type="ColorRect" unique_id=1305160115]
+[node name="EndLevelMenu" type="CanvasLayer" unique_id=828621921]
+script = ExtResource("1_n404u")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1305160115]
+unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
-script = ExtResource("1_n404u")
 
-[node name="Control" type="PanelContainer" parent="." unique_id=542434064]
+[node name="Control" type="PanelContainer" parent="Background" unique_id=542434064]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -262,104 +265,104 @@ grow_vertical = 2
 theme = ExtResource("1_omihd")
 theme_override_styles/panel = SubResource("StyleBoxTexture_ctfmo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1939254362]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Control" unique_id=1939254362]
 layout_mode = 2
 
-[node name="WinLabel" type="Label" parent="Control/VBoxContainer" unique_id=1380825917]
+[node name="WinLabel" type="Label" parent="Background/Control/VBoxContainer" unique_id=1380825917]
 layout_mode = 2
 theme = ExtResource("1_omihd")
 text = "You Won!"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=2133794635]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Control/VBoxContainer" unique_id=2133794635]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=626321908]
+[node name="TextureRect" type="TextureRect" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=626321908]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3l1j5")
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1551282015]
+[node name="Label" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=1551282015]
 layout_mode = 2
 text = "Enemies Killed"
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer" unique_id=936242457]
+[node name="Control" type="Control" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=936242457]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EnemiesKilled" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1157264763]
+[node name="EnemiesKilled" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=1157264763]
 unique_name_in_owner = true
 layout_mode = 2
 text = "20"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control/VBoxContainer/HBoxContainer" unique_id=607338696]
+[node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=607338696]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer/HBoxContainer/CanvasLayer" unique_id=1700565764]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer/CanvasLayer" unique_id=1700565764]
 position = Vector2(144, 96)
 sprite_frames = SubResource("SpriteFrames_fyraj")
 autoplay = "default"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=420140052]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/Control/VBoxContainer" unique_id=420140052]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2" unique_id=1208270971]
+[node name="TextureRect" type="TextureRect" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=1208270971]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3l1j5")
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=2014463626]
+[node name="Label" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=2014463626]
 layout_mode = 2
 text = "Damage Ratio (Inflicted/Received)"
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer2" unique_id=1777619005]
+[node name="Control" type="Control" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=1777619005]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DamageRatio" type="Label" parent="Control/VBoxContainer/HBoxContainer2" unique_id=895900225]
+[node name="DamageRatio" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=895900225]
 unique_name_in_owner = true
 layout_mode = 2
 text = "2.00
 "
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control/VBoxContainer/HBoxContainer2" unique_id=186993892]
+[node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=186993892]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer/HBoxContainer2/CanvasLayer" unique_id=1285383891]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer2/CanvasLayer" unique_id=1285383891]
 position = Vector2(144, 176)
 scale = Vector2(0.84, 0.84)
 sprite_frames = SubResource("SpriteFrames_f5j8b")
 autoplay = "default"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=923354232]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/Control/VBoxContainer" unique_id=923354232]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer3" unique_id=261425369]
+[node name="TextureRect" type="TextureRect" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=261425369]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3l1j5")
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3" unique_id=2015574796]
+[node name="Label" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=2015574796]
 layout_mode = 2
 text = "Time Taken"
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer3" unique_id=166832648]
+[node name="Control" type="Control" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=166832648]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TimeTaken" type="Label" parent="Control/VBoxContainer/HBoxContainer3" unique_id=2120095869]
+[node name="TimeTaken" type="Label" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=2120095869]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0:34"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control/VBoxContainer/HBoxContainer3" unique_id=573362175]
+[node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=573362175]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer/HBoxContainer3/CanvasLayer" unique_id=11815944]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer3/CanvasLayer" unique_id=11815944]
 position = Vector2(144.00002, 242)
 scale = Vector2(0.84, 0.84)
 sprite_frames = SubResource("SpriteFrames_qavu1")
 autoplay = "default"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer" unique_id=1882585818]
+[node name="MarginContainer" type="MarginContainer" parent="Background/Control/VBoxContainer" unique_id=1882585818]
 layout_mode = 2
 theme_override_constants/margin_left = 288
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/MarginContainer" unique_id=184834037]
+[node name="Button" type="Button" parent="Background/Control/VBoxContainer/MarginContainer" unique_id=184834037]
 layout_mode = 2
 text = "Next"
 
-[connection signal="button_up" from="Control/VBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="Background/Control/VBoxContainer/MarginContainer/Button" to="." method="_on_button_button_up"]

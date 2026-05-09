@@ -12,7 +12,9 @@ var level_finish_time: int
 
 var gameplay_scene: PackedScene = preload("res://assets/scenes/gameplay.tscn")
 var end_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/end_level_menu.tscn")
+var fail_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/fail_level_menu.tscn")
 var player_scene: PackedScene = preload("res://assets/scenes/player/player.tscn")
+
 
 func change_player(new_player: Player):
 	if new_player != null:
@@ -59,39 +61,22 @@ func quit_level():
 	change_level(null)
 	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 
+func fail_level():
+	level_finish_time = Time.get_unix_time_from_system()
+	var fail_level_menu: FailLevelMenu = fail_level_menu_scene.instantiate()
+
+	fail_level_menu.enemies_killed = player.enemies_killed
+	fail_level_menu.damage_ratio = player.damage_dealt / player.damage_received if player.damage_received else "Infinity"
+	fail_level_menu.time_in_seconds = level_finish_time - level_start_time
+
+	get_tree().root.add_child(fail_level_menu)
+
 func _on_level_finished():
 	level_finish_time = Time.get_unix_time_from_system()
-	call_deferred("transition_to_end_level_menu")
-
-func transition_to_end_level_menu():
 	var end_level_menu: EndLevelMenu = end_level_menu_scene.instantiate()
-	
+
 	end_level_menu.enemies_killed = player.enemies_killed
 	end_level_menu.damage_ratio = player.damage_dealt / player.damage_received if player.damage_received else "Infinity"
 	end_level_menu.time_in_seconds = level_finish_time - level_start_time
 
-	var canvas = CanvasLayer.new()
-	canvas.add_child(end_level_menu)
-	get_tree().root.add_child(canvas)
-	
-	await get_tree().create_tween().tween_property(
-		end_level_menu,
-		"color:a",
-		1.0,
-		level_fadeout_time
-	).finished
-	
-	canvas.remove_child(end_level_menu)
-	canvas.queue_free()
-
-	change_player(null)
-	change_level(null)
-	
-	# change scenes manually, the line bellow produces a flash
-	# (the old scene is removed immediately while the new scene is assigned to current_scene at the end of next frame)
-	# get_tree().change_scene_to_node(end_level_menu)
 	get_tree().root.add_child(end_level_menu)
-	var gameplay_scene = get_tree().current_scene
-	get_tree().current_scene = end_level_menu
-	get_tree().root.remove_child(gameplay_scene)
-	gameplay_scene.queue_free()

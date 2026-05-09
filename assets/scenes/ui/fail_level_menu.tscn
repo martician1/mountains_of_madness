@@ -1,0 +1,375 @@
+[gd_scene format=3 uid="uid://cyho6w0bl4o26"]
+
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="1_v34kj"]
+[ext_resource type="Script" uid="uid://ipnglbblxksl" path="res://assets/scripts/ui/fail_level_menu.gd" id="1_yjorm"]
+[ext_resource type="Texture2D" uid="uid://clfcm2285fnb1" path="res://assets/sprites/ui/button UI.png" id="2_yjorm"]
+[ext_resource type="Texture2D" uid="uid://dkjhwcl2y8pun" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned covered.png" id="3_uli1q"]
+[ext_resource type="Texture2D" uid="uid://tm7yntetbad4" path="res://assets/sprites/Dark Knight 2/Sprites/Idle.png" id="4_stx33"]
+[ext_resource type="Texture2D" uid="uid://htdehq5j23t8" path="res://assets/sprites/Dark Knight 2/Sprites/Attack1.png" id="5_oydqu"]
+[ext_resource type="Texture2D" uid="uid://5qcg8n6gll8n" path="res://assets/sprites/Dark Knight 2/Sprites/Walk.png" id="6_tvk0i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pq31y"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_yjorm")
+texture_margin_left = 4.0
+texture_margin_top = 7.0
+texture_margin_right = 4.0
+texture_margin_bottom = 11.0
+region_rect = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpp57"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk4f4"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hogfr"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndvee"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71vsi"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl36o"]
+atlas = ExtResource("3_uli1q")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f823l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk4f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hogfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndvee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71vsi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl36o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixvey"]
+atlas = ExtResource("4_stx33")
+region = Rect2(0, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br2i6"]
+atlas = ExtResource("4_stx33")
+region = Rect2(170, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuexx"]
+atlas = ExtResource("4_stx33")
+region = Rect2(340, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4idp"]
+atlas = ExtResource("4_stx33")
+region = Rect2(510, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b68su"]
+atlas = ExtResource("4_stx33")
+region = Rect2(680, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qautv"]
+atlas = ExtResource("4_stx33")
+region = Rect2(850, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avujn"]
+atlas = ExtResource("4_stx33")
+region = Rect2(1020, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkfnj"]
+atlas = ExtResource("4_stx33")
+region = Rect2(1190, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jwmk"]
+atlas = ExtResource("4_stx33")
+region = Rect2(1360, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugpla"]
+atlas = ExtResource("4_stx33")
+region = Rect2(1530, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgr1o"]
+atlas = ExtResource("5_oydqu")
+region = Rect2(0, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rybgg"]
+atlas = ExtResource("5_oydqu")
+region = Rect2(170, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3txkv"]
+atlas = ExtResource("5_oydqu")
+region = Rect2(340, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5brk"]
+atlas = ExtResource("5_oydqu")
+region = Rect2(510, 0, 170, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5r23a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixvey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br2i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuexx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4idp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b68su")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qautv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avujn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkfnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jwmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugpla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgr1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rybgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3txkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5brk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlo8c"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(0, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21wbi"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(170, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u63jk"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(340, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2peh"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(510, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h887p"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(680, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpj68"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(850, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ondv3"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(1020, 0, 170, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejjiw"]
+atlas = ExtResource("6_tvk0i")
+region = Rect2(1190, 0, 170, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5yddv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlo8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21wbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u63jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2peh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h887p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpj68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ondv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejjiw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1045404941]
+script = ExtResource("1_yjorm")
+
+[node name="FailLevelMenu" type="Control" parent="." unique_id=876093895]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="PanelContainer" parent="FailLevelMenu" unique_id=1074424332]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -121.0
+offset_right = 211.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v34kj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_pq31y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FailLevelMenu/Control" unique_id=1770292896]
+layout_mode = 2
+
+[node name="LoseLabel" type="Label" parent="FailLevelMenu/Control/VBoxContainer" unique_id=1183133802]
+layout_mode = 2
+theme = ExtResource("1_v34kj")
+text = "You Lost!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FailLevelMenu/Control/VBoxContainer" unique_id=832278192]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=1826163488]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dpp57")
+
+[node name="Label" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=1753420150]
+layout_mode = 2
+text = "Enemies Killed"
+
+[node name="Control" type="Control" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=1567824827]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemiesKilled" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=1667803362]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=781485827]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer/CanvasLayer" unique_id=923693491]
+position = Vector2(144, 96)
+sprite_frames = SubResource("SpriteFrames_f823l")
+autoplay = "default"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="FailLevelMenu/Control/VBoxContainer" unique_id=709455610]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=723185897]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dpp57")
+
+[node name="Label" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=107569463]
+layout_mode = 2
+text = "Damage Ratio (Inflicted/Received)"
+
+[node name="Control" type="Control" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=1794707006]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DamageRatio" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=1357903402]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2.00
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=1105877342]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2/CanvasLayer" unique_id=1534713371]
+position = Vector2(144, 176)
+scale = Vector2(0.84, 0.84)
+sprite_frames = SubResource("SpriteFrames_5r23a")
+autoplay = "default"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="FailLevelMenu/Control/VBoxContainer" unique_id=724398698]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=1352866203]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dpp57")
+
+[node name="Label" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=1300793378]
+layout_mode = 2
+text = "Time Taken"
+
+[node name="Control" type="Control" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=2107533941]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeTaken" type="Label" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=464298260]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0:34"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=79113447]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3/CanvasLayer" unique_id=256006185]
+position = Vector2(144.00002, 242)
+scale = Vector2(0.84, 0.84)
+sprite_frames = SubResource("SpriteFrames_5yddv")
+autoplay = "default"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="FailLevelMenu/Control/VBoxContainer" unique_id=1036953688]
+layout_mode = 2
+theme_override_constants/separation = 176
+alignment = 1
+
+[node name="Exit" type="Button" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer4" unique_id=1540928515]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="TryAgain" type="Button" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer4" unique_id=1512565302]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Try Again"
+
+[connection signal="button_up" from="FailLevelMenu/Control/VBoxContainer/HBoxContainer4/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="FailLevelMenu/Control/VBoxContainer/HBoxContainer4/TryAgain" to="." method="_on_try_again_button_up"]
