@@ -3,9 +3,13 @@ extends State
 
 @export var collision_animator: CollisionAnimator
 @export var apply_physics := true
+@export var visible_on_screen_enabler: VisibleOnScreenEnabler2D
 var has_died := false
 
 func enter() -> void:
+	owner.remove_child(visible_on_screen_enabler)
+	visible_on_screen_enabler.queue_free()
+
 	has_died = false
 	collision_animator.update()
 	await collision_animator.animation_finished

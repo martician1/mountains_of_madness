@@ -707,10 +707,11 @@ unique_name_in_owner = true
 script = ExtResource("4_gpvkm")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("collision_animator", "visible_on_screen_enabler")]
 unique_name_in_owner = true
 script = ExtResource("6_0tdg6")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
+visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
 [node name="Hurt" type="Node" parent="StateMachine" unique_id=1986497200 node_paths=PackedStringArray("collision_animator", "sprite_animator", "next_state")]

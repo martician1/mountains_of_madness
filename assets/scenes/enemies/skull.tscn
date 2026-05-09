@@ -467,10 +467,11 @@ sprite_animator = NodePath("../../Animator/EnemySpriteAnimator")
 next_state = NodePath("../Active")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("collision_animator", "visible_on_screen_enabler")]
 unique_name_in_owner = true
 script = ExtResource("5_31v27")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
+visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
 [node name="Animator" type="Node2D" parent="." unique_id=514929491]

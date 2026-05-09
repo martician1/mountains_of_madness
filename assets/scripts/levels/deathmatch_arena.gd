@@ -45,8 +45,8 @@ func _on_enemy_died():
 		timer.start()
 
 func place_walls() -> void:
-	left_wall.position  = Vector2(-arena_width / 2.0, 0)
-	right_wall.position = Vector2(arena_width / 2.0, 0)
+	left_wall.position  = Vector2(-arena_width / 2.0, global_position.y)
+	right_wall.position = Vector2(arena_width / 2.0, global_position.y)
 
 func set_walls_enabled(enabled: bool) -> void:
 	left_wall.get_node("CollisionShape2D").set_deferred("disabled", not enabled)
