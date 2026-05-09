@@ -15,7 +15,21 @@ var last_hit: HitData
 		health = max(value, 0)
 @export var speed := 100.0
 
-var direction := Vector2(0,0)
+@export var collision_flipper: HFlipper
+
+enum Direction {
+	LEFT,
+	RIGHT
+}
+@export var default_direction := Direction.LEFT
+
+var direction := Vector2(0,0):
+	set(value):
+		direction = value
+		if direction.x > 0:
+			collision_flipper.flip_h = (default_direction == Direction.LEFT)
+		elif direction.x < 0:
+			collision_flipper.flip_h = (default_direction == Direction.RIGHT)
 
 var hell_charge_scene: PackedScene = preload("res://assets/scenes/hell_charge.tscn")
 var mana_ball_scene: PackedScene = preload("res://assets/scenes/mana_ball.tscn")

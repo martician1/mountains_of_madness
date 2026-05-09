@@ -40,7 +40,23 @@ signal selected_super_attack_changed(old: SuperAttackData, new: SuperAttackData)
 
 @export var knockback := Vector2(500.0, 100.0)
 
-var direction := Vector2(1.0, 0.0)
+@onready var collision_flipper: HFlipper = %CollisionFlipper
+
+enum Direction {
+	LEFT,
+	RIGHT
+}
+
+@export var default_direction := Direction.RIGHT
+
+var direction := Vector2(1,0):
+	set(value):
+		direction = value
+		if direction.x > 0:
+			collision_flipper.flip_h = (default_direction == Direction.LEFT)
+		elif direction.x < 0:
+			collision_flipper.flip_h = (default_direction == Direction.RIGHT)
+
 @export var melee_damage := 1
 
 @onready var state_machine: PlayerStateMachine = %StateMachine

@@ -1928,14 +1928,13 @@ sprite_frames = SubResource("SpriteFrames_omckb")
 animation = &"air_attack_1"
 script = ExtResource("35_v7c60")
 
-[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=2034018586 node_paths=PackedStringArray("state_machine", "collision_flipper")]
+[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=2034018586 node_paths=PackedStringArray("state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_w5a74")
 script = ExtResource("36_2nkwv")
 state_machine = NodePath("../../StateMachine")
-collision_flipper = NodePath("../../CollisionFlipper")
 metadata/_custom_type_script = "uid://bnjeug7o85ced"
 
 [node name="CollisionFlipper" type="Node2D" parent="." unique_id=342207030]

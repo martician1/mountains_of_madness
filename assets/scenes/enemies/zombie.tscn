@@ -680,7 +680,7 @@ size = Vector2(16, 41.666664)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82ixa"]
 size = Vector2(12, 42)
 
-[node name="Zombie" type="CharacterBody2D" unique_id=417020441 groups=["enemy"]]
+[node name="Zombie" type="CharacterBody2D" unique_id=417020441 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 256
@@ -689,6 +689,7 @@ alert_radius = 1000.0
 damage = 1
 health = 4
 speed = 40.0
+collision_flipper = NodePath("HFlipper")
 
 [node name="StateMachine" type="Node" parent="." unique_id=866522181 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -738,14 +739,12 @@ call_reset_on_change = true
 default_direction = 0
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
-[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=283869884 node_paths=PackedStringArray("state_machine", "collision_flipper")]
+[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=283869884 node_paths=PackedStringArray("state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_uwq5h")
 script = ExtResource("5_fi5dy")
 state_machine = NodePath("../../StateMachine")
-collision_flipper = NodePath("../../HFlipper")
-default_direction = 0
 metadata/_custom_type_script = "uid://bnjeug7o85ced"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703557292]

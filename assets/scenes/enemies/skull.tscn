@@ -439,11 +439,12 @@ size = Vector2(28, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0f8q"]
 size = Vector2(20, 26)
 
-[node name="Skull" type="CharacterBody2D" unique_id=1273231372 groups=["enemy"]]
+[node name="Skull" type="CharacterBody2D" unique_id=1273231372 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_gp0lb")
 damage = 1
+collision_flipper = NodePath("HFlipper")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1273944709 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_tnqhw")
@@ -490,14 +491,12 @@ call_reset_on_change = true
 default_direction = 0
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
-[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=1164739151 node_paths=PackedStringArray("state_machine", "collision_flipper")]
+[node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=1164739151 node_paths=PackedStringArray("state_machine")]
 root_node = NodePath("../AnimatedSprite2D")
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_he11w")
 script = ExtResource("8_ykjax")
 state_machine = NodePath("../../StateMachine")
-collision_flipper = NodePath("../../HFlipper")
-default_direction = 0
 metadata/_custom_type_script = "uid://bnjeug7o85ced"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=627929525]

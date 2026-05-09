@@ -56,6 +56,7 @@ func _on_body_entered(body: Node2D) -> void:
 	set_walls_enabled(true)
 	lock_camera()
 	timer.start()
+	trigger_area.queue_free()
 
 func lock_camera() -> void:
 	var cam := GameManager.player.camera
