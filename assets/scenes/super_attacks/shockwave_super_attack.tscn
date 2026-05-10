@@ -440,7 +440,7 @@ animations = [{
 
 [node name="ShockwaveSuperAttack" type="Node2D" unique_id=681374912]
 script = ExtResource("1_bbw7f")
-damage = 3
+damage = 6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1072353976]
 

@@ -443,6 +443,7 @@ size = Vector2(116, 64)
 
 [node name="FireballSuperAttack" type="Node2D" unique_id=1694023180]
 script = ExtResource("1_ooily")
+damage = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=177115242]
 position = Vector2(-57.999992, 5.0000076)

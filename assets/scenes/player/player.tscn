@@ -40,14 +40,14 @@
 
 [sub_resource type="Resource" id="Resource_5308x"]
 script = ExtResource("2_lx1qx")
-mana = 4
+mana = 5
 ui_texture = ExtResource("3_rhlmh")
 scene_path = "res://assets/scenes/super_attacks/fireball_super_attack.tscn"
 metadata/_custom_type_script = "uid://dd4aopwlbebui"
 
 [sub_resource type="Resource" id="Resource_0rf7b"]
 script = ExtResource("2_lx1qx")
-mana = 6
+mana = 7
 ui_texture = ExtResource("4_o4mve")
 scene_path = "res://assets/scenes/super_attacks/shockwave_super_attack.tscn"
 metadata/_custom_type_script = "uid://dd4aopwlbebui"

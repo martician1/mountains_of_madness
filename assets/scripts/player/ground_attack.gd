@@ -26,7 +26,7 @@ func exit() -> void:
 	action_queue.clear()
 
 func update(delta: float) -> State:
-	player.attack_enemies(combo == player.max_ground_attack_combo)
+	player.attack_enemies(player.melee_damage, combo == player.max_ground_attack_combo)
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
 

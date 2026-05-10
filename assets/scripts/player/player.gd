@@ -57,7 +57,9 @@ var direction := Vector2(1,0):
 		elif direction.x < 0:
 			collision_flipper.flip_h = (default_direction == Direction.RIGHT)
 
-@export var melee_damage := 1
+@export var melee_damage := 2
+@export var crouch_attack_damage := 1
+@export var plunge_attack_damage := 1
 
 @onready var state_machine: PlayerStateMachine = %StateMachine
 @onready var hitbox: Area2D = %Hitbox
@@ -118,13 +120,18 @@ func _on_level_changed(_old_level: Level, new_level: Level):
 func _exit_tree() -> void:
 	GameManager.level_changed.disconnect(_on_level_changed)
 
-func attack_enemies(apply_knockback: bool = false) -> void:
+func attack_enemies(damage: int, apply_knockback: bool = false) -> void:
 	for enemy_hurtbox in hitbox.get_overlapping_areas():
 		var enemy = enemy_hurtbox.get_owner() as Enemy
 		if enemy == null:
 			continue
 		enemy.register_hit(
-			HitData.new(self, global_position, melee_damage, knockback if apply_knockback else Vector2.ZERO)
+			HitData.new(
+				self,
+				global_position,
+				damage,
+				knockback if apply_knockback else Vector2.ZERO
+			)
 		)
 
 func take_last_hit() -> HitData:
