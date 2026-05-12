@@ -1,4 +1,4 @@
-extends OneShotAnimationState
+extends PlayerOneShotAnimationState
 
 func exit() -> void:
 	super.exit()

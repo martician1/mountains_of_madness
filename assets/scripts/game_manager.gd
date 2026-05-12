@@ -15,7 +15,6 @@ var end_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/end_leve
 var fail_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/fail_level_menu.tscn")
 var player_scene: PackedScene = preload("res://assets/scenes/player/player.tscn")
 
-
 func change_player(new_player: Player):
 	if new_player != null:
 		add_child(new_player)
@@ -43,15 +42,22 @@ func change_level(new_level: Level):
 		remove_child(old_level)
 		old_level.queue_free()
 
-
 func load_level(path: String):
 	change_level(load(path).instantiate())
 	level_path = path
 	change_player(player_scene.instantiate())
-
+	
+	var camera = get_viewport().get_camera_2d()
+	camera.limit_bottom = int(level.bottom_left.position.y)
+	camera.limit_left = int(level.bottom_left.position.x)
+	camera.limit_top = int(level.top_right.position.y)
+	camera.limit_right = int(level.top_right.position.x)
+	player.global_position = level.player_spawn.global_position
+	
 	get_tree().change_scene_to_node(gameplay_scene.instantiate())
 
 	level_start_time = int(Time.get_unix_time_from_system())
+	
 
 func reload_level():
 	load_level(level_path)

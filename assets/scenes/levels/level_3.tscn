@@ -216,10 +216,11 @@ metadata/_custom_type_script = "uid://bntxugmg0p15i"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8kg0"]
 size = Vector2(92, 427.75)
 
-[node name="Level3" type="Node2D" unique_id=2017733999 node_paths=PackedStringArray("bottom_left", "top_right")]
+[node name="Level3" type="Node2D" unique_id=2017733999 node_paths=PackedStringArray("bottom_left", "top_right", "player_spawn")]
 script = ExtResource("1_jddol")
 bottom_left = NodePath("BottomLeft")
 top_right = NodePath("TopRight")
+player_spawn = NodePath("PlayerSpawn")
 metadata/_custom_type_script = "uid://dwq4b44gy72dj"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1899746051]
@@ -231,6 +232,8 @@ position = Vector2(-96, 32)
 
 [node name="TopRight" type="Marker2D" parent="." unique_id=1123061799]
 position = Vector2(1088, -613)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=2118997559]
 
 [node name="DeathmatchArena" parent="." unique_id=1740717039 node_paths=PackedStringArray("trigger_area", "level") instance=ExtResource("2_x8kg0")]
 position = Vector2(576, 32)

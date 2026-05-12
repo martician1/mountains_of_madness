@@ -1,6 +1,7 @@
 extends PlayerState
 
 @onready var player: Player = get_owner()
+@onready var state_machine: PlayerStateMachine = %StateMachine
 
 func enter() -> void:
 	player.velocity.x = 0
@@ -17,7 +18,7 @@ func handle_input() -> State:
 		return %Hurt
 	
 	if player.attack_cooldown_timer.time_left == 0:
-		if Input.is_action_just_pressed("super_attack"):
+		if state_machine.consume_super_attack_input():
 			return %SuperAttack
 		if Input.is_action_just_pressed("attack"):
 			return %CrouchAttack

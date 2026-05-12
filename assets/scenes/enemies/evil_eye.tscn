@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://chy0l7gaa7imn"]
 
-[ext_resource type="Script" uid="uid://de4uw4mfqdshl" path="res://assets/scripts/enemies/ranged/ranged_enemy.gd" id="1_63mvx"]
+[ext_resource type="Script" uid="uid://cq4cp0ephf28m" path="res://assets/scripts/enemies/enemy.gd" id="1_63mvx"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_63mvx"]
 [ext_resource type="Script" uid="uid://dgdtypuqnwxub" path="res://assets/scripts/enemies/ranged/active.gd" id="3_0qs3w"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="4_2bx7d"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="4_63mvx"]
 [ext_resource type="Texture2D" uid="uid://bau5g6o4fmnt3" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Demon eye.png" id="5_63mvx"]
-[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/enemies/sprite_animator.gd" id="6_eqhhe"]
-[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/collision_animator.gd" id="7_2bx7d"]
+[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="6_eqhhe"]
+[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="7_2bx7d"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="8_gcxp1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bx7d"]
@@ -432,13 +432,14 @@ size = Vector2(28, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0f8q"]
 size = Vector2(22, 34)
 
-[node name="EvilEye" type="CharacterBody2D" unique_id=1273231372 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
+[node name="EvilEye" type="CharacterBody2D" unique_id=1039967585 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_63mvx")
 damage = 1
 health = 4
 collision_flipper = NodePath("HFlipper")
+metadata/_custom_type_script = "uid://cq4cp0ephf28m"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1273944709 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_63mvx")
@@ -476,14 +477,13 @@ sprite_frames = SubResource("SpriteFrames_w7awd")
 animation = &"hurt"
 autoplay = "idle"
 
-[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("state_machine", "sprite")]
+[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "state_machine")]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_db2ij")
 script = ExtResource("6_eqhhe")
-state_machine = NodePath("../../StateMachine")
 sprite = NodePath("../AnimatedSprite2D")
-call_reset_on_change = true
 default_direction = 0
+state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
 [node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=1164739151 node_paths=PackedStringArray("state_machine")]

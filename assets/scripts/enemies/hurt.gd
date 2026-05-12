@@ -2,7 +2,7 @@ class_name EnemyHurtState
 extends State
 
 @export var collision_animator: CollisionAnimator
-@export var sprite_animator: EnemySpriteAnimator
+@export var sprite_animator: SpriteAnimator
 @export var next_state: State
 var has_recovered := false
 

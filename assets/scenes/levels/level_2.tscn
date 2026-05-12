@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bp7t14ahm42r0" path="res://assets/scenes/portal.tscn" id="6_x6bl8"]
 [ext_resource type="PackedScene" uid="uid://qpoe144uru2c" path="res://assets/scenes/enemies/zombie.tscn" id="7_22e80"]
 
-[node name="Level2" type="Node2D" unique_id=2033825553 node_paths=PackedStringArray("bottom_left", "top_right")]
+[node name="Level2" type="Node2D" unique_id=2033825553 node_paths=PackedStringArray("bottom_left", "top_right", "player_spawn")]
 script = ExtResource("1_uccv7")
 bottom_left = NodePath("BottomLeft")
 top_right = NodePath("TopRight")
+player_spawn = NodePath("PlayerSpawn")
 metadata/_custom_type_script = "uid://dwq4b44gy72dj"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=912200951]
@@ -25,6 +26,8 @@ position = Vector2(-96, 32)
 
 [node name="TopRight" type="Marker2D" parent="." unique_id=2005636216]
 position = Vector2(4160, -1285)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1436028926]
 
 [node name="Tooltips" type="Node2D" parent="." unique_id=452854729]
 

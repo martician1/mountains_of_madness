@@ -1,4 +1,4 @@
-extends OneShotAnimationState
+extends PlayerOneShotAnimationState
 
 func enter() -> void:
 	player.shield_cooldown_timer.start()

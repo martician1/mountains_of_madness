@@ -1,14 +1,8 @@
-class_name CollisionAnimator
+class_name BaseAnimator
 extends AnimationPlayer
 
 @export var state_machine : StateMachine
 @export var call_reset_on_change: bool = true
-
-func _physics_process(_delta: float) -> void:
-	if state_machine.current_state == null:
-		return
-
-	update()
 
 func update(start_over_if_same: bool = false):
 	var new_animation = state_machine.current_state.get_animation()

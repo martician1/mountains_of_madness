@@ -1,4 +1,4 @@
-class_name OneShotAnimationState
+class_name PlayerOneShotAnimationState
 extends PlayerState
 
 @export var animation_name: String

@@ -1,6 +1,7 @@
 extends PanelContainer
 
-@export var padding_percentage_of_size_y := 2.0
+@export var padding_percentage_of_size_y := 3
+@export var threshold_line_height := 1
 var mana_ratio := 0.0
 var threshold_ratio := 0.0
 
@@ -39,12 +40,25 @@ func update_manabar():
 		mana_ratio = float(player.mana) / float(player.max_mana)
 		if player.selected_super_attack:
 			threshold_ratio = float(player.selected_super_attack.mana) / float(player.max_mana)
+			if player.mana >= player.selected_super_attack.mana:
+				$PulseEffect.play()
+			else:
+				$PulseEffect.stop()
 
-	var get_rectangle_from_ratio = func(ratio: float, with_padding: bool):
-		var padding := padding_percentage_of_size_y / 100.0 * size.y if with_padding else 0.0
-		var height: float = clamp(ratio, 0.0, 1.0) * (size.y - 2 * padding)
-		var width := size.x - 2 * padding
-		return Rect2(Vector2(padding, size.y - height - padding), Vector2(width, height))
+	var padding := int(padding_percentage_of_size_y / 100.0 * size.y)
+
+	var get_rectangle_from_ratio = func(ratio: float, add_horizontal_padding := false):
+		var padding_x := padding if add_horizontal_padding else 0
+		var padding_y := padding
+		
+		var height := int(clamp(ratio, 0.0, 1.0) * (size.y - 2 * padding_y))
+		var width := int(size.x - 2 * padding_x)
+		return Rect2(
+			Vector2(padding_x, size.y - height - padding_y),
+			Vector2(width, height)
+		)
 
 	fit_child_in_rect($Mana, get_rectangle_from_ratio.call(mana_ratio, true))
-	fit_child_in_rect($Threshold, get_rectangle_from_ratio.call(threshold_ratio, false))
+	var threshold_line = get_rectangle_from_ratio.call(threshold_ratio)
+	threshold_line.size.y = threshold_line_height
+	fit_child_in_rect($Threshold, threshold_line)

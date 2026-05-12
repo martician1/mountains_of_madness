@@ -1,5 +1,5 @@
 class_name AirAttackState
-extends OneShotAnimationState
+extends PlayerOneShotAnimationState
 
 # alternates between 1 and 2
 var attack_version = 1

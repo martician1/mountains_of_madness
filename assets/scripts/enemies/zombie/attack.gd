@@ -2,7 +2,7 @@ extends State
 
 @onready var zombie: Zombie = get_owner()
 @onready var animator: CollisionAnimator = %CollisionAnimator
-@onready var sprite_animator: EnemySpriteAnimator = %SpriteAnimator
+@onready var sprite_animator: SpriteAnimator = %SpriteAnimator
 @onready var state_machine: StateMachine = %StateMachine
 @onready var attack_hitbox: Area2D = %AttackHitbox
 

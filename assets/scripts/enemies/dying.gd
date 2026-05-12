@@ -3,6 +3,7 @@ extends State
 
 @export var collision_animator: CollisionAnimator
 @export var apply_physics := true
+@export var drop_pickup := true
 @export var visible_on_screen_enabler: VisibleOnScreenEnabler2D
 var has_died := false
 
@@ -14,7 +15,7 @@ func enter() -> void:
 	collision_animator.update()
 	await collision_animator.animation_finished
 	has_died = true
-	owner.die()
+	owner.die_and_drop_pickup() if drop_pickup else owner.die()
 
 func update(delta):
 	if not apply_physics:

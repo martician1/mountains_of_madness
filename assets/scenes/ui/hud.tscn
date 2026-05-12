@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://4og2sn1476wv" path="res://assets/scripts/ui/mana_bar.gd" id="6_25gpa"]
 [ext_resource type="Texture2D" uid="uid://cl0xarsn1fwwh" path="res://assets/sprites/ui/wind_charge.png" id="6_wpn6b"]
 [ext_resource type="Script" uid="uid://bfwcn0wfjuyi6" path="res://assets/scripts/ui/top_left_bar.gd" id="8_ckp1a"]
+[ext_resource type="PackedScene" uid="uid://bpk170gjw5mgy" path="res://assets/scenes/pulse_effect.tscn" id="9_mig6y"]
 
 [sub_resource type="GDScript" id="GDScript_78wrq"]
 script/source = "extends PanelContainer
@@ -102,9 +103,13 @@ color = Color(0, 0, 0, 1)
 layout_mode = 2
 color = Color(1, 0, 1, 1)
 
-[node name="Threshold" type="PanelContainer" parent="TopLeftBar/ManaBar" unique_id=1433921835]
+[node name="Threshold" type="ColorRect" parent="TopLeftBar/ManaBar" unique_id=1772493059]
 layout_mode = 2
-theme_override_styles/panel = ExtResource("3_k1qim")
+
+[node name="PulseEffect" parent="TopLeftBar/ManaBar" unique_id=1363210171 node_paths=PackedStringArray("modulate_target") instance=ExtResource("9_mig6y")]
+oscillation_time = 1.5
+modulate_target = NodePath("../Mana")
+target_alpha = 0.5
 
 [node name="MenuButton" type="Button" parent="." unique_id=1097455819]
 layout_mode = 1

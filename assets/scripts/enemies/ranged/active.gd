@@ -3,6 +3,7 @@ extends State
 @export var hitbox: Area2D
 @export var attack_cooldown_timer: Timer
 @export var shooting_point: Marker2D
+@export var hell_charge_speed := 300.0
 
 func update(delta: float) -> State:
 	var player := GameManager.player
@@ -17,7 +18,7 @@ func update(delta: float) -> State:
 	if attack_cooldown_timer.is_stopped():
 		owner.shoot_hell_charge(
 			shooting_point.global_position,
-			Vector2(owner.direction.x, 0).normalized() * owner.hell_charge_speed
+			Vector2(owner.direction.x, 0).normalized() * hell_charge_speed
 		)
 		attack_cooldown_timer.start()
 

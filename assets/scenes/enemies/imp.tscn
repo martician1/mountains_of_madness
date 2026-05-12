@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://buywcwbq35ews" path="res://assets/scripts/enemies/imp/active.gd" id="3_ohawl"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="4_d47nl"]
 [ext_resource type="Texture2D" uid="uid://dicel6dbuf6q2" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Imp.png" id="5_nt56k"]
-[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/enemies/sprite_animator.gd" id="6_d47nl"]
-[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/collision_animator.gd" id="7_d47nl"]
+[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="6_d47nl"]
+[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="7_d47nl"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="8_xcqv8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsmlj"]
@@ -345,15 +345,15 @@ position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_w7awd")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.12552561
 
-[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=506163352 node_paths=PackedStringArray("state_machine", "sprite")]
+[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=506163352 node_paths=PackedStringArray("sprite", "state_machine")]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_kkalo")
 script = ExtResource("6_d47nl")
-state_machine = NodePath("../../StateMachine")
 sprite = NodePath("../AnimatedSprite2D")
-call_reset_on_change = true
 default_direction = 0
+state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
 [node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=498726805 node_paths=PackedStringArray("state_machine")]

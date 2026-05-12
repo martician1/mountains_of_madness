@@ -106,20 +106,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("cycle_super_attack"):
 		selected_super_attack_id = (selected_super_attack_id + 1) % super_attacks.size()
 
-func _ready() -> void:
-	_on_level_changed(null, GameManager.level)
-	GameManager.level_changed.connect(_on_level_changed)
-
-func _on_level_changed(_old_level: Level, new_level: Level):
-	if new_level != null:
-		camera.limit_bottom = int(new_level.bottom_left.position.y)
-		camera.limit_left = int(new_level.bottom_left.position.x)
-		camera.limit_top = int(new_level.top_right.position.y)
-		camera.limit_right = int(new_level.top_right.position.x)
-
-func _exit_tree() -> void:
-	GameManager.level_changed.disconnect(_on_level_changed)
-
 func attack_enemies(damage: int, apply_knockback: bool = false) -> void:
 	for enemy_hurtbox in hitbox.get_overlapping_areas():
 		var enemy = enemy_hurtbox.get_owner() as Enemy
@@ -134,19 +120,12 @@ func attack_enemies(damage: int, apply_knockback: bool = false) -> void:
 			)
 		)
 
-func take_last_hit() -> HitData:
+func process_last_hit() -> bool:
 	if shield_cooldown_timer.time_left == 0 and last_hit != null:
 		shield_cooldown_timer.start()
-		var result = last_hit
-		last_hit = null
-		return result
-	return null
-
-func process_last_hit() -> bool:
-	var last_hit = take_last_hit()
-	if last_hit != null:
 		health -= last_hit.damage
 		damage_received += last_hit.damage
+		last_hit = null
 		return true
 	return false
 

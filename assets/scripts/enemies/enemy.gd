@@ -5,10 +5,6 @@ signal died
 
 var last_hit: HitData
 
-@export var drop_despawn_time := 4.0
-@export var drop_fadeout_time := 1.0
-@export var drop_mana_probability := 0.9
-
 @export var damage: int
 @export var health := 1:
 	set(value):
@@ -31,16 +27,15 @@ var direction := Vector2(0,0):
 		elif direction.x < 0:
 			collision_flipper.flip_h = (default_direction == Direction.RIGHT)
 
-var hell_charge_scene: PackedScene = preload("res://assets/scenes/hell_charge.tscn")
-var mana_ball_scene: PackedScene = preload("res://assets/scenes/mana_ball.tscn")
-var health_drop_scene: PackedScene = preload("res://assets/scenes/health_drop.tscn")
-
-
 @export var shield_cooldown_time := 0.2
 var is_shield_active := false
 
+func update_direction():
+	var player_x_offset = GameManager.player.global_position.x - global_position.x
+	direction.x = sign(player_x_offset)
+
 func shoot_hell_charge(initial_position: Vector2, charge_velocity: Vector2):
-	var hell_charge: HellCharge = hell_charge_scene.instantiate()
+	var hell_charge: HellCharge = GameManager.level.hell_charge_scene.instantiate()
 	hell_charge.global_position = initial_position
 	hell_charge.velocity = charge_velocity
 	GameManager.level.add_child(hell_charge)
@@ -61,16 +56,27 @@ func get_descendants_in_group(parent: Node, group: String, result: Array[Node] =
 	return result
 
 func die():
-	var drop = mana_ball_scene.instantiate() if randf() < drop_mana_probability else health_drop_scene.instantiate()
-	var spawnpoint := self.find_child("ManaBallSpawnpoint") as Marker2D
-	var spawn_position := spawnpoint.global_position if spawnpoint != null else self.global_position
-	drop.global_position = spawn_position
-	drop.despawn_time = drop_despawn_time
-	drop.fadeout_time = drop_fadeout_time
-	GameManager.level.add_child(drop)
 	GameManager.player.enemies_killed += 1
 	died.emit()
 	queue_free()
+
+class EnemyDrop:
+	@export var despawn_time := 4.0
+	@export var fadeout_time := 1.0
+	@export var mana_probability := 0.9
+
+func die_and_drop_pickup(drop: EnemyDrop = EnemyDrop.new()):
+	var drop_node = GameManager.level.mana_ball_scene.instantiate() \
+					if randf() < drop.mana_probability \
+					else GameManager.level.health_drop_scene.instantiate()
+
+	var spawnpoint := self.find_child("ManaBallSpawnpoint") as Marker2D
+	var spawn_position := spawnpoint.global_position if spawnpoint != null else self.global_position
+	drop_node.global_position = spawn_position
+	drop_node.despawn_time = drop.despawn_time
+	drop_node.fadeout_time = drop.fadeout_time
+	GameManager.level.add_child(drop_node)
+	die()
 
 func hit_player():
 	if GameManager.player != null:
@@ -88,22 +94,17 @@ func is_player_in_hitbox(hitbox: Area2D) -> bool:
 	
 	return false
 
-func take_last_hit() -> HitData:
-	if not is_shield_active and last_hit != null:
-		activate_shield()
-		var result = last_hit
-		last_hit = null
-		return result
-	return null
-
-func process_last_hit() -> bool:
-	var last_hit = take_last_hit()
-	if last_hit == null:
+func process_last_hit(register_knockback: bool = true) -> bool:
+	if is_shield_active or last_hit == null:
 		return false
 
+	activate_shield()
 	health -= last_hit.damage
 	GameManager.player.damage_dealt += last_hit.damage
-	apply_knockback(last_hit.knockback, sign(global_position.x - last_hit.from_position.x))
+	if register_knockback:
+		apply_knockback(last_hit.knockback, sign(global_position.x - last_hit.from_position.x))
+	last_hit = null
+
 	return true
 
 func register_hit(hit_data: HitData):

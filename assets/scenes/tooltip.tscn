@@ -71,6 +71,7 @@ animations = [{
 size = Vector2(30, 30)
 
 [node name="Tooltip" type="Node2D" unique_id=1335772439]
+z_index = 50
 script = ExtResource("1_tt15m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1749334273]

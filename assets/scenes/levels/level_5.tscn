@@ -1,0 +1,68 @@
+[gd_scene format=4 uid="uid://cxxqjxopfgvuy"]
+
+[ext_resource type="Script" uid="uid://b4tavtq1dbwcw" path="res://assets/scripts/levels/level_5.gd" id="1_mpsuo"]
+[ext_resource type="TileSet" uid="uid://bx57wxgs00rbm" path="res://assets/resources/tileset.tres" id="2_u22de"]
+[ext_resource type="PackedScene" uid="uid://bewwxn4fvrwj3" path="res://assets/scenes/enemies/evil_princess_boss.tscn" id="3_mpsuo"]
+[ext_resource type="PackedScene" uid="uid://mk5hr5vpn2p4" path="res://assets/scenes/mana_ball.tscn" id="4_oxhc0"]
+[ext_resource type="PackedScene" uid="uid://c8o0tlyj7kojd" path="res://assets/scenes/health_drop.tscn" id="5_wp8c6"]
+
+[node name="Level5" type="Node2D" unique_id=1913116053 node_paths=PackedStringArray("bottom_left", "top_right", "player_spawn")]
+script = ExtResource("1_mpsuo")
+bottom_left = NodePath("BottomLeft")
+top_right = NodePath("TopRight")
+player_spawn = NodePath("PlayerSpawn")
+metadata/_custom_type_script = "uid://dwq4b44gy72dj"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=927884064]
+tile_map_data = PackedByteArray("AAAAAAAAAQAHAAUAAAABAAAAAQAHAAUAAAACAAAAAQAHAAUAAAADAAAAAQAHAAUAAAAEAAAAAQABAAMAAAAFAAAAAQABAAMAAAAGAAAAAQAHAAUAAAAHAAAAAQABAAMAAAAIAAAAAQABAAMAAAAJAAAAAQABAAMAAAAKAAAAAQABAAMAAAALAAAAAQAHAAUAAAAMAAAAAQAHAAUAAAANAAAAAQABAAMAAAAOAAAAAQAHAAUAAAAPAAAAAQAHAAUAAAAQAAAAAQAHAAUAAAARAAAAAQAHAAUAAAASAAAAAQAIAAUAAAATAAAAAQAGAAQAAAAAAAEAAQAHAAMAAAABAAEAAQAHAAMAAAACAAEAAQABAAUAAAADAAEAAQAHAAMAAAAEAAEAAQAHAAMAAAAFAAEAAQABAAUAAAAGAAEAAQABAAUAAAAHAAEAAQAHAAMAAAAIAAEAAQABAAUAAAAJAAEAAQAHAAMAAAAKAAEAAQAHAAMAAAALAAEAAQABAAUAAAAMAAEAAQABAAUAAAANAAEAAQABAAUAAAAOAAEAAQAHAAMAAAAPAAEAAQAHAAMAAAAQAAEAAQABAAUAAAARAAEAAQABAAUAAAASAAEAAQABAAUAAAATAAEAAQACAAUAAAD+//n/AQAAAAQAAAD///n/AQAGAAQAAAD+//r/AQAAAAQAAAD///r/AQACAAQAAAD+//v/AQAIAAQAAAD///v/AQACAAQAAAD+//z/AQAIAAQAAAD///z/AQACAAQAAAD+//3/AQAIAAQAAAD///3/AQACAAQAAAD+//7/AQAIAAQAAAD///7/AQACAAQAAAD+////AQAIAAQAAAD/////AQACAAQAAAD+/wAAAQAAAAQAAAD//wAAAQAGAAUAAAD+/wEAAQAAAAUAAAD//wEAAQAHAAMAAAATAPn/AQACAAQAAAATAPr/AQACAAQAAAATAPv/AQAGAAQAAAATAPz/AQACAAQAAAATAP3/AQAGAAQAAAATAP7/AQAGAAQAAAATAP//AQAGAAQAAAATAPj/AQACAAQAAAASAPn/AQAAAAQAAAASAPr/AQAAAAQAAAASAPv/AQAAAAQAAAASAPz/AQAAAAQAAAASAP3/AQAAAAQAAAASAP7/AQAIAAQAAAASAP//AQAAAAQAAAD+//T/AQAAAAMAAAD///T/AQACAAMAAAD+//X/AQAAAAQAAAD///X/AQAGAAQAAAD+//b/AQAIAAQAAAD///b/AQACAAQAAAD+//f/AQAIAAQAAAD///f/AQAGAAQAAAD+//j/AQAAAAQAAAD///j/AQAGAAQAAAASAPT/AQAAAAMAAAATAPT/AQACAAMAAAASAPX/AQAIAAQAAAATAPX/AQACAAQAAAASAPb/AQAIAAQAAAATAPb/AQACAAQAAAASAPf/AQAAAAQAAAATAPf/AQACAAQAAAASAPj/AQAIAAQAAAATAPP/AQALAAcAAAANAP//AQAOAAAAAAAHAP//AQANAAAAAAAFAP//AQALAAcAAAABAP//AQAKAAcAAAALAP//AQAKAAcAAAARAP//BQAAAAAAAAAAAP//BQAAAAAAAAA=")
+tile_set = ExtResource("2_u22de")
+
+[node name="BottomLeft" type="Marker2D" parent="." unique_id=1762828116]
+position = Vector2(-32, 32)
+
+[node name="TopRight" type="Marker2D" parent="." unique_id=34142574]
+position = Vector2(608, -328)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=2112168600]
+position = Vector2(64, 0)
+
+[node name="EvilPrincessBoss" parent="." unique_id=791369868 instance=ExtResource("3_mpsuo")]
+unique_name_in_owner = true
+position = Vector2(288, -170)
+health = 30
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1286646604]
+unique_name_in_owner = true
+
+[node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=2017536145]
+position = Vector2(0, -96)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=194819428]
+position = Vector2(576, -96)
+
+[node name="ManaBalls" type="Node2D" parent="." unique_id=775787336]
+
+[node name="ManaBall" parent="ManaBalls" unique_id=784018675 instance=ExtResource("4_oxhc0")]
+position = Vector2(16, -96)
+
+[node name="ManaBall2" parent="ManaBalls" unique_id=661478510 instance=ExtResource("4_oxhc0")]
+position = Vector2(16, -160)
+
+[node name="ManaBall3" parent="ManaBalls" unique_id=1016772537 instance=ExtResource("4_oxhc0")]
+position = Vector2(560, -96)
+
+[node name="ManaBall4" parent="ManaBalls" unique_id=2085277898 instance=ExtResource("4_oxhc0")]
+position = Vector2(560, -160)
+
+[node name="HealthDrops" type="Node2D" parent="." unique_id=1957770428]
+
+[node name="HealthDrop" parent="HealthDrops" unique_id=1972660801 instance=ExtResource("5_wp8c6")]
+position = Vector2(16, -128)
+
+[node name="HealthDrop2" parent="HealthDrops" unique_id=1075968097 instance=ExtResource("5_wp8c6")]
+position = Vector2(560, -128)
+
+[node name="FodderSpawnCooldown" type="Timer" parent="." unique_id=469299999]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true

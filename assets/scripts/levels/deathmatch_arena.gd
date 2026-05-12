@@ -34,10 +34,10 @@ func spawn_wave() -> void:
 	current_wave_idx += 1
 
 func spawn_enemy(spawn: EnemySpawn) -> void:
-	var node: Enemy = spawn.scene.instantiate()
-	node.died.connect(_on_enemy_died)
-	add_child(node, true)
-	node.global_position = (get_node(spawn.spawn) as Marker2D).global_position
+	var enemy: Enemy = spawn.scene.instantiate()
+	enemy.died.connect(_on_enemy_died)
+	add_child(enemy, true)
+	enemy.global_position = (get_node(spawn.spawn) as Marker2D).global_position
 
 func _on_enemy_died():
 	enemies_left -= 1

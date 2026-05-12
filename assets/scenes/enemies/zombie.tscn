@@ -4,13 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dkjhwcl2y8pun" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned covered.png" id="2_82ixa"]
 [ext_resource type="Script" uid="uid://debei0draolkk" path="res://assets/scripts/enemies/zombie/state_machine.gd" id="2_gpvkm"]
 [ext_resource type="Script" uid="uid://db120mv3abscm" path="res://assets/scripts/enemies/zombie/active.gd" id="3_cnys6"]
-[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/enemies/sprite_animator.gd" id="3_yr2y0"]
+[ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="3_yr2y0"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="4_82ixa"]
 [ext_resource type="Script" uid="uid://cfihkf7375ojo" path="res://assets/scripts/enemies/zombie/attack.gd" id="4_gpvkm"]
-[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/collision_animator.gd" id="5_fi5dy"]
+[ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="5_fi5dy"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="6_0tdg6"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="6_vg744"]
-[ext_resource type="Texture2D" uid="uid://bvikwee6ve3gj" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned.png" id="8_vg744"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hon51"]
 atlas = ExtResource("2_82ixa")
@@ -64,9 +63,17 @@ region = Rect2(320, 192, 64, 64)
 atlas = ExtResource("2_82ixa")
 region = Rect2(384, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nrifv"]
-atlas = ExtResource("8_vg744")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx2uq"]
+atlas = ExtResource("2_82ixa")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8omcd"]
+atlas = ExtResource("2_82ixa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25n4r"]
+atlas = ExtResource("2_82ixa")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m06tp"]
 atlas = ExtResource("2_82ixa")
@@ -173,13 +180,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nrifv")
+"texture": SubResource("AtlasTexture_xx2uq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nrifv")
+"texture": SubResource("AtlasTexture_8omcd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nrifv")
+"texture": SubResource("AtlasTexture_25n4r")
 }],
 "loop": false,
 "name": &"hurt",
@@ -727,22 +734,22 @@ metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1559458086]
 position = Vector2(0, -32.5)
 sprite_frames = SubResource("SpriteFrames_vg744")
-animation = &"hurt"
+animation = &"die"
 
-[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("state_machine", "sprite")]
+[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_mjjx3")
 script = ExtResource("3_yr2y0")
-state_machine = NodePath("../../StateMachine")
 sprite = NodePath("../AnimatedSprite2D")
-call_reset_on_change = true
 default_direction = 0
+state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
 [node name="CollisionAnimator" type="AnimationPlayer" parent="Animator" unique_id=283869884 node_paths=PackedStringArray("state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
+callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_uwq5h")
 script = ExtResource("5_fi5dy")
 state_machine = NodePath("../../StateMachine")

@@ -18,10 +18,15 @@ var current_state: State:
 		if current_state != null:
 			current_state.enter()
 
+var scheduled_state: State = null
+
 func _ready() -> void:
 	current_state = initial_state
 
 func _physics_process(delta: float) -> void:
+	if scheduled_state != null:
+		current_state = scheduled_state
+		scheduled_state = null
 	if current_state != null:
 		current_state = current_state.handle_input()
 		current_state = current_state.update(delta)

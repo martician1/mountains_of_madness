@@ -1,4 +1,4 @@
-extends OneShotAnimationState
+extends PlayerOneShotAnimationState
 
 func enter() -> void:
 	if GameManager.level == null:
