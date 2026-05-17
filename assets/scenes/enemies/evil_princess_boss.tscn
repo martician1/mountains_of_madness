@@ -662,7 +662,7 @@ shape = SubResource("CapsuleShape2D_ag7b1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1559458086]
 position = Vector2(0, -64.166664)
 sprite_frames = SubResource("SpriteFrames_vg744")
-animation = &"attack"
+animation = &"die"
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "state_machine")]
 unique_name_in_owner = true
