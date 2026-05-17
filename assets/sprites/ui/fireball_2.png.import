@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnlavms6q3ve2"
-path="res://.godot/imported/dark_prince_portrait.png-c14ac9a173d9f3a24746b81da4eca78d.ctex"
+uid="uid://bu4c27bvfnbdv"
+path="res://.godot/imported/fireball_2.png-8618007cbe4298cdd767d548d8ba5bc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/dark_prince_portrait.png"
-dest_files=["res://.godot/imported/dark_prince_portrait.png-c14ac9a173d9f3a24746b81da4eca78d.ctex"]
+source_file="res://assets/sprites/ui/fireball_2.png"
+dest_files=["res://.godot/imported/fireball_2.png-8618007cbe4298cdd767d548d8ba5bc7.ctex"]
 
 [params]
 
