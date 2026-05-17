@@ -133,7 +133,7 @@ func register_hit(hit_data: HitData):
 	call_deferred("_register_hit", hit_data)
 	
 func _register_hit(hit_data: HitData):
-	if shield_cooldown_timer.time_left == 0 and (state_machine.current_state as PlayerState).register_hits:
+	if shield_cooldown_timer.time_left == 0:
 		last_hit = hit_data
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:

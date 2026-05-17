@@ -1,4 +1,4 @@
-extends PlayerState
+extends State
 class_name GroundAttackState
 
 @onready var player: Player = get_owner()
@@ -8,7 +8,7 @@ enum QueuedAction {
 	CROUCH
 }
 var action_queue : Array[QueuedAction] = []
-@onready var animator: CollisionAnimator = %CollisionAnimator
+@onready var collision_animator: CollisionAnimator = %CollisionAnimator
 @onready var state_machine: PlayerStateMachine = %StateMachine
 var has_current_attack_finished := false
 
@@ -17,11 +17,13 @@ func enter() -> void:
 
 	action_queue.clear()
 	combo = 0
-	assert(player.max_ground_attack_combo > 0, "Invalid entering of attack state - player.max_attack_combo <= 0")
+	assert(player.max_ground_attack_combo > 0, "Invalid entry of attack state - player.max_attack_combo <= 0")
 	start_attack()
 
 func exit() -> void:
-	assert(has_current_attack_finished)
+	if collision_animator.animation_finished.is_connected(_on_attack_finished):
+		collision_animator.animation_finished.disconnect(_on_attack_finished)
+
 	player.attack_cooldown_timer.start()
 	action_queue.clear()
 
@@ -34,6 +36,8 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
+	if player.process_last_hit():
+		return %Hurt
 	if Input.is_action_just_pressed("attack"):
 		action_queue.append(QueuedAction.ATTACK)
 	if Input.is_action_just_pressed("crouch"):
@@ -59,8 +63,10 @@ func handle_input() -> State:
 func start_attack():
 	has_current_attack_finished = false
 	combo += 1
-	animator.update()
-	await animator.animation_finished
+	collision_animator.update()
+	collision_animator.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
+
+func _on_attack_finished(_name: String):
 	has_current_attack_finished = true
 
 func get_animation() -> String:

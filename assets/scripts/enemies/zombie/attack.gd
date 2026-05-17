@@ -1,18 +1,9 @@
-extends State
+extends OneShotAnimationState
 
 @onready var zombie: Zombie = get_owner()
-@onready var animator: CollisionAnimator = %CollisionAnimator
 @onready var sprite_animator: SpriteAnimator = %SpriteAnimator
 @onready var state_machine: StateMachine = %StateMachine
 @onready var attack_hitbox: Area2D = %AttackHitbox
-
-var has_current_attack_finished := false
-
-func enter() -> void:
-	has_current_attack_finished = false
-	animator.update()
-	await animator.animation_finished
-	has_current_attack_finished = true
 
 func update(delta: float) -> State:
 	if zombie.is_player_in_hitbox(attack_hitbox):
@@ -32,12 +23,9 @@ func update(delta: float) -> State:
 func handle_input() -> State:
 	if zombie.process_last_hit():
 		return %Hurt if zombie.health > 0 else %Dying
-	if not has_current_attack_finished:
+	if not has_animation_finished:
 		return self
 	var next_state = state_machine.decide_next_state()
 	if next_state == self:
 		self.enter()
 	return next_state
-
-func get_animation() -> String:
-	return "" if has_current_attack_finished else "attack"

@@ -1,4 +1,4 @@
-extends PlayerState
+extends State
 
 @onready var player: Player = get_owner()
 @onready var state_machine: PlayerStateMachine = %StateMachine

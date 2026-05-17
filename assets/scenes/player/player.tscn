@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://be1t38eupuc5a" path="res://assets/scripts/player/states/air_attack.gd" id="8_ssxgk"]
 [ext_resource type="Script" uid="uid://ctdd31nawhrjc" path="res://assets/scripts/player/states/crouch_attack.gd" id="9_7m3aa"]
 [ext_resource type="Script" uid="uid://d3x02kb0vl645" path="res://assets/scripts/player/states/ground_attack.gd" id="10_mcmnd"]
-[ext_resource type="Script" uid="uid://cd4e6jyjdejiy" path="res://assets/scripts/player/states/plunge_charge.gd" id="11_fe01d"]
+[ext_resource type="Script" uid="uid://beyywdikkg1j4" path="res://assets/scripts/player/states/player_one_shot_animation_state.gd" id="11_rt1xo"]
 [ext_resource type="Script" uid="uid://dwet45qf1xvxm" path="res://assets/scripts/player/states/plunge_attack.gd" id="12_86pyr"]
 [ext_resource type="Script" uid="uid://c4p4v240wafdb" path="res://assets/scripts/player/states/landing.gd" id="13_8l2ex"]
 [ext_resource type="Script" uid="uid://0utl20adl21h" path="res://assets/scripts/player/states/hurt.gd" id="14_vn88y"]
@@ -1444,6 +1444,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [Vector2(0, -25)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CollisionFlipper/Hurtbox/HurtboxShape:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_uqo28"]
 length = 0.2857143
@@ -2002,6 +2014,30 @@ tracks/1/keys = {
 "update": 1,
 "values": ["die"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionFlipper/Hurtbox/HurtboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionFlipper/Hitbox/HitboxShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_y16ip"]
 length = 0.21428572
@@ -2056,6 +2092,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["hurt"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionFlipper/Hurtbox/HurtboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_na57t"]
@@ -2140,6 +2188,18 @@ tracks/1/keys = {
 "update": 1,
 "values": ["landing"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionFlipper/Hurtbox/HurtboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_qnek2"]
 length = 0.21428572
@@ -2203,6 +2263,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionFlipper/Hurtbox/HurtboxShape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ike5y"]
@@ -2373,70 +2445,66 @@ metadata/_custom_type_script = "uid://c84gf7p53ks4j"
 [node name="Movement" type="Node" parent="StateMachine" unique_id=86506585]
 unique_name_in_owner = true
 script = ExtResource("6_1452w")
-metadata/_custom_type_script = "uid://b0vfcj1um5olb"
 
 [node name="Crouch" type="Node" parent="StateMachine" unique_id=975953148]
 unique_name_in_owner = true
 script = ExtResource("7_vf118")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="AirAttack" type="Node" parent="StateMachine" unique_id=815480132]
+[node name="AirAttack" type="Node" parent="StateMachine" unique_id=815480132 node_paths=PackedStringArray("collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("8_ssxgk")
 animation_name = "air_attack_1"
-register_hits = false
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://beyywdikkg1j4"
 
-[node name="CrouchAttack" type="Node" parent="StateMachine" unique_id=1974501126]
+[node name="CrouchAttack" type="Node" parent="StateMachine" unique_id=1974501126 node_paths=PackedStringArray("collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("9_7m3aa")
 animation_name = "crouch_attack"
-register_hits = false
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://beyywdikkg1j4"
 
 [node name="GroundAttack" type="Node" parent="StateMachine" unique_id=1187631281]
 unique_name_in_owner = true
 script = ExtResource("10_mcmnd")
-register_hits = false
-metadata/_custom_type_script = "uid://b0vfcj1um5olb"
 
-[node name="PlungeCharge" type="Node" parent="StateMachine" unique_id=382139353 node_paths=PackedStringArray("next_state")]
+[node name="PlungeCharge" type="Node" parent="StateMachine" unique_id=382139353 node_paths=PackedStringArray("next_state", "collision_animator")]
 unique_name_in_owner = true
-script = ExtResource("11_fe01d")
+script = ExtResource("11_rt1xo")
+apply_physics = false
 animation_name = "plunge_charge"
 next_state = NodePath("../PlungeAttack")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://beyywdikkg1j4"
 
 [node name="PlungeAttack" type="Node" parent="StateMachine" unique_id=1784393200]
 unique_name_in_owner = true
 script = ExtResource("12_86pyr")
-register_hits = false
 
-[node name="Landing" type="Node" parent="StateMachine" unique_id=219710435]
+[node name="Landing" type="Node" parent="StateMachine" unique_id=219710435 node_paths=PackedStringArray("collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("13_8l2ex")
 animation_name = "landing"
-register_hits = false
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=2048882206]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2048882206 node_paths=PackedStringArray("collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("14_vn88y")
 animation_name = "hurt"
-register_hits = false
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=2110834993 node_paths=PackedStringArray("next_state")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=2110834993 node_paths=PackedStringArray("next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("15_rt1xo")
 animation_name = "die"
 next_state = NodePath(".")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://beyywdikkg1j4"
 
 [node name="SuperAttack" type="Node" parent="StateMachine" unique_id=1772955404]
 unique_name_in_owner = true
 script = ExtResource("16_avvtr")
-animation_name = "super_attack"
-register_hits = false
-metadata/_custom_type_script = "uid://b0vfcj1um5olb"
 
 [node name="Animator" type="Node2D" parent="." unique_id=294776269]
 

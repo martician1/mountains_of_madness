@@ -5,5 +5,6 @@ func exit() -> void:
 	player.attack_cooldown_timer.start()
 
 func update(delta: float) -> State:
+	var result = super.update(delta)
 	player.attack_enemies(player.crouch_attack_damage, true)
-	return super.update(delta)
+	return result 

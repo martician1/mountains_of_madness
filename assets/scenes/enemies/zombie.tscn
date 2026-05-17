@@ -709,24 +709,26 @@ unique_name_in_owner = true
 script = ExtResource("3_cnys6")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1442094677]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1442094677 node_paths=PackedStringArray("collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_gpvkm")
+animation_name = "attack"
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("collision_animator", "visible_on_screen_enabler")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("6_0tdg6")
-collision_animator = NodePath("../../Animator/CollisionAnimator")
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=1986497200 node_paths=PackedStringArray("collision_animator", "sprite_animator", "next_state")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1986497200 node_paths=PackedStringArray("sprite_animator", "next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("6_vg744")
-collision_animator = NodePath("../../Animator/CollisionAnimator")
 sprite_animator = NodePath("../../Animator/SpriteAnimator")
 next_state = NodePath("../Active")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 
 [node name="Animator" type="Node2D" parent="." unique_id=162325613]
@@ -734,7 +736,8 @@ metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1559458086]
 position = Vector2(0, -32.5)
 sprite_frames = SubResource("SpriteFrames_vg744")
-animation = &"die"
+animation = &"hurt"
+frame = 2
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "state_machine")]
 unique_name_in_owner = true

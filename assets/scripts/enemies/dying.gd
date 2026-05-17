@@ -1,21 +1,18 @@
 class_name EnemyDyingState
-extends State
+extends OneShotAnimationState
 
-@export var collision_animator: CollisionAnimator
 @export var apply_physics := true
 @export var drop_pickup := true
 @export var visible_on_screen_enabler: VisibleOnScreenEnabler2D
-var has_died := false
+
+func _ready() -> void:
+	animation_name = "die"
 
 func enter() -> void:
 	owner.remove_child(visible_on_screen_enabler)
 	visible_on_screen_enabler.queue_free()
 
-	has_died = false
-	collision_animator.update()
-	await collision_animator.animation_finished
-	has_died = true
-	owner.die_and_drop_pickup() if drop_pickup else owner.die()
+	super.enter()
 
 func update(delta):
 	if not apply_physics:
@@ -29,7 +26,7 @@ func update(delta):
 	owner.move_and_slide()
 	return self
 
-func get_animation() -> String:
-	if has_died:
-		return ""
-	return "die"
+func handle_input() -> State:
+	if has_animation_finished:
+		owner.die_and_drop_pickup() if drop_pickup else owner.die()
+	return self

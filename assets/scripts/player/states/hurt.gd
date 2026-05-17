@@ -1,8 +1,8 @@
 extends PlayerOneShotAnimationState
 
 func enter() -> void:
-	player.shield_cooldown_timer.start()
 	super.enter()
+	player.shield_cooldown_timer.start()
 
 func handle_input() -> State:
 	if not has_animation_finished:

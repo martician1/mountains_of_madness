@@ -1,22 +1,10 @@
 class_name EnemyHurtState
-extends State
+extends OneShotAnimationState
 
-@export var collision_animator: CollisionAnimator
 @export var sprite_animator: SpriteAnimator
-@export var next_state: State
-var has_recovered := false
 
-func enter() -> void:
-	has_recovered = false
-	collision_animator.update()
-	collision_animator.animation_finished.connect(_on_animation_finished)
-
-func exit() -> void:
-	collision_animator.animation_finished.disconnect(_on_animation_finished)
-
-func _on_animation_finished(animation_name: String):
-	assert(animation_name == "hurt")
-	has_recovered = true
+func _ready() -> void:
+	animation_name = "hurt"
 
 func update(delta: float) -> State:
 	owner.velocity.x = move_toward(owner.velocity.x, 0, owner.speed)
@@ -29,13 +17,9 @@ func update(delta: float) -> State:
 
 func handle_input() -> State:
 	if owner.process_last_hit():
-		has_recovered = false
+		has_animation_finished = false
 		collision_animator.update(true)
 		sprite_animator.update(true)
 		return %Hurt if owner.health > 0 else %Dying
-	return next_state if has_recovered else self
 
-func get_animation() -> String:
-	if has_recovered:
-		return ""
-	return "hurt"
+	return next_state if has_animation_finished else self

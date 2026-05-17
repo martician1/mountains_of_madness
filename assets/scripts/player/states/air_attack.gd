@@ -11,5 +11,6 @@ func exit():
 	animation_name = "air_attack_" + str(attack_version)
 
 func update(delta: float) -> State:
+	var result = super.update(delta)
 	player.attack_enemies(player.melee_damage)
-	return super.update(delta)
+	return result
