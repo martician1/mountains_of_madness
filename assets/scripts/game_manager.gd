@@ -75,6 +75,7 @@ func fail_level():
 	fail_level_menu.damage_ratio = player.damage_dealt / player.damage_received if player.damage_received else "Infinity"
 	fail_level_menu.time_in_seconds = level_finish_time - level_start_time
 
+	await get_tree().create_timer(level_fadeout_time).timeout
 	get_tree().root.add_child(fail_level_menu)
 
 func _on_level_finished():
