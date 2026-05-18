@@ -6,7 +6,7 @@ extends State
 func update(_delta: float) -> State:
 	var player := GameManager.player
 
-	if player == null or not player.is_alive():
+	if not player.is_alive():
 		return self
 	
 	if imp.is_player_in_hitbox(hitbox):

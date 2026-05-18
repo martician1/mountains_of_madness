@@ -454,19 +454,19 @@ attack_cooldown_timer = NodePath("../../AttackCooldown")
 shooting_point = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("collision_animator", "sprite_animator", "next_state")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("sprite_animator", "next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_63mvx")
-collision_animator = NodePath("../../Animator/CollisionAnimator")
 sprite_animator = NodePath("../../Animator/EnemySpriteAnimator")
 next_state = NodePath("../Active")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("collision_animator", "visible_on_screen_enabler")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_2bx7d")
-collision_animator = NodePath("../../Animator/CollisionAnimator")
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
 [node name="Animator" type="Node2D" parent="." unique_id=514929491]

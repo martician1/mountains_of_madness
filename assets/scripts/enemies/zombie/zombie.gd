@@ -7,7 +7,7 @@ extends Enemy
 func direct_towards_player():
 	var player = GameManager.player
 
-	if player == null or not player.is_alive():
+	if not player.is_alive():
 		return
 
 	var player_dir = player.global_position - global_position

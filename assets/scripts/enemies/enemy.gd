@@ -133,9 +133,11 @@ func get_ground(position: Vector2, penetration_depth: float) -> Object:
 		position + Vector2(0.0, penetration_depth),
 		1 << 8 # mask ground, TODO: find a way to not hardcode this
 	)
+	query.hit_from_inside = true
 	return space_state.intersect_ray(query).get("collider")
 
 func is_near_dangerous_edge(min_edge_distance: float = 20.0, dangerous_depth: float = 64.0) -> bool:
 	var in_front = global_position
 	in_front.x += min_edge_distance * self.direction.x
-	return get_ground(global_position, dangerous_depth) != get_ground(in_front, dangerous_depth)
+	return get_ground(in_front, dangerous_depth) == null
+	#return get_ground(global_position, dangerous_depth) != get_ground(in_front, dangerous_depth)
