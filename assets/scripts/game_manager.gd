@@ -31,7 +31,8 @@ func change_player(new_player: Player):
 func change_level(new_level: Level):
 	if new_level != null:
 		add_child(new_level)
-		new_level.connect("level_finished", _on_level_finished, CONNECT_ONE_SHOT)
+		new_level.level_finished.connect(_on_level_finished, CONNECT_ONE_SHOT)
+		new_level.level_failed.connect(_on_level_failed, CONNECT_ONE_SHOT)
 
 	var old_level = level
 	level = new_level
@@ -67,7 +68,9 @@ func quit_level():
 	change_level(null)
 	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 
-func fail_level():
+func _on_level_failed():
+	level.level_finished.disconnect(_on_level_finished)
+
 	level_finish_time = int(Time.get_unix_time_from_system())
 	var fail_level_menu: FailLevelMenu = fail_level_menu_scene.instantiate()
 
@@ -79,6 +82,8 @@ func fail_level():
 	get_tree().root.add_child(fail_level_menu)
 
 func _on_level_finished():
+	level.level_failed.disconnect(_on_level_failed)
+
 	level_finish_time = int(Time.get_unix_time_from_system())
 	var end_level_menu: EndLevelMenu = end_level_menu_scene.instantiate()
 
