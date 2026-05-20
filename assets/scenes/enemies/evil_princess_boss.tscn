@@ -2,17 +2,24 @@
 
 [ext_resource type="Script" uid="uid://b1io22ipea8t4" path="res://assets/scripts/enemies/evil_princess_boss/evil_princess_boss.gd" id="1_74aqh"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="1_bhj5w"]
+[ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="3_7p5bk"]
 [ext_resource type="Script" uid="uid://diq5557xl7j2t" path="res://assets/scripts/enemies/evil_princess_boss/alert.gd" id="3_bhj5w"]
 [ext_resource type="Script" uid="uid://dok7clecfuwm" path="res://assets/scripts/enemies/evil_princess_boss/move.gd" id="4_2ag0v"]
+[ext_resource type="Script" uid="uid://c6l451cktvns1" path="res://assets/scripts/enemies/components/enemy_direction_component.gd" id="4_7p5bk"]
 [ext_resource type="Script" uid="uid://ddqvxq5tanmpj" path="res://assets/scripts/enemies/evil_princess_boss/chase.gd" id="4_74aqh"]
 [ext_resource type="Script" uid="uid://c2r2dbm2olmix" path="res://assets/scripts/enemies/evil_princess_boss/plunge.gd" id="5_2ag0v"]
+[ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="5_7p5bk"]
+[ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="5_73qrw"]
 [ext_resource type="Script" uid="uid://bw0n6x3jqlox3" path="res://assets/scripts/enemies/evil_princess_boss/attack.gd" id="5_rbnph"]
+[ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="6_73qrw"]
 [ext_resource type="Script" uid="uid://dxnr07hj6pywr" path="res://assets/scripts/enemies/evil_princess_boss/dying.gd" id="7_2ag0v"]
 [ext_resource type="Texture2D" uid="uid://7w6qx1j1votr" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Large Skull.png" id="7_rbnph"]
+[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="8_y6tba"]
+[ext_resource type="Script" uid="uid://dksxju43aqibl" path="res://assets/scripts/enemies/evil_princess_boss/components/evil_princess_boss_attack_component.gd" id="9_73qrw"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="9_ckprm"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="10_7p5bk"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="11_73qrw"]
-[ext_resource type="PackedScene" uid="uid://coyocvfaareuu" path="res://assets/scenes/flash_effect.tscn" id="11_rbnph"]
+[ext_resource type="Script" uid="uid://cl5ssb0xfx0xl" path="res://assets/scripts/effects/flash_effect.gd" id="19_7p5bk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ag7b1"]
 radius = 33.333332
@@ -601,14 +608,55 @@ size = Vector2(66.666664, 90)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82ixa"]
 size = Vector2(53.333332, 73.333336)
 
-[node name="EvilPrincessBoss" type="CharacterBody2D" unique_id=791369868 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
+[node name="EvilPrincessBoss" type="CharacterBody2D" unique_id=791369868 groups=["enemy"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_74aqh")
-damage = 3
-collision_flipper = NodePath("HFlipper")
 metadata/_custom_type_script = "uid://cq4cp0ephf28m"
+
+[node name="Components" type="Node" parent="." unique_id=1615620757]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=12699249 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("9_73qrw")
+damage = 3
+hitboxes = [NodePath("../../HFlipper/AttackHitbox"), NodePath("../../HFlipper/BodyHitbox")]
+metadata/_custom_type_script = "uid://3efjtavajs73"
+
+[node name="DieComponent" type="Node" parent="Components" unique_id=1364688024]
+unique_name_in_owner = true
+script = ExtResource("3_7p5bk")
+metadata/_custom_type_script = "uid://rj0mqvst1uto"
+
+[node name="DirectionComponent" type="Node" parent="Components" unique_id=394427597 node_paths=PackedStringArray("collision_flipper")]
+unique_name_in_owner = true
+script = ExtResource("4_7p5bk")
+collision_flipper = NodePath("../../HFlipper")
+metadata/_custom_type_script = "uid://c6l451cktvns1"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1146384610]
+unique_name_in_owner = true
+script = ExtResource("5_7p5bk")
+health = 30
+metadata/_custom_type_script = "uid://bi4cnikpklgpw"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1099528936 node_paths=PackedStringArray("shield_component", "health_component")]
+unique_name_in_owner = true
+script = ExtResource("6_73qrw")
+shield_component = NodePath("../ShieldComponent")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cnkur4362f720"
+
+[node name="SpeedComponent" type="Node" parent="Components" unique_id=1079577123]
+unique_name_in_owner = true
+script = ExtResource("5_73qrw")
+metadata/_custom_type_script = "uid://c4gmsxn3jgj5j"
+
+[node name="ShieldComponent" type="Node" parent="Components" unique_id=744868453]
+unique_name_in_owner = true
+script = ExtResource("8_y6tba")
+metadata/_custom_type_script = "uid://cekcy30nqoa84"
 
 [node name="StateMachine" type="Node" parent="." unique_id=866522181 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -644,12 +692,13 @@ next_state = NodePath("../Move")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("visible_on_screen_enabler", "speed_component", "die_component", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("7_2ag0v")
 apply_physics = false
-drop_pickup = false
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+speed_component = NodePath("../../Components/SpeedComponent")
+die_component = NodePath("../../Components/DieComponent")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
@@ -664,13 +713,13 @@ position = Vector2(0, -64.166664)
 sprite_frames = SubResource("SpriteFrames_vg744")
 animation = &"die"
 
-[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_mjjx3")
 script = ExtResource("9_ckprm")
 sprite = NodePath("../AnimatedSprite2D")
-default_direction = 0
+direction_component = NodePath("../../Components/DirectionComponent")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
@@ -683,10 +732,12 @@ script = ExtResource("10_7p5bk")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://bnjeug7o85ced"
 
-[node name="FlashEffect" parent="Animator" unique_id=725267969 node_paths=PackedStringArray("modulate_target") instance=ExtResource("11_rbnph")]
+[node name="FlashEffect" type="Node" parent="Animator" unique_id=1765024157 node_paths=PackedStringArray("modulate_target")]
 unique_name_in_owner = true
+script = ExtResource("19_7p5bk")
 flash_time = 1.0
 modulate_target = NodePath("../AnimatedSprite2D")
+metadata/_custom_type_script = "uid://cl5ssb0xfx0xl"
 
 [node name="HFlipper" type="Node2D" parent="." unique_id=112924278]
 script = ExtResource("11_73qrw")

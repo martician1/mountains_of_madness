@@ -21,6 +21,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var enemy = area.get_owner() as Enemy
 	if enemy == null:
 		return
-	enemy.register_hit(
+	Util.get_component(enemy, "HitProcessingComponent").register_hit(
 		HitData.new(self, hitbox.global_position, damage, knockback)
 	)

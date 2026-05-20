@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://yan4celdv4pu"]
+
+[ext_resource type="Texture2D" uid="uid://duv03kvlvrxs5" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Tree Damned.png" id="1_7bd6b"]
+[ext_resource type="Script" uid="uid://c3wed8rdsv0g8" path="res://assets/scripts/spawner.gd" id="1_xcdq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcdq2"]
+atlas = ExtResource("1_7bd6b")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06fpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcdq2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfrjl"]
+radius = 8.0
+height = 44.0
+
+[node name="Spawner" type="Node2D" unique_id=401180819]
+script = ExtResource("1_xcdq2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=385751856]
+scale = Vector2(1.2, 1.2)
+collision_layer = 100663552
+collision_mask = 67108864
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1835528892]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_06fpg")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1942917652]
+position = Vector2(0, -22)
+shape = SubResource("CapsuleShape2D_wfrjl")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

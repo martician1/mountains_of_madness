@@ -8,7 +8,9 @@ var timer: SceneTreeTimer
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == GameManager.player:
-		GameManager.player.mana += 1
+		var player_mana_component: PlayerManaComponent = \
+			Util.get_component(GameManager.player, "ManaComponent")
+		player_mana_component.mana += 1
 		queue_free()
 
 func _ready() -> void:

@@ -13,7 +13,7 @@ var fodder_enemy_scenes: Array[PackedScene] = [
 ]
 
 func _ready() -> void:
-	evil_princess.attack_finished.connect(_on_boss_attack_finished)
+	Util.get_component(evil_princess, "AttackComponent").attack_finished.connect(_on_boss_attack_finished)
 
 func _on_boss_attack_finished():
 	if zombies_left == 0 and fodder_spawn_cooldown.is_stopped():
@@ -23,7 +23,7 @@ func spawn_fodder_enemies():
 	zombies_left = spawn_markers.size()
 	for marker in spawn_markers:
 		var enemy: Enemy = fodder_enemy_scenes[randi() % 1].instantiate()
-		enemy.died.connect(_on_enemy_died)
+		Util.get_component(enemy, "DieComponent").died.connect(_on_enemy_died)
 		add_child(enemy, true)
 		enemy.global_position = marker.global_position
 

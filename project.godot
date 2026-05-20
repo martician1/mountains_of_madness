@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://bxqo7dqnf440c"
 BetterTerrain="*uid://cuhhi0uxty0iu"
+Util="*uid://6jye2aer2ume"
 
 [debug]
 
@@ -38,8 +39,8 @@ enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/better-t
 
 [global_group]
 
-levels=""
 enemy=""
+level=""
 
 [input]
 

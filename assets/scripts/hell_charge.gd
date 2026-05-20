@@ -8,5 +8,9 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		var body = collision.get_collider()
 		if body == GameManager.player:
-			GameManager.player.register_hit(HitData.new(self, global_position, damage, Vector2.ZERO))
+			var player_hit_processing_component: PlayerHitProcessingComponent = \
+				Util.get_component(GameManager.player, "HitProcessingComponent")
+			player_hit_processing_component.register_hit(
+				HitData.new(self, global_position, damage, Vector2.ZERO)
+			)
 		queue_free()

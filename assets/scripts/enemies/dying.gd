@@ -2,8 +2,9 @@ class_name EnemyDyingState
 extends OneShotAnimationState
 
 @export var apply_physics := true
-@export var drop_pickup := true
 @export var visible_on_screen_enabler: VisibleOnScreenEnabler2D
+@export var speed_component: EnemySpeedComponent
+@export var die_component: EnemyDieComponent
 
 func _ready() -> void:
 	animation_name = "die"
@@ -18,7 +19,7 @@ func update(delta):
 	if not apply_physics:
 		return self
 
-	owner.velocity.x = move_toward(owner.velocity.x, 0, owner.speed)
+	owner.velocity.x = move_toward(owner.velocity.x, 0, speed_component.speed)
 
 	if not owner.is_on_floor():
 		owner.velocity += owner.get_gravity() * delta
@@ -28,5 +29,5 @@ func update(delta):
 
 func handle_input() -> State:
 	if has_animation_finished:
-		owner.die_and_drop_pickup() if drop_pickup else owner.die()
+		die_component.die()
 	return self

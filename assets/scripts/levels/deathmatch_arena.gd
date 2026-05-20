@@ -35,7 +35,7 @@ func spawn_wave() -> void:
 
 func spawn_enemy(spawn: EnemySpawn) -> void:
 	var enemy: Enemy = spawn.scene.instantiate()
-	enemy.died.connect(_on_enemy_died)
+	Util.get_component(enemy, "DieComponent").died.connect(_on_enemy_died)
 	add_child(enemy, true)
 	enemy.global_position = (get_node(spawn.spawn) as Marker2D).global_position
 
@@ -59,7 +59,7 @@ func _on_body_entered(body: Node2D) -> void:
 	trigger_area.queue_free()
 
 func lock_camera() -> void:
-	var cam := GameManager.player.camera
+	var cam := get_viewport().get_camera_2d()
 	var half_w := arena_width / 2.0
 
 	var final_left := int(global_position.x - half_w)

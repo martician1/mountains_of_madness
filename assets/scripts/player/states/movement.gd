@@ -2,6 +2,8 @@ extends State
 
 @onready var player: Player = get_owner()
 @onready var state_machine: PlayerStateMachine = %StateMachine
+@onready var direction_component: DirectionComponent = %DirectionComponent
+@onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
 
 var jump_combo = 0
 var should_jump := false
@@ -18,8 +20,8 @@ func update(delta: float) -> State:
 		jump_combo += 1
 		should_jump = false
 
-	if player.direction:
-		player.velocity.x = player.direction.x * player.speed
+	if direction_component.direction:
+		player.velocity.x = direction_component.direction.x * player.speed
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.speed)
 
@@ -31,7 +33,7 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	if player.process_last_hit():
+	if hit_processing_component.process_last_hit():
 		return %Hurt
 
 	var next_state = state_machine.decide_next_state()
@@ -41,12 +43,12 @@ func handle_input() -> State:
 	if Input.is_action_just_pressed("jump") and jump_combo < player.max_jump_combo:
 		should_jump = true
 	
-	player.direction.x = Input.get_axis("strafe_left", "strafe_right")
+	direction_component.direction.x = Input.get_axis("strafe_left", "strafe_right")
 	return self
 
 func get_animation():
 	if player.is_on_floor():
-		if player.direction.x == 0:
+		if direction_component.direction.x == 0:
 			return "idle"
 		else:
 			return "walk"

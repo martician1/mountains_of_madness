@@ -4,6 +4,7 @@ extends OneShotAnimationState
 @onready var player: Player = get_owner()
 @onready var state_machine: PlayerStateMachine = %StateMachine
 @export var apply_physics: bool = true
+@onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
 
 func update(delta: float) -> State:
 	if not apply_physics:
@@ -18,7 +19,7 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	if player.process_last_hit():
+	if hit_processing_component.process_last_hit():
 		return %Hurt
 	if has_animation_finished:
 		return next_state if next_state != null else state_machine.decide_next_state()

@@ -1,24 +1,23 @@
 extends State
 
-@export var hitbox: Area2D
-@export var attack_cooldown_timer: Timer
-@export var shooting_point: Marker2D
-@export var hell_charge_speed := 300.0
+@export var attack_cooldown_component: AttackCooldownComponent
+@export var attack_component: EnemyAttackComponent
+@export var direction_component: EnemyDirectionComponent
+@export var ranged_component: EnemyRangedComponent
+@export var hit_processing_component: EnemyHitProcessingComponent
+@export var health_component: HealthComponent
 
 func update(delta: float) -> State:
 	var player := GameManager.player
 
 	if player.is_alive():
-		if owner.is_player_in_hitbox(hitbox):
-			owner.hit_player()
-		owner.direction.x = sign(player.global_position.x - owner.global_position.x)
+		attack_component.attack()
+		direction_component.direct_towards_player()
 
-		if attack_cooldown_timer.is_stopped():
-			owner.shoot_hell_charge(
-				shooting_point.global_position,
-				Vector2(owner.direction.x, 0).normalized() * hell_charge_speed
-			)
-			attack_cooldown_timer.start()
+		if not attack_cooldown_component.is_attack_cooldown_active():
+			var charge_x_direction = -1 if direction_component.is_facing_left() else 1
+			ranged_component.shoot_hell_charge(Vector2(charge_x_direction, 0))
+			attack_cooldown_component.start_attack_cooldown()
 
 	if not owner.is_on_floor():
 		owner.velocity += owner.get_gravity() * delta
@@ -27,8 +26,8 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	if owner.process_last_hit():
-		return %Hurt if owner.health > 0 else %Dying
+	if hit_processing_component.process_last_hit():
+		return %Hurt if health_component.health > 0 else %Dying
 	return self
 
 func get_animation() -> String:

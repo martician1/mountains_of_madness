@@ -127,6 +127,7 @@ offset_top = 171.0
 offset_right = 344.0
 offset_bottom = 201.0
 pin_data = ExtResource("5_q8r6g")
+level_path = "res://assets/scenes/levels/level_6.tscn"
 
 [node name="Pin5" parent="LevelMenu" unique_id=292486355 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
@@ -145,6 +146,7 @@ offset_top = 213.0
 offset_right = 280.0
 offset_bottom = 243.0
 pin_data = ExtResource("5_q8r6g")
+level_path = "res://assets/scenes/levels/level_4.tscn"
 
 [node name="Pin3" parent="LevelMenu" unique_id=1582333494 instance=ExtResource("4_0wlwb")]
 layout_mode = 0

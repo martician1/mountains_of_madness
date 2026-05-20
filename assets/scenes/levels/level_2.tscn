@@ -110,6 +110,23 @@ position = Vector2(3104, -128)
 [node name="ManaBall27" parent="ManaBalls" unique_id=1698229615 instance=ExtResource("3_uccv7")]
 position = Vector2(3408, -94)
 
+[node name="HealthDrops" type="Node2D" parent="." unique_id=1620573139]
+
+[node name="HealthDrop" parent="HealthDrops" unique_id=250529983 instance=ExtResource("5_f1u5q")]
+position = Vector2(1424, -24)
+
+[node name="HealthDrop2" parent="HealthDrops" unique_id=1378946283 instance=ExtResource("5_f1u5q")]
+position = Vector2(2432, -216)
+
+[node name="HealthDrop3" parent="HealthDrops" unique_id=2002336061 instance=ExtResource("5_f1u5q")]
+position = Vector2(3104, -160)
+
+[node name="HealthDrop4" parent="HealthDrops" unique_id=111594170 instance=ExtResource("5_f1u5q")]
+position = Vector2(2768, -24)
+
+[node name="HealthDrop5" parent="HealthDrops" unique_id=1444606051 instance=ExtResource("5_f1u5q")]
+position = Vector2(2768, -56)
+
 [node name="Enemies" type="Node2D" parent="." unique_id=2058197436]
 
 [node name="EvilEye" parent="Enemies" unique_id=1273231372 instance=ExtResource("4_22e80")]
@@ -177,23 +194,6 @@ alert_radius = 200.0
 [node name="Zombie8" parent="Enemies" unique_id=248989345 instance=ExtResource("7_22e80")]
 position = Vector2(3872.0002, -1)
 alert_radius = 300.0
-
-[node name="HealthDrops" type="Node2D" parent="." unique_id=1620573139]
-
-[node name="HealthDrop" parent="HealthDrops" unique_id=250529983 instance=ExtResource("5_f1u5q")]
-position = Vector2(1424, -24)
-
-[node name="HealthDrop2" parent="HealthDrops" unique_id=1378946283 instance=ExtResource("5_f1u5q")]
-position = Vector2(2432, -216)
-
-[node name="HealthDrop3" parent="HealthDrops" unique_id=2002336061 instance=ExtResource("5_f1u5q")]
-position = Vector2(3104, -160)
-
-[node name="HealthDrop4" parent="HealthDrops" unique_id=111594170 instance=ExtResource("5_f1u5q")]
-position = Vector2(2768, -24)
-
-[node name="HealthDrop5" parent="HealthDrops" unique_id=1444606051 instance=ExtResource("5_f1u5q")]
-position = Vector2(2768, -56)
 
 [node name="Portal" parent="." unique_id=1162363435 node_paths=PackedStringArray("level") instance=ExtResource("6_x6bl8")]
 position = Vector2(4108, -50)

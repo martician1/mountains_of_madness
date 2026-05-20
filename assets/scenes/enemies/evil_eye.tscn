@@ -2,13 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cq4cp0ephf28m" path="res://assets/scripts/enemies/enemy.gd" id="1_63mvx"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_63mvx"]
+[ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="2_p3edg"]
 [ext_resource type="Script" uid="uid://dgdtypuqnwxub" path="res://assets/scripts/enemies/ranged/active.gd" id="3_0qs3w"]
+[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="3_6ercq"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="4_2bx7d"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="4_63mvx"]
+[ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_suk0d"]
+[ext_resource type="Script" uid="uid://c6l451cktvns1" path="res://assets/scripts/enemies/components/enemy_direction_component.gd" id="5_7trfg"]
 [ext_resource type="Texture2D" uid="uid://bau5g6o4fmnt3" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Demon eye.png" id="5_63mvx"]
+[ext_resource type="Script" uid="uid://d3oihvd1ntki6" path="res://assets/scripts/enemies/components/enemy_drop_pickup_component.gd" id="6_5f3o8"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="6_eqhhe"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="7_2bx7d"]
+[ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="7_jq20t"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="8_gcxp1"]
+[ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_p345k"]
+[ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_ahob7"]
+[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_rp04m"]
+[ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_8arae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bx7d"]
 atlas = ExtResource("5_63mvx")
@@ -432,40 +442,106 @@ size = Vector2(28, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0f8q"]
 size = Vector2(22, 34)
 
-[node name="EvilEye" type="CharacterBody2D" unique_id=1039967585 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
+[node name="EvilEye" type="CharacterBody2D" unique_id=1039967585 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_63mvx")
-damage = 1
-health = 4
-collision_flipper = NodePath("HFlipper")
 metadata/_custom_type_script = "uid://cq4cp0ephf28m"
+
+[node name="Components" type="Node" parent="." unique_id=109311406]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=2039419952 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("2_p3edg")
+hitboxes = [NodePath("../../HFlipper/Hitbox")]
+metadata/_custom_type_script = "uid://3efjtavajs73"
+
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=338738258]
+unique_name_in_owner = true
+script = ExtResource("3_6ercq")
+attack_cooldown_time = 3.0
+metadata/_custom_type_script = "uid://55kd23rv8x1m"
+
+[node name="DieComponent" type="Node" parent="Components" unique_id=1340485503 node_paths=PackedStringArray("drop_pickup_component")]
+unique_name_in_owner = true
+script = ExtResource("4_suk0d")
+drop_pickup_component = NodePath("../DropPickupComponent")
+metadata/_custom_type_script = "uid://rj0mqvst1uto"
+
+[node name="DirectionComponent" type="Node" parent="Components" unique_id=497244143 node_paths=PackedStringArray("collision_flipper")]
+unique_name_in_owner = true
+script = ExtResource("5_7trfg")
+collision_flipper = NodePath("../../HFlipper")
+metadata/_custom_type_script = "uid://c6l451cktvns1"
+
+[node name="DropPickupComponent" type="Node" parent="Components" unique_id=1589091625 node_paths=PackedStringArray("spawnpoint")]
+unique_name_in_owner = true
+script = ExtResource("6_5f3o8")
+spawnpoint = NodePath("../../HFlipper/ManaBallSpawnpointPivot/ManaBallSpawnpoint")
+metadata/_custom_type_script = "uid://d3oihvd1ntki6"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1366734938]
+unique_name_in_owner = true
+script = ExtResource("7_jq20t")
+health = 4
+metadata/_custom_type_script = "uid://bi4cnikpklgpw"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=972539589 node_paths=PackedStringArray("shield_component", "health_component")]
+unique_name_in_owner = true
+script = ExtResource("8_p345k")
+shield_component = NodePath("../ShieldComponent")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cnkur4362f720"
+
+[node name="RangedComponent" type="Node" parent="Components" unique_id=1136384401 node_paths=PackedStringArray("shootpoint")]
+unique_name_in_owner = true
+script = ExtResource("9_ahob7")
+shootpoint = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
+metadata/_custom_type_script = "uid://dky831d4qajmh"
+
+[node name="ShieldComponent" type="Node" parent="Components" unique_id=2054819027]
+unique_name_in_owner = true
+script = ExtResource("10_rp04m")
+metadata/_custom_type_script = "uid://cekcy30nqoa84"
+
+[node name="SpeedComponent" type="Node" parent="Components" unique_id=226275250]
+unique_name_in_owner = true
+script = ExtResource("11_8arae")
+metadata/_custom_type_script = "uid://c4gmsxn3jgj5j"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1273944709 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_63mvx")
 initial_state = NodePath("Active")
 metadata/_custom_type_script = "uid://c84gf7p53ks4j"
 
-[node name="Active" type="Node" parent="StateMachine" unique_id=1729363182 node_paths=PackedStringArray("hitbox", "attack_cooldown_timer", "shooting_point")]
+[node name="Active" type="Node" parent="StateMachine" unique_id=1729363182 node_paths=PackedStringArray("attack_cooldown_component", "attack_component", "direction_component", "ranged_component", "hit_processing_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("3_0qs3w")
-hitbox = NodePath("../../HFlipper/Hitbox")
-attack_cooldown_timer = NodePath("../../AttackCooldown")
-shooting_point = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
+attack_cooldown_component = NodePath("../../Components/AttackCooldownComponent")
+attack_component = NodePath("../../Components/AttackComponent")
+direction_component = NodePath("../../Components/DirectionComponent")
+ranged_component = NodePath("../../Components/RangedComponent")
+hit_processing_component = NodePath("../../Components/HitProcessingComponent")
+health_component = NodePath("../../Components/HealthComponent")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("sprite_animator", "next_state", "collision_animator")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("sprite_animator", "speed_component", "hit_processing_component", "health_component", "next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_63mvx")
 sprite_animator = NodePath("../../Animator/EnemySpriteAnimator")
+speed_component = NodePath("../../Components/SpeedComponent")
+hit_processing_component = NodePath("../../Components/HitProcessingComponent")
+health_component = NodePath("../../Components/HealthComponent")
 next_state = NodePath("../Active")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("visible_on_screen_enabler", "speed_component", "die_component", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_2bx7d")
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+speed_component = NodePath("../../Components/SpeedComponent")
+die_component = NodePath("../../Components/DieComponent")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
@@ -477,12 +553,12 @@ sprite_frames = SubResource("SpriteFrames_w7awd")
 animation = &"hurt"
 autoplay = "idle"
 
-[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_db2ij")
 script = ExtResource("6_eqhhe")
 sprite = NodePath("../AnimatedSprite2D")
-default_direction = 0
+direction_component = NodePath("../../Components/DirectionComponent")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
@@ -532,12 +608,6 @@ position = Vector2(-7, -35)
 
 [node name="ManaBallSpawnpoint" type="Marker2D" parent="HFlipper/ManaBallSpawnpointPivot" unique_id=1406785825]
 position = Vector2(0, -29)
-
-[node name="AttackCooldown" type="Timer" parent="." unique_id=2144797925]
-unique_name_in_owner = true
-process_callback = 0
-wait_time = 3.0
-one_shot = true
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1281298940]
 rect = Rect2(-19, -42, 37, 42)

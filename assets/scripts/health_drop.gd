@@ -8,7 +8,9 @@ var timer: SceneTreeTimer
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == GameManager.player:
-		GameManager.player.health += 1
+		var player_health_component: PlayerHealthComponent = \
+			Util.get_component(GameManager.player, "HealthComponent")
+		player_health_component.health += 1
 		queue_free()
 
 func _ready() -> void:

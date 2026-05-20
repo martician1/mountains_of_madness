@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://x677wyfghncw"]
 
 [ext_resource type="Script" uid="uid://cq4cp0ephf28m" path="res://assets/scripts/enemies/enemy.gd" id="1_gp0lb"]
+[ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="2_c1f1i"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_tnqhw"]
+[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="3_8rn84"]
 [ext_resource type="Script" uid="uid://dgdtypuqnwxub" path="res://assets/scripts/enemies/ranged/active.gd" id="3_iiwne"]
+[ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_3cqe0"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="4_fd427"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="5_31v27"]
+[ext_resource type="Script" uid="uid://c6l451cktvns1" path="res://assets/scripts/enemies/components/enemy_direction_component.gd" id="5_ljoej"]
+[ext_resource type="Script" uid="uid://d3oihvd1ntki6" path="res://assets/scripts/enemies/components/enemy_drop_pickup_component.gd" id="6_aabfc"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="7_gbad6"]
+[ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="7_pby3o"]
 [ext_resource type="Texture2D" uid="uid://dxwwfje5dl2qa" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Burning Skull.png" id="7_tnqhw"]
+[ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_1wp05"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="8_ykjax"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="9_pu1xa"]
+[ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_u1fud"]
+[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_g7tgk"]
+[ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_dlfrm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gp0lb"]
 atlas = ExtResource("7_tnqhw")
@@ -439,39 +449,105 @@ size = Vector2(28, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0f8q"]
 size = Vector2(20, 26)
 
-[node name="Skull" type="CharacterBody2D" unique_id=599968273 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
+[node name="Skull" type="CharacterBody2D" unique_id=599968273 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_gp0lb")
-damage = 1
-collision_flipper = NodePath("HFlipper")
 metadata/_custom_type_script = "uid://cq4cp0ephf28m"
+
+[node name="Components" type="Node" parent="." unique_id=182388453]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=164929805 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("2_c1f1i")
+hitboxes = [NodePath("../../HFlipper/Hitbox")]
+metadata/_custom_type_script = "uid://3efjtavajs73"
+
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=1996605027]
+unique_name_in_owner = true
+script = ExtResource("3_8rn84")
+attack_cooldown_time = 3.0
+metadata/_custom_type_script = "uid://55kd23rv8x1m"
+
+[node name="DieComponent" type="Node" parent="Components" unique_id=1036801 node_paths=PackedStringArray("drop_pickup_component")]
+unique_name_in_owner = true
+script = ExtResource("4_3cqe0")
+drop_pickup_component = NodePath("../DropPickupComponent")
+metadata/_custom_type_script = "uid://rj0mqvst1uto"
+
+[node name="DirectionComponent" type="Node" parent="Components" unique_id=1724241368 node_paths=PackedStringArray("collision_flipper")]
+unique_name_in_owner = true
+script = ExtResource("5_ljoej")
+collision_flipper = NodePath("../../HFlipper")
+metadata/_custom_type_script = "uid://c6l451cktvns1"
+
+[node name="DropPickupComponent" type="Node" parent="Components" unique_id=278753905 node_paths=PackedStringArray("spawnpoint")]
+unique_name_in_owner = true
+script = ExtResource("6_aabfc")
+spawnpoint = NodePath("../../HFlipper/ManaBallSpawnpointPivot/ManaBallSpawnpoint")
+metadata/_custom_type_script = "uid://d3oihvd1ntki6"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=999352272]
+unique_name_in_owner = true
+script = ExtResource("7_pby3o")
+metadata/_custom_type_script = "uid://bi4cnikpklgpw"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1258743725 node_paths=PackedStringArray("shield_component", "health_component")]
+unique_name_in_owner = true
+script = ExtResource("8_1wp05")
+shield_component = NodePath("../ShieldComponent")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cnkur4362f720"
+
+[node name="RangedComponent" type="Node" parent="Components" unique_id=1647376776 node_paths=PackedStringArray("shootpoint")]
+unique_name_in_owner = true
+script = ExtResource("9_u1fud")
+shootpoint = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
+metadata/_custom_type_script = "uid://dky831d4qajmh"
+
+[node name="ShieldComponent" type="Node" parent="Components" unique_id=1762359337]
+unique_name_in_owner = true
+script = ExtResource("10_g7tgk")
+metadata/_custom_type_script = "uid://cekcy30nqoa84"
+
+[node name="SpeedComponent" type="Node" parent="Components" unique_id=325782524]
+unique_name_in_owner = true
+script = ExtResource("11_dlfrm")
+metadata/_custom_type_script = "uid://c4gmsxn3jgj5j"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1273944709 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_tnqhw")
 initial_state = NodePath("Active")
 metadata/_custom_type_script = "uid://c84gf7p53ks4j"
 
-[node name="Active" type="Node" parent="StateMachine" unique_id=1729363182 node_paths=PackedStringArray("hitbox", "attack_cooldown_timer", "shooting_point")]
+[node name="Active" type="Node" parent="StateMachine" unique_id=1729363182 node_paths=PackedStringArray("attack_cooldown_component", "attack_component", "direction_component", "ranged_component", "hit_processing_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("3_iiwne")
-hitbox = NodePath("../../HFlipper/Hitbox")
-attack_cooldown_timer = NodePath("../../AttackCooldown")
-shooting_point = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
+attack_cooldown_component = NodePath("../../Components/AttackCooldownComponent")
+attack_component = NodePath("../../Components/AttackComponent")
+direction_component = NodePath("../../Components/DirectionComponent")
+ranged_component = NodePath("../../Components/RangedComponent")
+hit_processing_component = NodePath("../../Components/HitProcessingComponent")
+health_component = NodePath("../../Components/HealthComponent")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("sprite_animator", "next_state", "collision_animator")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2028140702 node_paths=PackedStringArray("sprite_animator", "speed_component", "hit_processing_component", "health_component", "next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("4_fd427")
 sprite_animator = NodePath("../../Animator/EnemySpriteAnimator")
+speed_component = NodePath("../../Components/SpeedComponent")
+hit_processing_component = NodePath("../../Components/HitProcessingComponent")
+health_component = NodePath("../../Components/HealthComponent")
 next_state = NodePath("../Active")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=717246468 node_paths=PackedStringArray("visible_on_screen_enabler", "speed_component", "die_component", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("5_31v27")
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+speed_component = NodePath("../../Components/SpeedComponent")
+die_component = NodePath("../../Components/DieComponent")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
@@ -483,12 +559,12 @@ sprite_frames = SubResource("SpriteFrames_w7awd")
 animation = &"hurt"
 autoplay = "idle"
 
-[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_db2ij")
 script = ExtResource("7_gbad6")
 sprite = NodePath("../AnimatedSprite2D")
-default_direction = 0
+direction_component = NodePath("../../Components/DirectionComponent")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 

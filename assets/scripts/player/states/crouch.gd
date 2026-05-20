@@ -2,6 +2,9 @@ extends State
 
 @onready var player: Player = get_owner()
 @onready var state_machine: PlayerStateMachine = %StateMachine
+@onready var direction_component: DirectionComponent = %DirectionComponent
+@onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
+@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
 
 func enter() -> void:
 	player.velocity.x = 0
@@ -14,10 +17,10 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	if player.process_last_hit():
+	if hit_processing_component.process_last_hit():
 		return %Hurt
 	
-	if player.attack_cooldown_timer.time_left == 0:
+	if not attack_cooldown_component.is_attack_cooldown_active():
 		if state_machine.consume_super_attack_input():
 			return %SuperAttack
 		if Input.is_action_just_pressed("attack"):
@@ -26,7 +29,7 @@ func handle_input() -> State:
 	if not Input.is_action_pressed("crouch"):
 		return %Movement
 
-	player.direction.x = Input.get_axis("strafe_left", "strafe_right")
+	direction_component.direction.x = Input.get_axis("strafe_left", "strafe_right")
 	return self
 
 func get_animation() -> String:

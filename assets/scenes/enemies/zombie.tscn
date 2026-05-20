@@ -2,14 +2,24 @@
 
 [ext_resource type="Script" uid="uid://c4n4uvv6kem5g" path="res://assets/scripts/enemies/zombie/zombie.gd" id="1_fi5dy"]
 [ext_resource type="Texture2D" uid="uid://dkjhwcl2y8pun" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned covered.png" id="2_82ixa"]
+[ext_resource type="Script" uid="uid://u38qcy1pbxkw" path="res://assets/scripts/enemies/components/enemy_alert_radius_component.gd" id="2_e4i3r"]
 [ext_resource type="Script" uid="uid://debei0draolkk" path="res://assets/scripts/enemies/zombie/state_machine.gd" id="2_gpvkm"]
 [ext_resource type="Script" uid="uid://db120mv3abscm" path="res://assets/scripts/enemies/zombie/active.gd" id="3_cnys6"]
+[ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="3_i2j4j"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="3_yr2y0"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="4_82ixa"]
+[ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_ere6r"]
 [ext_resource type="Script" uid="uid://cfihkf7375ojo" path="res://assets/scripts/enemies/zombie/attack.gd" id="4_gpvkm"]
+[ext_resource type="Script" uid="uid://c6l451cktvns1" path="res://assets/scripts/enemies/components/enemy_direction_component.gd" id="5_18q57"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="5_fi5dy"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="6_0tdg6"]
+[ext_resource type="Script" uid="uid://d3oihvd1ntki6" path="res://assets/scripts/enemies/components/enemy_drop_pickup_component.gd" id="6_d0xo7"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="6_vg744"]
+[ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="7_ifv36"]
+[ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_l6vbe"]
+[ext_resource type="Script" uid="uid://c7bc3sldse5kp" path="res://assets/scripts/enemies/components/enemy_position_detection_component.gd" id="9_emoi2"]
+[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_ag51h"]
+[ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_b5vwp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hon51"]
 atlas = ExtResource("2_82ixa")
@@ -687,16 +697,73 @@ size = Vector2(16, 41.666664)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82ixa"]
 size = Vector2(12, 42)
 
-[node name="Zombie" type="CharacterBody2D" unique_id=417020441 node_paths=PackedStringArray("collision_flipper") groups=["enemy"]]
+[node name="Zombie" type="CharacterBody2D" unique_id=417020441 groups=["enemy"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("1_fi5dy")
-alert_radius = 1000.0
-damage = 1
+
+[node name="Components" type="Node" parent="." unique_id=482846390]
+
+[node name="AlertRadiusComponent" type="Node" parent="Components" unique_id=179758262]
+unique_name_in_owner = true
+script = ExtResource("2_e4i3r")
+metadata/_custom_type_script = "uid://u38qcy1pbxkw"
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=695128524 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("3_i2j4j")
+hitboxes = [NodePath("../../HFlipper/AttackHitbox"), NodePath("../../HFlipper/BodyHitbox")]
+metadata/_custom_type_script = "uid://3efjtavajs73"
+
+[node name="DieComponent" type="Node" parent="Components" unique_id=917647904 node_paths=PackedStringArray("drop_pickup_component")]
+unique_name_in_owner = true
+script = ExtResource("4_ere6r")
+drop_pickup_component = NodePath("../DropPickupComponent")
+metadata/_custom_type_script = "uid://rj0mqvst1uto"
+
+[node name="DirectionComponent" type="Node" parent="Components" unique_id=156414790 node_paths=PackedStringArray("collision_flipper")]
+unique_name_in_owner = true
+script = ExtResource("5_18q57")
+collision_flipper = NodePath("../../HFlipper")
+metadata/_custom_type_script = "uid://c6l451cktvns1"
+
+[node name="DropPickupComponent" type="Node" parent="Components" unique_id=1144018943 node_paths=PackedStringArray("spawnpoint")]
+unique_name_in_owner = true
+script = ExtResource("6_d0xo7")
+spawnpoint = NodePath("../../HFlipper/ManaBallSpawnpointPivot/ManaBallSpawnpoint")
+metadata/_custom_type_script = "uid://d3oihvd1ntki6"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=2024159686]
+unique_name_in_owner = true
+script = ExtResource("7_ifv36")
 health = 8
+metadata/_custom_type_script = "uid://bi4cnikpklgpw"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=415881894 node_paths=PackedStringArray("shield_component", "health_component")]
+unique_name_in_owner = true
+script = ExtResource("8_l6vbe")
+shield_component = NodePath("../ShieldComponent")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cnkur4362f720"
+
+[node name="PositionDetectionComponent" type="Node" parent="Components" unique_id=893910422 node_paths=PackedStringArray("direction_component")]
+unique_name_in_owner = true
+script = ExtResource("9_emoi2")
+collision_mask = 256
+direction_component = NodePath("../DirectionComponent")
+metadata/_custom_type_script = "uid://c7bc3sldse5kp"
+
+[node name="ShieldComponent" type="Node" parent="Components" unique_id=1815911379]
+unique_name_in_owner = true
+script = ExtResource("10_ag51h")
+metadata/_custom_type_script = "uid://cekcy30nqoa84"
+
+[node name="SpeedComponent" type="Node" parent="Components" unique_id=1311442568]
+unique_name_in_owner = true
+script = ExtResource("11_b5vwp")
 speed = 40.0
-collision_flipper = NodePath("HFlipper")
+metadata/_custom_type_script = "uid://c4gmsxn3jgj5j"
 
 [node name="StateMachine" type="Node" parent="." unique_id=866522181 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -716,17 +783,22 @@ animation_name = "attack"
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://mvoo2eonwech"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("visible_on_screen_enabler", "collision_animator")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=514397544 node_paths=PackedStringArray("visible_on_screen_enabler", "speed_component", "die_component", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("6_0tdg6")
 visible_on_screen_enabler = NodePath("../../VisibleOnScreenEnabler2D")
+speed_component = NodePath("../../Components/SpeedComponent")
+die_component = NodePath("../../Components/DieComponent")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://rprt7a0ohqif"
 
-[node name="Hurt" type="Node" parent="StateMachine" unique_id=1986497200 node_paths=PackedStringArray("sprite_animator", "next_state", "collision_animator")]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1986497200 node_paths=PackedStringArray("sprite_animator", "speed_component", "hit_processing_component", "health_component", "next_state", "collision_animator")]
 unique_name_in_owner = true
 script = ExtResource("6_vg744")
 sprite_animator = NodePath("../../Animator/SpriteAnimator")
+speed_component = NodePath("../../Components/SpeedComponent")
+hit_processing_component = NodePath("../../Components/HitProcessingComponent")
+health_component = NodePath("../../Components/HealthComponent")
 next_state = NodePath("../Active")
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
@@ -734,18 +806,18 @@ metadata/_custom_type_script = "uid://bqnytxgbhrqnr"
 [node name="Animator" type="Node2D" parent="." unique_id=162325613]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1559458086]
-position = Vector2(0, -32.5)
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_vg744")
 animation = &"hurt"
 frame = 2
 
-[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1926980389 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 unique_name_in_owner = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_mjjx3")
 script = ExtResource("3_yr2y0")
 sprite = NodePath("../AnimatedSprite2D")
-default_direction = 0
+direction_component = NodePath("../../Components/DirectionComponent")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 

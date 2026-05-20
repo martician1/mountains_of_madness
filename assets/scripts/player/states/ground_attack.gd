@@ -2,6 +2,10 @@ extends State
 class_name GroundAttackState
 
 @onready var player: Player = get_owner()
+@onready var attack_component: PlayerAttackComponent = %AttackComponent
+@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
+@onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
+
 var combo = 0
 enum QueuedAction {
 	ATTACK,
@@ -24,11 +28,11 @@ func exit() -> void:
 	if collision_animator.animation_finished.is_connected(_on_attack_finished):
 		collision_animator.animation_finished.disconnect(_on_attack_finished)
 
-	player.attack_cooldown_timer.start()
+	attack_cooldown_component.start_attack_cooldown()
 	action_queue.clear()
 
 func update(delta: float) -> State:
-	player.attack_enemies(player.melee_damage, combo == player.max_ground_attack_combo)
+	attack_component.attack_targets(player.melee_damage, combo == player.max_ground_attack_combo)
 	if not player.is_on_floor():
 		player.velocity += player.get_gravity() * delta
 
@@ -36,7 +40,7 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
-	if player.process_last_hit():
+	if hit_processing_component.process_last_hit():
 		return %Hurt
 	if Input.is_action_just_pressed("attack"):
 		action_queue.append(QueuedAction.ATTACK)

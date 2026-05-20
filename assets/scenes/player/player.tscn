@@ -13,15 +13,24 @@
 [ext_resource type="Script" uid="uid://beyywdikkg1j4" path="res://assets/scripts/player/states/player_one_shot_animation_state.gd" id="11_rt1xo"]
 [ext_resource type="Script" uid="uid://dwet45qf1xvxm" path="res://assets/scripts/player/states/plunge_attack.gd" id="12_86pyr"]
 [ext_resource type="Script" uid="uid://c4p4v240wafdb" path="res://assets/scripts/player/states/landing.gd" id="13_8l2ex"]
+[ext_resource type="Script" uid="uid://broi2708jk76i" path="res://assets/scripts/player/components/player_attack_component.gd" id="14_2m2ie"]
 [ext_resource type="Script" uid="uid://0utl20adl21h" path="res://assets/scripts/player/states/hurt.gd" id="14_vn88y"]
+[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="15_lg2mx"]
 [ext_resource type="Script" uid="uid://guqym2tv7iey" path="res://assets/scripts/player/states/dying.gd" id="15_rt1xo"]
 [ext_resource type="Script" uid="uid://lovcbugfx10l" path="res://assets/scripts/player/states/super_attack.gd" id="16_avvtr"]
+[ext_resource type="Script" uid="uid://d1byyeph4srjv" path="res://assets/scripts/components/direction_component.gd" id="16_avyy0"]
+[ext_resource type="Script" uid="uid://c6l8pukus03kf" path="res://assets/scripts/player/components/player_health_component.gd" id="17_0so5g"]
 [ext_resource type="Texture2D" uid="uid://g51ohx10oe70" path="res://assets/sprites/Dark Knight 2/Sprites/AirAttack1.png" id="17_tstuq"]
+[ext_resource type="Script" uid="uid://kfwnhfimqja1" path="res://assets/scripts/player/components/player_hit_processing_component.gd" id="18_6vtmt"]
 [ext_resource type="Texture2D" uid="uid://csefk3s1mbagg" path="res://assets/sprites/Dark Knight 2/Sprites/AirAttack2.png" id="18_r2oq8"]
 [ext_resource type="Texture2D" uid="uid://htdehq5j23t8" path="res://assets/sprites/Dark Knight 2/Sprites/Attack1.png" id="19_2m2ie"]
+[ext_resource type="Script" uid="uid://bx24vr7kyh5y2" path="res://assets/scripts/player/components/player_mana_component.gd" id="19_70ltp"]
+[ext_resource type="Script" uid="uid://b5gtp6ep1vaal" path="res://assets/scripts/player/components/player_process_burning_component.gd" id="20_0nvh1"]
 [ext_resource type="Texture2D" uid="uid://dwvmb8oiodajn" path="res://assets/sprites/Dark Knight 2/Sprites/Attack2.png" id="20_lg2mx"]
 [ext_resource type="Texture2D" uid="uid://clarsiy0v0rjj" path="res://assets/sprites/Dark Knight 2/Sprites/Attack3.png" id="21_avyy0"]
+[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="21_iajob"]
 [ext_resource type="Texture2D" uid="uid://bhcn52r1f4vx4" path="res://assets/sprites/Dark Knight 2/Sprites/Crouch.png" id="22_0so5g"]
+[ext_resource type="Script" uid="uid://gd4lajk2i7j5" path="res://assets/scripts/player/components/player_super_attack_component.gd" id="22_s6pxm"]
 [ext_resource type="Texture2D" uid="uid://csmtrv1rlbmfc" path="res://assets/sprites/Dark Knight 2/Sprites/Crouch attack.png" id="23_6vtmt"]
 [ext_resource type="Texture2D" uid="uid://qusqufj8gl06" path="res://assets/sprites/Dark Knight 2/Sprites/Death.png" id="24_70ltp"]
 [ext_resource type="Texture2D" uid="uid://pr5lu7v2sfil" path="res://assets/sprites/Dark Knight 2/Sprites/Fall.png" id="25_0nvh1"]
@@ -38,14 +47,14 @@
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="36_2nkwv"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="37_2xwd8"]
 
-[sub_resource type="Resource" id="Resource_5308x"]
+[sub_resource type="Resource" id="Resource_qxa87"]
 script = ExtResource("2_lx1qx")
 mana = 5
 ui_texture = ExtResource("3_rhlmh")
 scene_path = "res://assets/scenes/super_attacks/fireball_super_attack.tscn"
 metadata/_custom_type_script = "uid://dd4aopwlbebui"
 
-[sub_resource type="Resource" id="Resource_0rf7b"]
+[sub_resource type="Resource" id="Resource_8i2ac"]
 script = ExtResource("2_lx1qx")
 mana = 7
 ui_texture = ExtResource("4_o4mve")
@@ -2424,17 +2433,70 @@ height = 52.0
 z_index = 100
 collision_mask = 256
 script = ExtResource("1_rt1xo")
-max_health = 14
-health = 14
-max_mana = 32
-mana = 0
 speed = 140.0
 jump_speed = 320.0
-super_attacks = Array[ExtResource("2_lx1qx")]([SubResource("Resource_5308x"), SubResource("Resource_0rf7b")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1618531626]
 position_smoothing_enabled = true
 editor_draw_drag_margin = true
+
+[node name="Components" type="Node" parent="." unique_id=1656815865]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=460765580 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("14_2m2ie")
+hitboxes = [NodePath("../../CollisionFlipper/Hitbox")]
+metadata/_custom_type_script = "uid://broi2708jk76i"
+
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=745833293]
+unique_name_in_owner = true
+script = ExtResource("15_lg2mx")
+attack_cooldown_time = 0.001
+metadata/_custom_type_script = "uid://55kd23rv8x1m"
+
+[node name="DirectionComponent" type="Node" parent="Components" unique_id=318749359 node_paths=PackedStringArray("collision_flipper")]
+unique_name_in_owner = true
+script = ExtResource("16_avyy0")
+default_horizontal_direction = 1
+collision_flipper = NodePath("../../CollisionFlipper")
+metadata/_custom_type_script = "uid://d1byyeph4srjv"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=98544062]
+unique_name_in_owner = true
+script = ExtResource("17_0so5g")
+health = 14
+metadata/_custom_type_script = "uid://c6l8pukus03kf"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=824413045 node_paths=PackedStringArray("shield_component", "health_component")]
+unique_name_in_owner = true
+script = ExtResource("18_6vtmt")
+shield_component = NodePath("../ShieldComponent")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://kfwnhfimqja1"
+
+[node name="ManaComponent" type="Node" parent="Components" unique_id=1133401767]
+unique_name_in_owner = true
+script = ExtResource("19_70ltp")
+metadata/_custom_type_script = "uid://bx24vr7kyh5y2"
+
+[node name="ProcessBurningComponent" type="Node" parent="Components" unique_id=897367401 node_paths=PackedStringArray("hit_processing_component", "hurtboxes")]
+unique_name_in_owner = true
+script = ExtResource("20_0nvh1")
+hit_processing_component = NodePath("../HitProcessingComponent")
+hurtboxes = [NodePath("../../CollisionFlipper/Hurtbox")]
+metadata/_custom_type_script = "uid://b5gtp6ep1vaal"
+
+[node name="ShieldComponent" type="Node" parent="Components" unique_id=1543010855]
+unique_name_in_owner = true
+script = ExtResource("21_iajob")
+shield_cooldown_time = 1.0
+metadata/_custom_type_script = "uid://cekcy30nqoa84"
+
+[node name="SuperAttackComponent" type="Node" parent="Components" unique_id=1485021532]
+unique_name_in_owner = true
+script = ExtResource("22_s6pxm")
+super_attacks = Array[ExtResource("2_lx1qx")]([SubResource("Resource_qxa87"), SubResource("Resource_8i2ac")])
+metadata/_custom_type_script = "uid://gd4lajk2i7j5"
 
 [node name="StateMachine" type="Node" parent="." unique_id=1582184055 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -2513,10 +2575,11 @@ position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_omckb")
 animation = &"attack_1"
 
-[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1879230433 node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="SpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=1879230433 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 libraries/ = SubResource("AnimationLibrary_lg2mx")
 script = ExtResource("35_rt1xo")
 sprite = NodePath("../AnimatedSprite2D")
+direction_component = NodePath("../../Components/DirectionComponent")
 state_machine = NodePath("../../StateMachine")
 metadata/_custom_type_script = "uid://07j6fcvm3sn5"
 
@@ -2563,18 +2626,3 @@ position = Vector2(0, -26)
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=922480274]
 position = Vector2(0, -26)
 shape = SubResource("CapsuleShape2D_3mip4")
-
-[node name="AttackCooldown" type="Timer" parent="." unique_id=152666651]
-unique_name_in_owner = true
-process_callback = 0
-wait_time = 0.001
-one_shot = true
-
-[node name="ShieldCooldown" type="Timer" parent="." unique_id=34064950]
-unique_name_in_owner = true
-process_callback = 0
-one_shot = true
-
-[connection signal="body_entered" from="CollisionFlipper/Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="body_exited" from="CollisionFlipper/Hurtbox" to="." method="_on_hurtbox_body_exited"]
-[connection signal="timeout" from="ShieldCooldown" to="Animator/SpriteAnimator" method="_on_shield_cooldown_timeout"]

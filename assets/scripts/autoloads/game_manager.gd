@@ -64,9 +64,9 @@ func reload_level():
 	load_level(level_path)
 
 func quit_level():
+	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 	change_player(null)
 	change_level(null)
-	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 
 func _on_level_failed():
 	level.level_finished.disconnect(_on_level_finished)

@@ -18,22 +18,32 @@ func _ready():
 	_on_player_changed(null, GameManager.player)
 
 func _on_player_changed(old_player: Player, new_player: Player):
+	var old_super_attack_component: PlayerSuperAttackComponent
+	var new_super_attack_component: PlayerSuperAttackComponent
+
 	if old_player:
-		old_player.selected_super_attack_changed.disconnect(_on_selected_super_attack_change)
+		old_super_attack_component = Util.get_component(old_player, \"SuperAttackComponent\")
+		old_super_attack_component.selected_super_attack_changed.disconnect(
+			_on_selected_super_attack_change
+		)
 	if new_player:
-		new_player.selected_super_attack_changed.connect(_on_selected_super_attack_change)
+		new_super_attack_component = Util.get_component(new_player, \"SuperAttackComponent\")
+		new_super_attack_component.selected_super_attack_changed.connect(
+			_on_selected_super_attack_change
+		)
+
 	_on_selected_super_attack_change(
-		old_player.selected_super_attack if old_player else null,
-		new_player.selected_super_attack if new_player else null
+		old_super_attack_component.selected_super_attack if old_super_attack_component else null,
+		new_super_attack_component.selected_super_attack if new_super_attack_component else null
 	)
 
 func _on_selected_super_attack_change(_old: SuperAttackData, _new: SuperAttackData):
 	update_super_attack()
 
 func update_super_attack():
-	var player := GameManager.player
-	if player and player.selected_super_attack:
-		$SuperAttackTexture.texture = player.selected_super_attack.ui_texture
+	if GameManager.player:
+		var super_attack_component = Util.get_component(GameManager.player, \"SuperAttackComponent\")
+		$SuperAttackTexture.texture = super_attack_component.selected_super_attack.ui_texture
 "
 
 [node name="HUD" type="Control" unique_id=1066277096]
