@@ -5,7 +5,7 @@ signal level_changed(old: Level, new: Level)
 
 var player: Player
 var level: Level
-var level_path: String
+var current_level_number: int
 @export var level_fadeout_time := 1.0
 var level_start_time: int
 var level_finish_time: int
@@ -14,6 +14,8 @@ var gameplay_scene: PackedScene = preload("res://assets/scenes/gameplay.tscn")
 var end_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/end_level_menu.tscn")
 var fail_level_menu_scene: PackedScene = preload("res://assets/scenes/ui/fail_level_menu.tscn")
 var player_scene: PackedScene = preload("res://assets/scenes/player/player.tscn")
+
+const level_dir = "res://assets/scenes/levels"
 
 func change_player(new_player: Player):
 	if new_player != null:
@@ -43,10 +45,11 @@ func change_level(new_level: Level):
 		remove_child(old_level)
 		old_level.queue_free()
 
-func load_level(path: String):
+func load_level(n: int):
+	var path = "%s/level_%d.tscn" % [level_dir, n]
 	change_player(player_scene.instantiate())
 	change_level(load(path).instantiate())
-	level_path = path
+	current_level_number = n
 	
 	var camera = get_viewport().get_camera_2d()
 	camera.limit_bottom = int(level.bottom_left.position.y)
@@ -60,7 +63,7 @@ func load_level(path: String):
 	level_start_time = int(Time.get_unix_time_from_system())
 
 func reload_level():
-	load_level(level_path)
+	load_level(current_level_number)
 
 func quit_level():
 	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
@@ -84,6 +87,9 @@ func _on_level_finished():
 	level.level_failed.disconnect(_on_level_failed)
 
 	level_finish_time = int(Time.get_unix_time_from_system())
+
+	GameState.highest_level = max(GameState.highest_level, current_level_number + 1)
+
 	var end_level_menu: EndLevelMenu = end_level_menu_scene.instantiate()
 
 	end_level_menu.enemies_killed = player.enemies_killed

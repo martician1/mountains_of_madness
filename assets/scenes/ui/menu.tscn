@@ -86,7 +86,13 @@ offset_bottom = 356.0
 theme = ExtResource("3_l0v2w")
 text = "BACK"
 
-[node name="Pin10" parent="LevelMenu" unique_id=65156346 instance=ExtResource("4_0wlwb")]
+[node name="Pins" type="Control" parent="LevelMenu" unique_id=1927781816]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pin10" parent="LevelMenu/Pins" unique_id=283159754 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 302.0
 offset_top = 110.0
@@ -94,16 +100,20 @@ offset_right = 322.0
 offset_bottom = 140.0
 pin_data = ExtResource("5_q8r6g")
 variant = 2
+level_number = 10
+status = 2
 
-[node name="Pin9" parent="LevelMenu" unique_id=1766948345 instance=ExtResource("4_0wlwb")]
+[node name="Pin9" parent="LevelMenu/Pins" unique_id=65131275 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 344.0
 offset_top = 129.0
 offset_right = 364.0
 offset_bottom = 159.0
 pin_data = ExtResource("5_q8r6g")
+level_number = 9
+status = 2
 
-[node name="Pin8" parent="LevelMenu" unique_id=149714828 instance=ExtResource("4_0wlwb")]
+[node name="Pin8" parent="LevelMenu/Pins" unique_id=484291672 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 296.0
 offset_top = 139.0
@@ -111,25 +121,27 @@ offset_right = 316.0
 offset_bottom = 169.0
 pin_data = ExtResource("5_q8r6g")
 variant = 1
+level_number = 8
 
-[node name="Pin7" parent="LevelMenu" unique_id=188961863 instance=ExtResource("4_0wlwb")]
+[node name="Pin7" parent="LevelMenu/Pins" unique_id=657264642 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 275.0
 offset_top = 153.0
 offset_right = 295.0
 offset_bottom = 183.0
 pin_data = ExtResource("5_q8r6g")
+level_number = 7
 
-[node name="Pin6" parent="LevelMenu" unique_id=592108306 instance=ExtResource("4_0wlwb")]
+[node name="Pin6" parent="LevelMenu/Pins" unique_id=249193589 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 324.0
 offset_top = 171.0
 offset_right = 344.0
 offset_bottom = 201.0
 pin_data = ExtResource("5_q8r6g")
-level_path = "res://assets/scenes/levels/level_6.tscn"
+level_number = 6
 
-[node name="Pin5" parent="LevelMenu" unique_id=292486355 instance=ExtResource("4_0wlwb")]
+[node name="Pin5" parent="LevelMenu/Pins" unique_id=407675307 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 194.0
@@ -137,18 +149,18 @@ offset_right = 320.0
 offset_bottom = 224.0
 pin_data = ExtResource("5_q8r6g")
 variant = 2
-level_path = "res://assets/scenes/levels/level_5.tscn"
+level_number = 5
 
-[node name="Pin4" parent="LevelMenu" unique_id=176347607 instance=ExtResource("4_0wlwb")]
+[node name="Pin4" parent="LevelMenu/Pins" unique_id=593710429 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 213.0
 offset_right = 280.0
 offset_bottom = 243.0
 pin_data = ExtResource("5_q8r6g")
-level_path = "res://assets/scenes/levels/level_4.tscn"
+level_number = 4
 
-[node name="Pin3" parent="LevelMenu" unique_id=1582333494 instance=ExtResource("4_0wlwb")]
+[node name="Pin3" parent="LevelMenu/Pins" unique_id=1154853383 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 242.0
 offset_top = 243.0
@@ -156,25 +168,25 @@ offset_right = 262.0
 offset_bottom = 273.0
 pin_data = ExtResource("5_q8r6g")
 variant = 1
-level_path = "res://assets/scenes/levels/level_3.tscn"
+level_number = 3
 
-[node name="Pin2" parent="LevelMenu" unique_id=283159754 instance=ExtResource("4_0wlwb")]
+[node name="Pin2" parent="LevelMenu/Pins" unique_id=1022568329 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 284.0
 offset_top = 270.0
 offset_right = 304.0
 offset_bottom = 300.0
 pin_data = ExtResource("5_q8r6g")
-level_path = "res://assets/scenes/levels/level_2.tscn"
+level_number = 2
 
-[node name="Pin" parent="LevelMenu" unique_id=312753358 instance=ExtResource("4_0wlwb")]
+[node name="Pin1" parent="LevelMenu/Pins" unique_id=903511932 instance=ExtResource("4_0wlwb")]
 layout_mode = 0
 offset_left = 328.0
 offset_top = 300.0
 offset_right = 348.0
 offset_bottom = 330.0
 pin_data = ExtResource("5_q8r6g")
-level_path = "res://assets/scenes/levels/level_1.tscn"
+level_number = 1
 
 [connection signal="button_up" from="StartMenu/VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="button_up" from="StartMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_button_up"]
