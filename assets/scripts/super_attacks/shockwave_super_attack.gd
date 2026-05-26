@@ -24,9 +24,8 @@ func hit_enemies() -> void:
 	query.collide_with_areas = true
 
 	for hurtbox in get_world_2d().direct_space_state.intersect_shape(query).map(func(r): return r["collider"]):
-		var enemy = hurtbox.owner as Enemy
-		if enemy != null:
-			Util.get_component(enemy, "HitProcessingComponent").register_hit(
+		if hurtbox.owner != GameManager.player:
+			Util.get_component(hurtbox.owner, "HitProcessingComponent").register_hit(
 				HitData.new(self, camera.get_screen_center_position(), damage, knockback)
 			)
 

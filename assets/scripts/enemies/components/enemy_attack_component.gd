@@ -3,14 +3,13 @@ extends Component
 
 @export var damage := 1
 @export var hitboxes : Array[Area2D]
-@onready var enemy: Enemy = get_owner()
 
 func hit_player():
 	var player_hit_processing_component: PlayerHitProcessingComponent = \
 		Util.get_component(GameManager.player, "HitProcessingComponent")
 	
 	player_hit_processing_component.register_hit(
-		HitData.new(enemy, enemy.global_position, damage)
+		HitData.new(owner, owner.global_position, damage)
 	)
 
 func attack() -> bool:

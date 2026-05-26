@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://coyocvfaareuu"]
-
-[ext_resource type="Script" uid="uid://cl5ssb0xfx0xl" path="res://assets/scripts/effects/flash_effect.gd" id="1_wug2a"]
-
-[node name="FlashEffect" type="Node" unique_id=725267969]
-script = ExtResource("1_wug2a")

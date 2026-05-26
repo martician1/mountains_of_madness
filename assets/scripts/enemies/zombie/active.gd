@@ -4,7 +4,7 @@ extends State
 @onready var state_machine: ZombieStateMachine = %StateMachine
 @onready var body_hitbox: Area2D = %BodyHitbox
 
-@onready var alert_radius_component: EnemyAlertRadiusComponent = %AlertRadiusComponent
+@onready var wakeup_component: EnemyWakeupComponent = %WakeupComponent
 @onready var attack_component: EnemyAttackComponent = %AttackComponent
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var hit_processing_component: EnemyHitProcessingComponent = %HitProcessingComponent
@@ -20,10 +20,9 @@ func update(delta: float) -> State:
 
 		attack_component.attack_with_hitbox(body_hitbox)
 
-		var is_in_alert_radius = alert_radius_component.is_player_in_alert_radius()
 		var player_offset = GameManager.player.global_position - zombie.global_position
 
-		if is_in_alert_radius and abs(player_offset.x) > 1.0:
+		if wakeup_component.is_awake and abs(player_offset.x) > 1.0:
 			zombie.velocity.x = speed_component.speed * sign(direction_component.direction.x)
 
 	if zombie.is_on_floor() and position_detection_component.is_near_dangerous_edge():

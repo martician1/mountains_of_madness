@@ -25,7 +25,7 @@ func update(delta: float) -> State:
 	return %Attack if has_collided_with_floor else self
 
 func handle_input():
-	if hit_processing_component.process_last_hit():
+	if hit_processing_component.process_last_hit(false):
 		if health_component.health <= 0:
 			return %Dying
 		flash_effect.flash()

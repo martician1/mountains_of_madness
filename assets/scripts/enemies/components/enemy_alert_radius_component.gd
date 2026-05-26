@@ -1,4 +1,4 @@
-class_name EnemyAlertRadiusComponent
+class_name EnemyAlertComponent
 extends Component
 
 @onready var enemy: Enemy = get_owner()

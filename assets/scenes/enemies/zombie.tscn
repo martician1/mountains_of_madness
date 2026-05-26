@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4n4uvv6kem5g" path="res://assets/scripts/enemies/zombie/zombie.gd" id="1_fi5dy"]
 [ext_resource type="Texture2D" uid="uid://dkjhwcl2y8pun" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned covered.png" id="2_82ixa"]
-[ext_resource type="Script" uid="uid://u38qcy1pbxkw" path="res://assets/scripts/enemies/components/enemy_alert_radius_component.gd" id="2_e4i3r"]
+[ext_resource type="Script" uid="uid://cqru8mc0e6n62" path="res://assets/scripts/enemies/components/enemy_wakeup_component.gd" id="2_e4i3r"]
 [ext_resource type="Script" uid="uid://debei0draolkk" path="res://assets/scripts/enemies/zombie/state_machine.gd" id="2_gpvkm"]
 [ext_resource type="Script" uid="uid://db120mv3abscm" path="res://assets/scripts/enemies/zombie/active.gd" id="3_cnys6"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="3_i2j4j"]
@@ -705,10 +705,10 @@ script = ExtResource("1_fi5dy")
 
 [node name="Components" type="Node" parent="." unique_id=482846390]
 
-[node name="AlertRadiusComponent" type="Node" parent="Components" unique_id=179758262]
+[node name="WakeupComponent" type="Node" parent="Components" unique_id=1962667841]
 unique_name_in_owner = true
 script = ExtResource("2_e4i3r")
-metadata/_custom_type_script = "uid://u38qcy1pbxkw"
+metadata/_custom_type_script = "uid://cqru8mc0e6n62"
 
 [node name="AttackComponent" type="Node" parent="Components" unique_id=695128524 node_paths=PackedStringArray("hitboxes")]
 unique_name_in_owner = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yfypgqe66eoy" path="res://assets/scripts/enemies/imp/imp.gd" id="1_d47nl"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_5sbpd"]
-[ext_resource type="Script" uid="uid://u38qcy1pbxkw" path="res://assets/scripts/enemies/components/enemy_alert_radius_component.gd" id="2_xcqv8"]
+[ext_resource type="Script" uid="uid://cqru8mc0e6n62" path="res://assets/scripts/enemies/components/enemy_wakeup_component.gd" id="2_xcqv8"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="3_hivmn"]
 [ext_resource type="Script" uid="uid://buywcwbq35ews" path="res://assets/scripts/enemies/imp/active.gd" id="3_ohawl"]
 [ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_4eijq"]
@@ -325,10 +325,10 @@ script = ExtResource("1_d47nl")
 
 [node name="Components" type="Node" parent="." unique_id=779865870]
 
-[node name="AlertRadiusComponent" type="Node" parent="Components" unique_id=342675102]
+[node name="WakeupComponent" type="Node" parent="Components" unique_id=1962170997]
 unique_name_in_owner = true
 script = ExtResource("2_xcqv8")
-metadata/_custom_type_script = "uid://u38qcy1pbxkw"
+metadata/_custom_type_script = "uid://cqru8mc0e6n62"
 
 [node name="AttackComponent" type="Node" parent="Components" unique_id=178859743 node_paths=PackedStringArray("hitboxes")]
 unique_name_in_owner = true
@@ -388,6 +388,8 @@ metadata/_custom_type_script = "uid://rprt7a0ohqif"
 [node name="Animator" type="Node2D" parent="." unique_id=433639838]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=761980310]
+unique_name_in_owner = true
+z_index = 300
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_w7awd")
 animation = &"idle"

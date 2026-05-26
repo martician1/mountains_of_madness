@@ -17,10 +17,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	super_attack_finished.emit()
 	queue_free()
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	var enemy = area.get_owner() as Enemy
-	if enemy == null:
-		return
-	Util.get_component(enemy, "HitProcessingComponent").register_hit(
-		HitData.new(self, hitbox.global_position, damage, knockback)
-	)
+func _on_area_2d_area_entered(hurtbox: Area2D) -> void:
+	if hurtbox.owner != GameManager.player:
+		Util.get_component(hurtbox.owner, "HitProcessingComponent").register_hit(
+			HitData.new(self, hitbox.global_position, damage, knockback)
+		)

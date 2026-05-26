@@ -44,9 +44,9 @@ func change_level(new_level: Level):
 		old_level.queue_free()
 
 func load_level(path: String):
+	change_player(player_scene.instantiate())
 	change_level(load(path).instantiate())
 	level_path = path
-	change_player(player_scene.instantiate())
 	
 	var camera = get_viewport().get_camera_2d()
 	camera.limit_bottom = int(level.bottom_left.position.y)
@@ -58,15 +58,14 @@ func load_level(path: String):
 	get_tree().change_scene_to_node(gameplay_scene.instantiate())
 
 	level_start_time = int(Time.get_unix_time_from_system())
-	
 
 func reload_level():
 	load_level(level_path)
 
 func quit_level():
 	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
-	change_player(null)
 	change_level(null)
+	change_player(null)
 
 func _on_level_failed():
 	level.level_finished.disconnect(_on_level_finished)

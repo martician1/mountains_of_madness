@@ -3,10 +3,11 @@ extends State
 @onready var imp: Imp = get_owner()
 @onready var hitbox: Area2D = %Hitbox
 @onready var attack_component: EnemyAttackComponent = %AttackComponent
-@onready var alert_radius_comopnent: EnemyAlertRadiusComponent = %AlertRadiusComponent
+@onready var wakeup_component: EnemyWakeupComponent = %WakeupComponent
 @onready var direction_component: EnemyDirectionComponent = %DirectionComponent
 @onready var hit_processing_component: EnemyHitProcessingComponent = %HitProcessingComponent
 @onready var speed_component: EnemySpeedComponent = %SpeedComponent
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 
 func update(_delta: float) -> State:
 	var player := GameManager.player
@@ -16,8 +17,8 @@ func update(_delta: float) -> State:
 	
 	if attack_component.attack():
 		return %Dying
-	
-	if alert_radius_comopnent.is_player_in_alert_radius():
+
+	if wakeup_component.is_awake:
 		direction_component.direct_towards_player()
 		imp.velocity = speed_component.speed * direction_component.direction
 		imp.move_and_slide()
