@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://ud1ccqupae6o"]
 
 [ext_resource type="Texture2D" uid="uid://dpeae67wkd166" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/Background layer.png" id="1_5ogo4"]
+[ext_resource type="Script" uid="uid://b1yj2co8p1o3e" path="res://assets/scripts/background.gd" id="1_na4kw"]
 [ext_resource type="Texture2D" uid="uid://bj80jq0cmbkp5" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/back layer.png" id="2_na4kw"]
 [ext_resource type="Texture2D" uid="uid://ogci8kpew4v1" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/middle layer.png" id="3_qtuka"]
 [ext_resource type="Texture2D" uid="uid://b36td7y4j7bv3" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/front layer.png" id="4_eh7uo"]
 
-[node name="BackgroundLight" type="Node2D" unique_id=1818668340]
+[node name="Background" type="Node2D" unique_id=1818668340]
+script = ExtResource("1_na4kw")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=532646582]
 scale = Vector2(1.05, 1.05)

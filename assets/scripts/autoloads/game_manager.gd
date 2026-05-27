@@ -58,7 +58,10 @@ func load_level(n: int):
 	camera.limit_right = int(level.top_right.position.x)
 	player.global_position = level.player_spawn.global_position
 	
-	get_tree().change_scene_to_node(gameplay_scene.instantiate())
+	var gameplay_node: Gameplay = gameplay_scene.instantiate()
+	gameplay_node.background_variant = gameplay_node.BackgroundVariant.Dark \
+		if n <= 5 else gameplay_node.BackgroundVariant.Light
+	get_tree().change_scene_to_node(gameplay_node)
 
 	level_start_time = int(Time.get_unix_time_from_system())
 

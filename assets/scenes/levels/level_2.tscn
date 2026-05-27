@@ -164,36 +164,27 @@ position = Vector2(3961, -1)
 
 [node name="Zombie" parent="Enemies" unique_id=417020441 instance=ExtResource("7_22e80")]
 position = Vector2(1567, 0)
-alert_radius = 200.0
 
 [node name="Zombie2" parent="Enemies" unique_id=1165563723 instance=ExtResource("7_22e80")]
 position = Vector2(1658, -1)
-alert_radius = 200.0
 
 [node name="Zombie3" parent="Enemies" unique_id=1415402410 instance=ExtResource("7_22e80")]
 position = Vector2(2054, -1)
-alert_radius = 300.0
 
 [node name="Zombie4" parent="Enemies" unique_id=1918619270 instance=ExtResource("7_22e80")]
 position = Vector2(500, -130)
 
 [node name="Zombie5" parent="Enemies" unique_id=250505476 instance=ExtResource("7_22e80")]
 position = Vector2(2439, -290)
-alert_radius = 128.0
-max_drop = 128.0
 
 [node name="Zombie6" parent="Enemies" unique_id=1798010193 instance=ExtResource("7_22e80")]
 position = Vector2(3112.0002, 0)
-alert_radius = 96.0
-max_drop = 128.0
 
 [node name="Zombie7" parent="Enemies" unique_id=743775134 instance=ExtResource("7_22e80")]
 position = Vector2(4039, -193)
-alert_radius = 200.0
 
 [node name="Zombie8" parent="Enemies" unique_id=248989345 instance=ExtResource("7_22e80")]
 position = Vector2(3872.0002, -1)
-alert_radius = 300.0
 
 [node name="Portal" parent="." unique_id=1162363435 node_paths=PackedStringArray("level") instance=ExtResource("6_x6bl8")]
 position = Vector2(4108, -50)

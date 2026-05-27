@@ -1,0 +1,140 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b1uc5hmvih2jg"]
+
+[ext_resource type="Texture2D" uid="uid://c4vgso5ycqgnl" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Burning Skull blue.png" id="1_k60hr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k60hr"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec28v"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej2fc"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swb7l"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxakc"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylnn5"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eipfi"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sq7x"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg522"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0srk4"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnw0v"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u72v"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxl00"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8rex"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j3l2"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imn4q"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu4xk"]
+atlas = ExtResource("1_k60hr")
+region = Rect2(256, 0, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k60hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec28v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej2fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swb7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxakc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylnn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eipfi")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sq7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg522")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0srk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnw0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u72v")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxl00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8rex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j3l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imn4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu4xk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]

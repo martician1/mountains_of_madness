@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsxr5n642amgr" path="res://assets/sprites/dialog_box.png" id="1_443p2"]
 [ext_resource type="Script" uid="uid://typnpm5acf8q" path="res://assets/scripts/text_box.gd" id="1_xewk3"]
-[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="3_xewk3"]
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui/ui_theme.tres" id="3_xewk3"]
 
 [node name="TextBox" type="Node2D" unique_id=2021883127]
 z_index = 10

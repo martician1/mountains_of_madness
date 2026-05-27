@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://x677wyfghncw"]
 
-[ext_resource type="Script" uid="uid://cq4cp0ephf28m" path="res://assets/scripts/enemies/enemy.gd" id="1_gp0lb"]
+[ext_resource type="Script" uid="uid://cf4b5anu5qye3" path="res://assets/scripts/enemies/skull/skull.gd" id="1_c1f1i"]
+[ext_resource type="Resource" uid="uid://dk51h7knsjune" path="res://assets/resources/enemies/skull/skull_red_variant.tres" id="2_8rn84"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="2_c1f1i"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_tnqhw"]
 [ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="3_8rn84"]
@@ -12,150 +13,13 @@
 [ext_resource type="Script" uid="uid://d3oihvd1ntki6" path="res://assets/scripts/enemies/components/enemy_drop_pickup_component.gd" id="6_aabfc"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="7_gbad6"]
 [ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="7_pby3o"]
-[ext_resource type="Texture2D" uid="uid://dxwwfje5dl2qa" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Burning Skull.png" id="7_tnqhw"]
 [ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_1wp05"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="8_ykjax"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="9_pu1xa"]
 [ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_u1fud"]
 [ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_g7tgk"]
 [ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_dlfrm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gp0lb"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnqhw"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykjax"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu1xa"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(192, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6qtfm"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(256, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1f1i"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(320, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8rn84"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(384, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cqe0"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljoej"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aabfc"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pby3o"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1wp05"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iiwne"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fd427"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_31v27"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2ux8"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbad6"]
-atlas = ExtResource("7_tnqhw")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_w7awd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gp0lb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnqhw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ykjax")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu1xa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6qtfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c1f1i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8rn84")
-}],
-"loop": false,
-"name": &"die",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cqe0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ljoej")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aabfc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pby3o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1wp05")
-}],
-"loop": false,
-"name": &"hurt",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iiwne")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fd427")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_31v27")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2ux8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbad6")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://chfg3m35kmu4t" path="res://assets/resources/enemies/skull/skull_red_sprite_frames.tres" id="17_3cqe0"]
 
 [sub_resource type="Animation" id="Animation_jeguk"]
 length = 0.001
@@ -452,7 +316,8 @@ size = Vector2(20, 26)
 [node name="Skull" type="CharacterBody2D" unique_id=599968273 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 256
-script = ExtResource("1_gp0lb")
+script = ExtResource("1_c1f1i")
+variant = ExtResource("2_8rn84")
 metadata/_custom_type_script = "uid://cq4cp0ephf28m"
 
 [node name="Components" type="Node" parent="." unique_id=182388453]
@@ -554,9 +419,10 @@ metadata/_custom_type_script = "uid://rprt7a0ohqif"
 [node name="Animator" type="Node2D" parent="." unique_id=514929491]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=344020881]
+unique_name_in_owner = true
 position = Vector2(0, -20)
-sprite_frames = SubResource("SpriteFrames_w7awd")
-animation = &"hurt"
+sprite_frames = ExtResource("17_3cqe0")
+animation = &"idle"
 autoplay = "idle"
 
 [node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]

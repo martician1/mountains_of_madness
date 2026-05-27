@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BackgroundVariant" format=3 uid="uid://df7dag7vv73dt"]
+
+[ext_resource type="Script" uid="uid://cdof8jl3guj8x" path="res://assets/scripts/background_variant.gd" id="1_6ikqi"]
+[ext_resource type="Texture2D" uid="uid://dpeae67wkd166" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/Background layer.png" id="2_aa5oq"]
+[ext_resource type="Texture2D" uid="uid://bj80jq0cmbkp5" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/back layer.png" id="3_lkkvm"]
+[ext_resource type="Texture2D" uid="uid://ogci8kpew4v1" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/middle layer.png" id="4_fml5l"]
+[ext_resource type="Texture2D" uid="uid://b36td7y4j7bv3" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore Hell background/front layer.png" id="5_7utcq"]
+
+[resource]
+script = ExtResource("1_6ikqi")
+textures = Array[Texture2D]([ExtResource("2_aa5oq"), ExtResource("3_lkkvm"), ExtResource("4_fml5l"), ExtResource("5_7utcq")])
+metadata/_custom_type_script = "uid://cdof8jl3guj8x"

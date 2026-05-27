@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dbcyn03iia0wp" path="res://assets/scripts/gameplay.gd" id="1_1pg7n"]
 [ext_resource type="PackedScene" uid="uid://d08e45pcgksn5" path="res://assets/scenes/ui/hud.tscn" id="2_un4qs"]
-[ext_resource type="PackedScene" uid="uid://ud1ccqupae6o" path="res://assets/scenes/background_light.tscn" id="3_17b01"]
-[ext_resource type="PackedScene" uid="uid://dukh4yp0436e1" path="res://assets/scenes/background_dark.tscn" id="4_0hf1u"]
+[ext_resource type="PackedScene" uid="uid://ud1ccqupae6o" path="res://assets/scenes/background.tscn" id="3_17b01"]
+[ext_resource type="Resource" uid="uid://df7dag7vv73dt" path="res://assets/resources/background_light.tres" id="4_1pg7n"]
 
 [node name="Gameplay" type="Node2D" unique_id=83325804 groups=["levels"]]
 script = ExtResource("1_1pg7n")
@@ -16,8 +16,7 @@ script = ExtResource("1_1pg7n")
 layer = -100
 follow_viewport_enabled = true
 
-[node name="BackgroundLight" parent="BackgroundLayer" unique_id=1818668340 instance=ExtResource("3_17b01")]
-visible = false
+[node name="Background" parent="BackgroundLayer" unique_id=1818668340 instance=ExtResource("3_17b01")]
+unique_name_in_owner = true
 position = Vector2(2, 0)
-
-[node name="BackgroundLight2" parent="BackgroundLayer" unique_id=1763850958 instance=ExtResource("4_0hf1u")]
+variant = ExtResource("4_1pg7n")

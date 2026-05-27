@@ -109,12 +109,13 @@ position = Vector2(2736, -80)
 [node name="Enemies" type="Node2D" parent="." unique_id=844012349]
 
 [node name="Zombie" parent="Enemies" unique_id=417020441 instance=ExtResource("9_hxl67")]
-position = Vector2(1712.0001, -2)
-alert_radius = 0.0
+position = Vector2(1712, 0)
+
+[node name="WakeupComponent" parent="Enemies/Zombie/Components" parent_id_path=PackedInt32Array(417020441, 482846390) index="0" unique_id=1962667841]
+wakeup_radius = 0.0
 
 [node name="Zombie2" parent="Enemies" unique_id=219738726 instance=ExtResource("9_hxl67")]
 position = Vector2(2038, -160)
-alert_radius = 200.0
 
 [node name="Zombie3" parent="Enemies" unique_id=1422666420 instance=ExtResource("9_hxl67")]
 position = Vector2(2164, -33)
@@ -144,20 +145,28 @@ position = Vector2(3580.0002, -226)
 position = Vector2(3572, -36)
 
 [node name="Zombie13" parent="Enemies" unique_id=1293033354 instance=ExtResource("9_hxl67")]
-position = Vector2(4076, -131)
-max_drop = 256.0
+position = Vector2(4074, -128)
 
-[node name="Zombie14" parent="Enemies" unique_id=396800959 instance=ExtResource("9_hxl67")]
-position = Vector2(4148, -131)
-max_drop = 256.0
+[node name="PositionDetectionComponent" parent="Enemies/Zombie13/Components" parent_id_path=PackedInt32Array(1293033354, 482846390) index="7" unique_id=893910422]
+dangerous_depth = 256
 
-[node name="Zombie15" parent="Enemies" unique_id=2054866842 instance=ExtResource("9_hxl67")]
-position = Vector2(4115, -129)
-max_drop = 256.0
+[node name="Zombie14" parent="Enemies" unique_id=1195882617 instance=ExtResource("9_hxl67")]
+position = Vector2(4044, -128)
 
-[node name="Zombie16" parent="Enemies" unique_id=757861338 instance=ExtResource("9_hxl67")]
-position = Vector2(4038, -129)
-max_drop = 256.0
+[node name="PositionDetectionComponent" parent="Enemies/Zombie14/Components" parent_id_path=PackedInt32Array(1195882617, 482846390) index="7" unique_id=893910422]
+dangerous_depth = 256
+
+[node name="Zombie15" parent="Enemies" unique_id=236083856 instance=ExtResource("9_hxl67")]
+position = Vector2(4108, -128)
+
+[node name="PositionDetectionComponent" parent="Enemies/Zombie15/Components" parent_id_path=PackedInt32Array(236083856, 482846390) index="7" unique_id=893910422]
+dangerous_depth = 256
+
+[node name="Zombie16" parent="Enemies" unique_id=865128806 instance=ExtResource("9_hxl67")]
+position = Vector2(4141, -128)
+
+[node name="PositionDetectionComponent" parent="Enemies/Zombie16/Components" parent_id_path=PackedInt32Array(865128806, 482846390) index="7" unique_id=893910422]
+dangerous_depth = 256
 
 [node name="HealthDrops" type="Node2D" parent="." unique_id=1442562096]
 
@@ -180,3 +189,9 @@ position = Vector2(2992, -400)
 position = Vector2(4140, -50)
 scale = Vector2(1.2, 1.2)
 level = NodePath("..")
+
+[editable path="Enemies/Zombie"]
+[editable path="Enemies/Zombie13"]
+[editable path="Enemies/Zombie14"]
+[editable path="Enemies/Zombie15"]
+[editable path="Enemies/Zombie16"]

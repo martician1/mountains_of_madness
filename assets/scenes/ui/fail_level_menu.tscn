@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cyho6w0bl4o26"]
 
-[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui_theme.tres" id="1_v34kj"]
+[ext_resource type="Theme" uid="uid://fqaqusmujn2q" path="res://assets/resources/ui/ui_theme.tres" id="1_v34kj"]
 [ext_resource type="Script" uid="uid://ipnglbblxksl" path="res://assets/scripts/ui/fail_level_menu.gd" id="1_yjorm"]
 [ext_resource type="Texture2D" uid="uid://clfcm2285fnb1" path="res://assets/sprites/ui/button UI.png" id="2_yjorm"]
 [ext_resource type="Texture2D" uid="uid://dkjhwcl2y8pun" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Male Damned covered.png" id="3_uli1q"]

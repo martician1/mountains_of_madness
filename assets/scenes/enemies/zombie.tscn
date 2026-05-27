@@ -700,7 +700,7 @@ size = Vector2(12, 42)
 [node name="Zombie" type="CharacterBody2D" unique_id=417020441 groups=["enemy"]]
 scale = Vector2(1.2, 1.2)
 collision_layer = 2
-collision_mask = 256
+collision_mask = 258
 script = ExtResource("1_fi5dy")
 
 [node name="Components" type="Node" parent="." unique_id=482846390]
