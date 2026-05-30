@@ -14,15 +14,9 @@ func _ready() -> void:
 	
 	if not is_instance_valid(self) or is_queued_for_deletion():
 		return
-	
-	GameManager.change_player(null)
-	GameManager.change_level(null)
-	var gameplay_scene = get_tree().current_scene
-	assert(gameplay_scene is Gameplay)
-	get_tree().current_scene = self
-	get_tree().root.remove_child(gameplay_scene)
-	gameplay_scene.queue_free()
+
+	GameManager.quit_gameplay(self)
 
 func _on_button_button_up() -> void:
-	GameManager.quit_level()
+	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
 	queue_free()

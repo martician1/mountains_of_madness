@@ -18,7 +18,7 @@ texture_margin_left = 4.0
 texture_margin_top = 7.0
 texture_margin_right = 4.0
 texture_margin_bottom = 11.0
-region_rect = Rect2(0, 144, 16, 16)
+region_rect = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpp57"]
 atlas = ExtResource("3_uli1q")
@@ -293,6 +293,7 @@ layout_mode = 2
 text = "20"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer" unique_id=781485827]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer/CanvasLayer" unique_id=923693491]
 position = Vector2(144, 96)
@@ -321,6 +322,7 @@ text = "2.00
 "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2" unique_id=1105877342]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer2/CanvasLayer" unique_id=1534713371]
 position = Vector2(144, 176)
@@ -349,6 +351,7 @@ layout_mode = 2
 text = "0:34"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3" unique_id=79113447]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailLevelMenu/Control/VBoxContainer/HBoxContainer3/CanvasLayer" unique_id=256006185]
 position = Vector2(144.00002, 242)

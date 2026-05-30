@@ -18,7 +18,7 @@ texture_margin_left = 4.0
 texture_margin_top = 7.0
 texture_margin_right = 4.0
 texture_margin_bottom = 11.0
-region_rect = Rect2(0, 144, 16, 16)
+region_rect = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3l1j5"]
 atlas = ExtResource("3_puthi")
@@ -294,6 +294,7 @@ layout_mode = 2
 text = "20"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer" unique_id=607338696]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer/CanvasLayer" unique_id=1700565764]
 position = Vector2(144, 96)
@@ -322,6 +323,7 @@ text = "2.00
 "
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer2" unique_id=186993892]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer2/CanvasLayer" unique_id=1285383891]
 position = Vector2(144, 176)
@@ -350,6 +352,7 @@ layout_mode = 2
 text = "0:34"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Background/Control/VBoxContainer/HBoxContainer3" unique_id=573362175]
+layer = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Control/VBoxContainer/HBoxContainer3/CanvasLayer" unique_id=11815944]
 position = Vector2(144.00002, 242)

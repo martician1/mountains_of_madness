@@ -68,8 +68,23 @@ func load_level(n: int):
 func reload_level():
 	load_level(current_level_number)
 
-func quit_level():
-	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
+func quit_gameplay(next_scene: Node = null):
+	if next_scene == null:
+		next_scene = load("res://assets/scenes/ui/menu.tscn").instantiate()
+
+	var gameplay_scene = get_tree().current_scene
+	assert(gameplay_scene is Gameplay)
+	assert(next_scene is not Gameplay)
+
+	var parent = next_scene.get_parent()
+	if parent:
+		parent.remove_child(next_scene)
+
+	get_tree().root.add_child(next_scene)
+	get_tree().current_scene = next_scene
+	get_tree().root.remove_child(gameplay_scene)
+	gameplay_scene.queue_free()
+
 	change_level(null)
 	change_player(null)
 

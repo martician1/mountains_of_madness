@@ -15,7 +15,6 @@ func _on_try_again_button_up() -> void:
 	GameManager.reload_level()
 	queue_free()
 
-
 func _on_exit_button_up() -> void:
-	GameManager.quit_level()
+	GameManager.quit_gameplay()
 	queue_free()
