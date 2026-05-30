@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/better-t
 
 enemy=""
 level=""
+hurtbox=""
 
 [input]
 

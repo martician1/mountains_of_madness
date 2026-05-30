@@ -9,7 +9,7 @@ radius = 5.0
 
 [node name="HellCharge" type="CharacterBody2D" unique_id=694320670]
 collision_layer = 1024
-collision_mask = 257
+collision_mask = 67109121
 script = ExtResource("1_1fcef")
 variant = ExtResource("2_pw8bu")
 

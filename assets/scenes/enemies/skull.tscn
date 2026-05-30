@@ -422,7 +422,7 @@ metadata/_custom_type_script = "uid://rprt7a0ohqif"
 unique_name_in_owner = true
 position = Vector2(0, -20)
 sprite_frames = ExtResource("17_3cqe0")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
@@ -461,7 +461,7 @@ position = Vector2(0, -20.5)
 shape = SubResource("RectangleShape2D_cwxyq")
 debug_color = Color(0.8862745, 0.023529412, 0.11372549, 0.41960785)
 
-[node name="Hurtbox" type="Area2D" parent="HFlipper" unique_id=1361785445]
+[node name="Hurtbox" type="Area2D" parent="HFlipper" unique_id=1361785445 groups=["hurtbox"]]
 collision_layer = 67108864
 collision_mask = 33554432
 

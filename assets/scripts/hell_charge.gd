@@ -11,8 +11,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		var body = collision.get_collider()
-		if body == GameManager.player:
+		var collider: Node = collision.get_collider()
+		if collider.is_in_group("hurtbox") and collider.owner == GameManager.player:
 			var player_hit_processing_component: PlayerHitProcessingComponent = \
 				Util.get_component(GameManager.player, "HitProcessingComponent")
 			player_hit_processing_component.register_hit(
