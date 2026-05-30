@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HellChargeVariant" format=3 uid="uid://2jxmcmyluhp8"]
+
+[ext_resource type="Script" uid="uid://bxs5fq604qkoq" path="res://assets/scripts/enemies/hell_charge_variant.gd" id="1_3jmcq"]
+[ext_resource type="SpriteFrames" path="res://assets/resources/enemies/hell_charge_red_sprite_frames.tres" id="2_3jmcq"]
+
+[resource]
+script = ExtResource("1_3jmcq")
+sprite_frames = ExtResource("2_3jmcq")
+metadata/_custom_type_script = "uid://bxs5fq604qkoq"

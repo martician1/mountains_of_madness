@@ -11,7 +11,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnoey"]
-size = Vector2(32, 4)
+size = Vector2(42, 6)
 
 [node name="MovingPlatform" type="Path2D" unique_id=1176521805 node_paths=PackedStringArray("path_follow_2d")]
 curve = SubResource("Curve2D_eevdr")
@@ -30,7 +30,9 @@ remote_path = NodePath("../../AnimatableBody2D")
 collision_layer = 256
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1852158384]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_jby5p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=739273951]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_cnoey")

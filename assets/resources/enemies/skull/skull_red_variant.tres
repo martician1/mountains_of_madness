@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="SkullVariant" format=3 uid="uid://dk51h7knsjune"]
 
+[ext_resource type="Resource" uid="uid://2jxmcmyluhp8" path="res://assets/resources/enemies/hell_charge_red_variant.tres" id="1_ghdrg"]
 [ext_resource type="Script" uid="uid://ddpiyvumtk0fp" path="res://assets/scripts/enemies/skull/skull_variant.gd" id="1_pwqqn"]
 [ext_resource type="SpriteFrames" uid="uid://chfg3m35kmu4t" path="res://assets/resources/enemies/skull/skull_red_sprite_frames.tres" id="2_2dedd"]
 
 [resource]
 script = ExtResource("1_pwqqn")
 sprite_frames = ExtResource("2_2dedd")
+hell_charge_variant = ExtResource("1_ghdrg")
 metadata/_custom_type_script = "uid://ddpiyvumtk0fp"

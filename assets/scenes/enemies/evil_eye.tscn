@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="8_gcxp1"]
 [ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_p345k"]
 [ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_ahob7"]
+[ext_resource type="Resource" uid="uid://2jxmcmyluhp8" path="res://assets/resources/enemies/hell_charge_red_variant.tres" id="10_6ercq"]
 [ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_rp04m"]
 [ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_8arae"]
 
@@ -497,6 +498,7 @@ metadata/_custom_type_script = "uid://cnkur4362f720"
 unique_name_in_owner = true
 script = ExtResource("9_ahob7")
 shootpoint = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
+hell_charge_variant = ExtResource("10_6ercq")
 metadata/_custom_type_script = "uid://dky831d4qajmh"
 
 [node name="ShieldComponent" type="Node" parent="Components" unique_id=2054819027]

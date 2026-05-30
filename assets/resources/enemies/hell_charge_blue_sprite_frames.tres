@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://hjn1epvgh1xg"]
+
+[ext_resource type="Texture2D" uid="uid://bk0i3du0hdt4c" path="res://assets/sprites/hell_charge_spritesheet_blue.png" id="1_xq4os"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwdms"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0rgm"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr6fq"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhlbe"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_125ad"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5h5h"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6fpj"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gxo4"]
+atlas = ExtResource("1_xq4os")
+region = Rect2(224, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwdms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0rgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr6fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhlbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_125ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5h5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6fpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gxo4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
