@@ -1,11 +1,11 @@
 extends PlayerOneShotAnimationState
 
 @onready var attack_component: PlayerAttackComponent = %AttackComponent
-@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
+@onready var attack_cooldown_component: CooldownComponent = %AttackCooldownComponent
 
 func exit() -> void:
 	super.exit()
-	attack_cooldown_component.start_attack_cooldown()
+	attack_cooldown_component.start_cooldown()
 
 func update(delta: float) -> State:
 	var result = super.update(delta)

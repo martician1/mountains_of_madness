@@ -3,7 +3,7 @@ class_name GroundAttackState
 
 @onready var player: Player = get_owner()
 @onready var attack_component: PlayerAttackComponent = %AttackComponent
-@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
+@onready var attack_cooldown_component: CooldownComponent = %AttackCooldownComponent
 @onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
 
 var combo = 0
@@ -28,7 +28,7 @@ func exit() -> void:
 	if collision_animator.animation_finished.is_connected(_on_attack_finished):
 		collision_animator.animation_finished.disconnect(_on_attack_finished)
 
-	attack_cooldown_component.start_attack_cooldown()
+	attack_cooldown_component.start_cooldown()
 	action_queue.clear()
 
 func update(delta: float) -> State:

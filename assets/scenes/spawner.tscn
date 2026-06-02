@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://duv03kvlvrxs5" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Tree Damned.png" id="1_7bd6b"]
 [ext_resource type="Script" uid="uid://cdtxydymn1r63" path="res://assets/scripts/components/hit_processing_component.gd" id="2_ksnns"]
-[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="3_o3bs7"]
 [ext_resource type="Script" uid="uid://bi4cnikpklgpw" path="res://assets/scripts/components/health_component.gd" id="4_60tuw"]
 [ext_resource type="Script" uid="uid://wxtplqmaipcn" path="res://assets/scripts/spawner/dying.gd" id="4_y6bxu"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="5_7af1m"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="7_60tuw"]
+[ext_resource type="Script" uid="uid://c6esvdcq6xc64" path="res://assets/scripts/components/cooldown_component.gd" id="7_y6bxu"]
 [ext_resource type="Script" uid="uid://bagcw2l0rq8gr" path="res://assets/scripts/spawner/active.gd" id="8_7af1m"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="10_6ub4u"]
 [ext_resource type="Script" uid="uid://cl5ssb0xfx0xl" path="res://assets/scripts/effects/flash_effect.gd" id="11_y6bxu"]
@@ -241,6 +241,32 @@ height = 44.0
 
 [node name="Spawner" type="Node2D" unique_id=401180819]
 
+[node name="Components" type="Node" parent="." unique_id=1356271060]
+
+[node name="AttackComponent" type="Node" parent="Components" unique_id=1838170816 node_paths=PackedStringArray("hitboxes")]
+unique_name_in_owner = true
+script = ExtResource("5_7af1m")
+hitboxes = [NodePath("../../Area2D")]
+metadata/_custom_type_script = "uid://3efjtavajs73"
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=903513887]
+unique_name_in_owner = true
+script = ExtResource("4_60tuw")
+health = 20
+metadata/_custom_type_script = "uid://bi4cnikpklgpw"
+
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1772304872 node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
+script = ExtResource("2_ksnns")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://cdtxydymn1r63"
+
+[node name="ShieldCooldownComponent" type="Node" parent="Components" unique_id=1748596289]
+unique_name_in_owner = true
+script = ExtResource("7_y6bxu")
+cooldown_time = 0.2
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
+
 [node name="StateMachine" type="Node" parent="." unique_id=1249989748 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_60tuw")
 initial_state = NodePath("Active")
@@ -256,31 +282,6 @@ script = ExtResource("4_y6bxu")
 animation_name = "die"
 collision_animator = NodePath("../../Animator/CollisionAnimator")
 metadata/_custom_type_script = "uid://c26u8cuv0laye"
-
-[node name="Components" type="Node" parent="." unique_id=1356271060]
-
-[node name="AttackComponent" type="Node" parent="Components" unique_id=1838170816 node_paths=PackedStringArray("hitboxes")]
-unique_name_in_owner = true
-script = ExtResource("5_7af1m")
-hitboxes = [NodePath("../../Area2D")]
-metadata/_custom_type_script = "uid://3efjtavajs73"
-
-[node name="HealthComponent" type="Node" parent="Components" unique_id=903513887]
-unique_name_in_owner = true
-script = ExtResource("4_60tuw")
-health = 20
-metadata/_custom_type_script = "uid://bi4cnikpklgpw"
-
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1772304872 node_paths=PackedStringArray("shield_component", "health_component")]
-unique_name_in_owner = true
-script = ExtResource("2_ksnns")
-shield_component = NodePath("../ShieldComponent")
-health_component = NodePath("../HealthComponent")
-metadata/_custom_type_script = "uid://cdtxydymn1r63"
-
-[node name="ShieldComponent" type="Node" parent="Components" unique_id=1980017700]
-script = ExtResource("3_o3bs7")
-metadata/_custom_type_script = "uid://cekcy30nqoa84"
 
 [node name="Animator" type="Node2D" parent="." unique_id=1641197777]
 

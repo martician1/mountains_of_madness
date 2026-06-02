@@ -4,14 +4,28 @@
 [ext_resource type="Resource" uid="uid://2jxmcmyluhp8" path="res://assets/resources/enemies/hell_charge_red_variant.tres" id="2_pw8bu"]
 [ext_resource type="SpriteFrames" uid="uid://c3pmhtpsxbkv6" path="res://assets/resources/enemies/hell_charge_red_sprite_frames.tres" id="3_pw8bu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1fcef"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw8bu"]
+radius = 1.0
 
-[node name="HellCharge" type="CharacterBody2D" unique_id=694320670]
-collision_layer = 1024
-collision_mask = 67109121
+[sub_resource type="CircleShape2D" id="CircleShape2D_1fcef"]
+radius = 4.0
+
+[node name="HellCharge" type="CharacterBody2D" unique_id=184431940]
+collision_layer = 131072
+collision_mask = 256
 script = ExtResource("1_1fcef")
 variant = ExtResource("2_pw8bu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2039320419]
+shape = SubResource("CircleShape2D_pw8bu")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1359466974]
+collision_layer = 33554432
+collision_mask = 67108864
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=584664718]
+shape = SubResource("CircleShape2D_1fcef")
+debug_color = Color(0.8862745, 0.023529412, 0.11372549, 0.41960785)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1833504459]
 unique_name_in_owner = true
@@ -22,7 +36,5 @@ sprite_frames = ExtResource("3_pw8bu")
 scale = Vector2(0.5, 0.5)
 rect = Rect2(-12, -12, 24, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584664718]
-shape = SubResource("CircleShape2D_1fcef")
-
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

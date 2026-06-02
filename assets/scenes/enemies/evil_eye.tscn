@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_63mvx"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="2_p3edg"]
 [ext_resource type="Script" uid="uid://dgdtypuqnwxub" path="res://assets/scripts/enemies/ranged/active.gd" id="3_0qs3w"]
-[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="3_6ercq"]
+[ext_resource type="Script" uid="uid://c6esvdcq6xc64" path="res://assets/scripts/components/cooldown_component.gd" id="3_6ercq"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="4_2bx7d"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="4_63mvx"]
 [ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_suk0d"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="8_p345k"]
 [ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_ahob7"]
 [ext_resource type="Resource" uid="uid://2jxmcmyluhp8" path="res://assets/resources/enemies/hell_charge_red_variant.tres" id="10_6ercq"]
-[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_rp04m"]
 [ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_8arae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bx7d"]
@@ -457,11 +456,11 @@ script = ExtResource("2_p3edg")
 hitboxes = [NodePath("../../HFlipper/Hitbox")]
 metadata/_custom_type_script = "uid://3efjtavajs73"
 
-[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=338738258]
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=878898242]
 unique_name_in_owner = true
 script = ExtResource("3_6ercq")
-attack_cooldown_time = 3.0
-metadata/_custom_type_script = "uid://55kd23rv8x1m"
+cooldown_time = 3.0
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="DieComponent" type="Node" parent="Components" unique_id=1340485503 node_paths=PackedStringArray("drop_pickup_component")]
 unique_name_in_owner = true
@@ -487,10 +486,10 @@ script = ExtResource("7_jq20t")
 health = 4
 metadata/_custom_type_script = "uid://bi4cnikpklgpw"
 
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=972539589 node_paths=PackedStringArray("shield_component", "health_component")]
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=972539589 node_paths=PackedStringArray("shield_cooldown_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("8_p345k")
-shield_component = NodePath("../ShieldComponent")
+shield_cooldown_component = NodePath("../ShieldCooldownComponent")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://cnkur4362f720"
 
@@ -501,10 +500,11 @@ shootpoint = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
 hell_charge_variant = ExtResource("10_6ercq")
 metadata/_custom_type_script = "uid://dky831d4qajmh"
 
-[node name="ShieldComponent" type="Node" parent="Components" unique_id=2054819027]
+[node name="ShieldCooldownComponent" type="Node" parent="Components" unique_id=1787416947]
 unique_name_in_owner = true
-script = ExtResource("10_rp04m")
-metadata/_custom_type_script = "uid://cekcy30nqoa84"
+script = ExtResource("3_6ercq")
+cooldown_time = 0.2
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="SpeedComponent" type="Node" parent="Components" unique_id=226275250]
 unique_name_in_owner = true

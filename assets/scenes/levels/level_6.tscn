@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://v57g525rviso" path="res://assets/scenes/trapdoor.tscn" id="4_yftea"]
 [ext_resource type="PackedScene" uid="uid://x677wyfghncw" path="res://assets/scenes/enemies/skull.tscn" id="5_l4o7m"]
 [ext_resource type="Resource" uid="uid://hqlldnsggvxd" path="res://assets/resources/enemies/skull/skull_blue_variant.tres" id="6_53u0j"]
+[ext_resource type="PackedScene" uid="uid://c6c8dsw5uupud" path="res://assets/scenes/enemies/elemental.tscn" id="7_53u0j"]
 
-[sub_resource type="Curve2D" id="Curve2D_yftea"]
+[sub_resource type="Curve2D" id="Curve2D_tlttg"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0)
@@ -37,7 +38,7 @@ position = Vector2(4160, -1285)
 
 [node name="MovingPlatform" parent="MovingPlatforms" unique_id=1176521805 instance=ExtResource("3_vu4xa")]
 position = Vector2(553, -130)
-curve = SubResource("Curve2D_yftea")
+curve = SubResource("Curve2D_tlttg")
 
 [node name="Trapdoors" type="Node2D" parent="." unique_id=1316377974]
 
@@ -49,3 +50,6 @@ position = Vector2(553, -49)
 [node name="Skull" parent="Enemies" unique_id=599968273 instance=ExtResource("5_l4o7m")]
 position = Vector2(386, -37)
 variant = ExtResource("6_53u0j")
+
+[node name="Elemental" parent="Enemies" unique_id=417020441 instance=ExtResource("7_53u0j")]
+position = Vector2(198, -37)

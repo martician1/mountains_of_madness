@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dghjyrhg35rkx" path="res://assets/scripts/player/player.gd" id="1_rt1xo"]
 [ext_resource type="Script" uid="uid://dd4aopwlbebui" path="res://assets/scripts/super_attack_data.gd" id="2_lx1qx"]
+[ext_resource type="Script" uid="uid://c6esvdcq6xc64" path="res://assets/scripts/components/cooldown_component.gd" id="3_7m3aa"]
 [ext_resource type="Texture2D" uid="uid://dnorxqnr55ofn" path="res://assets/sprites/ui/fireball.png" id="3_rhlmh"]
 [ext_resource type="Texture2D" uid="uid://b56avpigck0qs" path="res://assets/sprites/ui/shockwave_ui.png" id="4_o4mve"]
 [ext_resource type="Script" uid="uid://qf6srijcee2g" path="res://assets/scripts/player/state_machine.gd" id="5_5g8rr"]
@@ -15,7 +16,6 @@
 [ext_resource type="Script" uid="uid://c4p4v240wafdb" path="res://assets/scripts/player/states/landing.gd" id="13_8l2ex"]
 [ext_resource type="Script" uid="uid://broi2708jk76i" path="res://assets/scripts/player/components/player_attack_component.gd" id="14_2m2ie"]
 [ext_resource type="Script" uid="uid://0utl20adl21h" path="res://assets/scripts/player/states/hurt.gd" id="14_vn88y"]
-[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="15_lg2mx"]
 [ext_resource type="Script" uid="uid://guqym2tv7iey" path="res://assets/scripts/player/states/dying.gd" id="15_rt1xo"]
 [ext_resource type="Script" uid="uid://lovcbugfx10l" path="res://assets/scripts/player/states/super_attack.gd" id="16_avvtr"]
 [ext_resource type="Script" uid="uid://d1byyeph4srjv" path="res://assets/scripts/components/direction_component.gd" id="16_avyy0"]
@@ -28,7 +28,6 @@
 [ext_resource type="Script" uid="uid://b5gtp6ep1vaal" path="res://assets/scripts/player/components/player_process_burning_component.gd" id="20_0nvh1"]
 [ext_resource type="Texture2D" uid="uid://dwvmb8oiodajn" path="res://assets/sprites/Dark Knight 2/Sprites/Attack2.png" id="20_lg2mx"]
 [ext_resource type="Texture2D" uid="uid://clarsiy0v0rjj" path="res://assets/sprites/Dark Knight 2/Sprites/Attack3.png" id="21_avyy0"]
-[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="21_iajob"]
 [ext_resource type="Texture2D" uid="uid://bhcn52r1f4vx4" path="res://assets/sprites/Dark Knight 2/Sprites/Crouch.png" id="22_0so5g"]
 [ext_resource type="Script" uid="uid://gd4lajk2i7j5" path="res://assets/scripts/player/components/player_super_attack_component.gd" id="22_s6pxm"]
 [ext_resource type="Texture2D" uid="uid://csmtrv1rlbmfc" path="res://assets/sprites/Dark Knight 2/Sprites/Crouch attack.png" id="23_6vtmt"]
@@ -2460,11 +2459,11 @@ script = ExtResource("14_2m2ie")
 hitboxes = [NodePath("../../CollisionFlipper/Hitbox")]
 metadata/_custom_type_script = "uid://broi2708jk76i"
 
-[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=745833293]
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=243765764]
 unique_name_in_owner = true
-script = ExtResource("15_lg2mx")
-attack_cooldown_time = 0.001
-metadata/_custom_type_script = "uid://55kd23rv8x1m"
+script = ExtResource("3_7m3aa")
+cooldown_time = 0.01
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="DirectionComponent" type="Node" parent="Components" unique_id=318749359 node_paths=PackedStringArray("collision_flipper")]
 unique_name_in_owner = true
@@ -2479,10 +2478,10 @@ script = ExtResource("17_0so5g")
 health = 14
 metadata/_custom_type_script = "uid://c6l8pukus03kf"
 
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=824413045 node_paths=PackedStringArray("shield_component", "health_component")]
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=824413045 node_paths=PackedStringArray("shield_cooldown_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("18_6vtmt")
-shield_component = NodePath("../ShieldComponent")
+shield_cooldown_component = NodePath("../ShieldCooldownComponent")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://kfwnhfimqja1"
 
@@ -2498,11 +2497,10 @@ hit_processing_component = NodePath("../HitProcessingComponent")
 hurtboxes = [NodePath("../../CollisionFlipper/Hurtbox")]
 metadata/_custom_type_script = "uid://b5gtp6ep1vaal"
 
-[node name="ShieldComponent" type="Node" parent="Components" unique_id=1543010855]
+[node name="ShieldCooldownComponent" type="Node" parent="Components" unique_id=1043615496]
 unique_name_in_owner = true
-script = ExtResource("21_iajob")
-shield_cooldown_time = 1.0
-metadata/_custom_type_script = "uid://cekcy30nqoa84"
+script = ExtResource("3_7m3aa")
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="SuperAttackComponent" type="Node" parent="Components" unique_id=1485021532]
 unique_name_in_owner = true

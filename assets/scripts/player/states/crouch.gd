@@ -4,7 +4,7 @@ extends State
 @onready var state_machine: PlayerStateMachine = %StateMachine
 @onready var direction_component: DirectionComponent = %DirectionComponent
 @onready var hit_processing_component: PlayerHitProcessingComponent = %HitProcessingComponent
-@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
+@onready var attack_cooldown_component: CooldownComponent = %AttackCooldownComponent
 
 func enter() -> void:
 	player.velocity.x = 0
@@ -20,7 +20,7 @@ func handle_input() -> State:
 	if hit_processing_component.process_last_hit():
 		return %Hurt
 	
-	if not attack_cooldown_component.is_attack_cooldown_active():
+	if not attack_cooldown_component.is_cooldown_active():
 		if state_machine.consume_super_attack_input():
 			return %SuperAttack
 		if Input.is_action_just_pressed("attack"):

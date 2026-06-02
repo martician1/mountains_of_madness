@@ -3,7 +3,7 @@ extends State
 @onready var player: Player = get_owner()
 @onready var state_machine: PlayerStateMachine = %StateMachine
 @onready var super_attack_component: PlayerSuperAttackComponent = %SuperAttackComponent
-@onready var attack_cooldown_component: AttackCooldownComponent = %AttackCooldownComponent
+@onready var attack_cooldown_component: CooldownComponent = %AttackCooldownComponent
 var has_super_attack_finished: bool
 
 func enter() -> void:
@@ -12,7 +12,7 @@ func enter() -> void:
 	has_super_attack_finished = false
 
 func exit():
-	attack_cooldown_component.start_attack_cooldown()
+	attack_cooldown_component.start_cooldown()
 
 func update(delta: float):
 	player.velocity.x = move_toward(player.velocity.x, 0, player.speed)

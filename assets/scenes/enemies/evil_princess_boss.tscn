@@ -13,8 +13,8 @@
 [ext_resource type="Script" uid="uid://bw0n6x3jqlox3" path="res://assets/scripts/enemies/evil_princess_boss/attack.gd" id="5_rbnph"]
 [ext_resource type="Script" uid="uid://cnkur4362f720" path="res://assets/scripts/enemies/components/enemy_hit_processing_component.gd" id="6_73qrw"]
 [ext_resource type="Script" uid="uid://dxnr07hj6pywr" path="res://assets/scripts/enemies/evil_princess_boss/dying.gd" id="7_2ag0v"]
+[ext_resource type="Script" uid="uid://c6esvdcq6xc64" path="res://assets/scripts/components/cooldown_component.gd" id="7_7p5bk"]
 [ext_resource type="Texture2D" uid="uid://7w6qx1j1votr" path="res://assets/sprites/GandalfHardcore Hell Asset Pack 32x32/GandalfHardcore The Damned Enemies and NPCs/Large Skull.png" id="7_rbnph"]
-[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="8_y6tba"]
 [ext_resource type="Script" uid="uid://dksxju43aqibl" path="res://assets/scripts/enemies/evil_princess_boss/components/evil_princess_boss_attack_component.gd" id="9_73qrw"]
 [ext_resource type="Script" uid="uid://07j6fcvm3sn5" path="res://assets/scripts/animators/sprite_animator.gd" id="9_ckprm"]
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="10_7p5bk"]
@@ -641,22 +641,23 @@ script = ExtResource("5_7p5bk")
 health = 30
 metadata/_custom_type_script = "uid://bi4cnikpklgpw"
 
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1099528936 node_paths=PackedStringArray("shield_component", "health_component")]
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1099528936 node_paths=PackedStringArray("shield_cooldown_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("6_73qrw")
-shield_component = NodePath("../ShieldComponent")
+shield_cooldown_component = NodePath("../ShieldCooldownComponent")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://cnkur4362f720"
+
+[node name="ShieldCooldownComponent" type="Node" parent="Components" unique_id=1138163175]
+unique_name_in_owner = true
+script = ExtResource("7_7p5bk")
+cooldown_time = 0.2
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="SpeedComponent" type="Node" parent="Components" unique_id=1079577123]
 unique_name_in_owner = true
 script = ExtResource("5_73qrw")
 metadata/_custom_type_script = "uid://c4gmsxn3jgj5j"
-
-[node name="ShieldComponent" type="Node" parent="Components" unique_id=744868453]
-unique_name_in_owner = true
-script = ExtResource("8_y6tba")
-metadata/_custom_type_script = "uid://cekcy30nqoa84"
 
 [node name="StateMachine" type="Node" parent="." unique_id=866522181 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true

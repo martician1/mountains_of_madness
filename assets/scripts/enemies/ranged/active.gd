@@ -1,6 +1,6 @@
 extends State
 
-@export var attack_cooldown_component: AttackCooldownComponent
+@export var attack_cooldown_component: CooldownComponent
 @export var attack_component: EnemyAttackComponent
 @export var direction_component: EnemyDirectionComponent
 @export var ranged_component: EnemyRangedComponent
@@ -14,10 +14,10 @@ func update(delta: float) -> State:
 		attack_component.attack()
 		direction_component.direct_towards_player()
 
-		if not attack_cooldown_component.is_attack_cooldown_active():
+		if not attack_cooldown_component.is_cooldown_active():
 			var charge_x_direction = -1 if direction_component.is_facing_left() else 1
 			ranged_component.shoot_hell_charge(Vector2(charge_x_direction, 0))
-			attack_cooldown_component.start_attack_cooldown()
+			attack_cooldown_component.start_cooldown()
 
 	if not owner.is_on_floor():
 		owner.velocity += owner.get_gravity() * delta

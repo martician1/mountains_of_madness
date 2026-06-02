@@ -1,11 +1,11 @@
 extends PlayerOneShotAnimationState
 
-@onready var shield_component: ShieldComponent = %ShieldComponent
+@onready var shield_cooldown_component: CooldownComponent = %ShieldCooldownComponent
 @onready var health_component: HealthComponent = %HealthComponent
 
 func enter() -> void:
 	super.enter()
-	shield_component.activate_shield()
+	shield_cooldown_component.start_cooldown()
 
 func handle_input() -> State:
 	if not has_animation_finished:

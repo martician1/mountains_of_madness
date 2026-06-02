@@ -4,13 +4,13 @@ extends State
 @onready var state_machine: ZombieStateMachine = %StateMachine
 @onready var body_hitbox: Area2D = %BodyHitbox
 
-@onready var wakeup_component: EnemyWakeupComponent = %WakeupComponent
 @onready var attack_component: EnemyAttackComponent = %AttackComponent
+@onready var direction_component: EnemyDirectionComponent = %DirectionComponent
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var hit_processing_component: EnemyHitProcessingComponent = %HitProcessingComponent
-@onready var direction_component: EnemyDirectionComponent = %DirectionComponent
-@onready var speed_component: EnemySpeedComponent = %SpeedComponent
 @onready var position_detection_component: EnemyPositionDetectionComponent = %PositionDetectionComponent
+@onready var speed_component: EnemySpeedComponent = %SpeedComponent
+@onready var wakeup_component: EnemyWakeupComponent = %WakeupComponent
 
 func update(delta: float) -> State:
 	zombie.velocity.x = move_toward(zombie.velocity.x, 0.0, speed_component.speed)

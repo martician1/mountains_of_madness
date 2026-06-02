@@ -1,7 +1,7 @@
 extends PlayerOneShotAnimationState
 
-@onready var shield_component: ShieldComponent = %ShieldComponent
+@onready var shield_cooldown_component: CooldownComponent = %ShieldCooldownComponent
 
 func exit() -> void:
 	super.exit()
-	shield_component.activate_shield()
+	shield_cooldown_component.start_cooldown()

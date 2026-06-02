@@ -147,11 +147,11 @@ position = Vector2(2896, -377)
 [node name="Zombie" parent="Enemies" unique_id=417020441 instance=ExtResource("4_jeddq")]
 position = Vector2(752, -64)
 
-[node name="WakeupComponent" parent="Enemies/Zombie/Components" parent_id_path=PackedInt32Array(417020441, 482846390) index="0" unique_id=1962667841]
-wakeup_radius = 96.0
-
-[node name="PositionDetectionComponent" parent="Enemies/Zombie/Components" parent_id_path=PackedInt32Array(417020441, 482846390) index="7" unique_id=893910422]
+[node name="PositionDetectionComponent" parent="Enemies/Zombie/Components" parent_id_path=PackedInt32Array(417020441, 482846390) index="6" unique_id=893910422]
 dangerous_depth = 128
+
+[node name="WakeupComponent" parent="Enemies/Zombie/Components" parent_id_path=PackedInt32Array(417020441, 482846390) index="9" unique_id=1962667841]
+wakeup_radius = 96.0
 
 [node name="Zombie2" parent="Enemies" unique_id=1097370396 instance=ExtResource("4_jeddq")]
 position = Vector2(46, -352)
@@ -171,11 +171,11 @@ position = Vector2(2583, -192)
 [node name="Zombie11" parent="Enemies" unique_id=528429829 instance=ExtResource("4_jeddq")]
 position = Vector2(1175, -192)
 
-[node name="WakeupComponent" parent="Enemies/Zombie11/Components" parent_id_path=PackedInt32Array(528429829, 482846390) index="0" unique_id=1962667841]
-wakeup_radius = 256.0
-
-[node name="PositionDetectionComponent" parent="Enemies/Zombie11/Components" parent_id_path=PackedInt32Array(528429829, 482846390) index="7" unique_id=893910422]
+[node name="PositionDetectionComponent" parent="Enemies/Zombie11/Components" parent_id_path=PackedInt32Array(528429829, 482846390) index="6" unique_id=893910422]
 dangerous_depth = 1024
+
+[node name="WakeupComponent" parent="Enemies/Zombie11/Components" parent_id_path=PackedInt32Array(528429829, 482846390) index="9" unique_id=1962667841]
+wakeup_radius = 256.0
 
 [node name="Zombie10" parent="Enemies" unique_id=383061854 instance=ExtResource("4_jeddq")]
 position = Vector2(2499, -352)

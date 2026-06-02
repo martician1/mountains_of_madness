@@ -4,9 +4,9 @@
 [ext_resource type="Resource" uid="uid://dk51h7knsjune" path="res://assets/resources/enemies/skull/skull_red_variant.tres" id="2_8rn84"]
 [ext_resource type="Script" uid="uid://3efjtavajs73" path="res://assets/scripts/enemies/components/enemy_attack_component.gd" id="2_c1f1i"]
 [ext_resource type="Script" uid="uid://c84gf7p53ks4j" path="res://assets/scripts/state_machine/state_machine.gd" id="2_tnqhw"]
-[ext_resource type="Script" uid="uid://55kd23rv8x1m" path="res://assets/scripts/components/attack_cooldown_component.gd" id="3_8rn84"]
 [ext_resource type="Script" uid="uid://dgdtypuqnwxub" path="res://assets/scripts/enemies/ranged/active.gd" id="3_iiwne"]
 [ext_resource type="Script" uid="uid://rj0mqvst1uto" path="res://assets/scripts/enemies/components/enemy_die_component.gd" id="4_3cqe0"]
+[ext_resource type="Script" uid="uid://c6esvdcq6xc64" path="res://assets/scripts/components/cooldown_component.gd" id="4_8rn84"]
 [ext_resource type="Script" uid="uid://bqnytxgbhrqnr" path="res://assets/scripts/enemies/hurt.gd" id="4_fd427"]
 [ext_resource type="Script" uid="uid://rprt7a0ohqif" path="res://assets/scripts/enemies/dying.gd" id="5_31v27"]
 [ext_resource type="Script" uid="uid://c6l451cktvns1" path="res://assets/scripts/enemies/components/enemy_direction_component.gd" id="5_ljoej"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://bnjeug7o85ced" path="res://assets/scripts/animators/collision_animator.gd" id="8_ykjax"]
 [ext_resource type="Script" uid="uid://dxftgvyna8k4k" path="res://assets/scripts/hflipper.gd" id="9_pu1xa"]
 [ext_resource type="Script" uid="uid://dky831d4qajmh" path="res://assets/scripts/enemies/components/enemy_ranged_component.gd" id="9_u1fud"]
-[ext_resource type="Script" uid="uid://cekcy30nqoa84" path="res://assets/scripts/components/shield_component.gd" id="10_g7tgk"]
 [ext_resource type="Script" uid="uid://c4gmsxn3jgj5j" path="res://assets/scripts/enemies/components/enemy_speed_component.gd" id="11_dlfrm"]
 [ext_resource type="SpriteFrames" uid="uid://chfg3m35kmu4t" path="res://assets/resources/enemies/skull/skull_red_sprite_frames.tres" id="17_3cqe0"]
 
@@ -328,11 +327,11 @@ script = ExtResource("2_c1f1i")
 hitboxes = [NodePath("../../HFlipper/Hitbox")]
 metadata/_custom_type_script = "uid://3efjtavajs73"
 
-[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=1996605027]
+[node name="AttackCooldownComponent" type="Node" parent="Components" unique_id=541902411]
 unique_name_in_owner = true
-script = ExtResource("3_8rn84")
-attack_cooldown_time = 3.0
-metadata/_custom_type_script = "uid://55kd23rv8x1m"
+script = ExtResource("4_8rn84")
+cooldown_time = 3.0
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="DieComponent" type="Node" parent="Components" unique_id=1036801 node_paths=PackedStringArray("drop_pickup_component")]
 unique_name_in_owner = true
@@ -357,10 +356,9 @@ unique_name_in_owner = true
 script = ExtResource("7_pby3o")
 metadata/_custom_type_script = "uid://bi4cnikpklgpw"
 
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1258743725 node_paths=PackedStringArray("shield_component", "health_component")]
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1258743725 node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
 script = ExtResource("8_1wp05")
-shield_component = NodePath("../ShieldComponent")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://cnkur4362f720"
 
@@ -370,10 +368,11 @@ script = ExtResource("9_u1fud")
 shootpoint = NodePath("../../HFlipper/ShootingPointPivot/ShootingPoint")
 metadata/_custom_type_script = "uid://dky831d4qajmh"
 
-[node name="ShieldComponent" type="Node" parent="Components" unique_id=1762359337]
+[node name="ShieldCooldownComponent" type="Node" parent="Components" unique_id=1778994996]
 unique_name_in_owner = true
-script = ExtResource("10_g7tgk")
-metadata/_custom_type_script = "uid://cekcy30nqoa84"
+script = ExtResource("4_8rn84")
+cooldown_time = 0.2
+metadata/_custom_type_script = "uid://c6esvdcq6xc64"
 
 [node name="SpeedComponent" type="Node" parent="Components" unique_id=325782524]
 unique_name_in_owner = true
