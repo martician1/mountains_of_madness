@@ -32,6 +32,8 @@ func update(delta: float) -> State:
 		zombie.velocity += zombie.get_gravity() * delta
 
 	zombie.move_and_slide()
+	if zombie.is_on_wall():
+		zombie.velocity.x = 0
 	return self
 
 func handle_input() -> State:
@@ -40,4 +42,4 @@ func handle_input() -> State:
 	return state_machine.decide_next_state()
 
 func get_animation() -> String:
-	return "idle" if zombie.velocity.x == 0 else "walk"
+	return "idle" if is_zero_approx(zombie.velocity.x) else "walk"

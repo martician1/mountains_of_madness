@@ -743,6 +743,7 @@ metadata/_custom_type_script = "uid://d3oihvd1ntki6"
 unique_name_in_owner = true
 script = ExtResource("6_qcydw")
 body = NodePath("../..")
+gravity_scale = 0.5
 metadata/_custom_type_script = "uid://coc8mtnoryhx5"
 
 [node name="HealthComponent" type="Node" parent="Components" unique_id=2024159686]

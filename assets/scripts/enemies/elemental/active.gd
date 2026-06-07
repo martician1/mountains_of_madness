@@ -26,16 +26,19 @@ func update(delta: float) -> State:
 
 		if wakeup_component.is_awake and abs(player_offset.x) > 1.0:
 			elemental.velocity.x = speed_component.speed * sign(direction_component.direction.x)
+		
+		if elemental.is_on_floor() and wakeup_component.is_awake and not jump_cooldown_component.is_cooldown_active():
+			elemental.velocity.y -= jump_speed_component.speed
 
 	if not elemental.is_on_floor():
 		elemental.velocity += gravity_component.get_gravity() * delta
-	elif not jump_cooldown_component.is_cooldown_active():
-		elemental.velocity.y -= jump_speed_component.speed
 	
 	var was_on_floor = elemental.is_on_floor()
 	elemental.move_and_slide()
 	if not was_on_floor and elemental.is_on_floor():
 		jump_cooldown_component.start_cooldown()
+	if elemental.is_on_wall():
+		elemental.velocity.x = 0
 	return self
 
 func handle_input() -> State:

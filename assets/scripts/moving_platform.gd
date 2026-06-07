@@ -1,5 +1,6 @@
 extends Path2D
 
+@export var velocity = 80.0
 @export var path_time = 1.0
 @export var ease : Tween.EaseType
 @export var transition: Tween.TransitionType
@@ -7,6 +8,8 @@ extends Path2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if velocity != 0.0:
+		path_time = self.curve.get_baked_length() / velocity
 	move_tween()
 
 func move_tween():

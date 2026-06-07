@@ -36,5 +36,5 @@ func _register_hit(hit_data: HitData):
 		last_hit = hit_data
 
 func apply_knockback(knockback: Vector2, x_direction: float):
-	owner.velocity.x += x_direction * knockback.x
+	owner.velocity.x = x_direction * knockback.x
 	owner.velocity.y = -knockback.y
