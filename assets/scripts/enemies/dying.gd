@@ -10,8 +10,9 @@ func _ready() -> void:
 	animation_name = "die"
 
 func enter() -> void:
-	owner.remove_child(visible_on_screen_enabler)
-	visible_on_screen_enabler.queue_free()
+	if visible_on_screen_enabler:
+		owner.remove_child(visible_on_screen_enabler)
+		visible_on_screen_enabler.queue_free()
 
 	super.enter()
 
