@@ -1,5 +1,11 @@
 # Mountains of Madness
 
+
+
+https://github.com/user-attachments/assets/b6457d8c-56e8-477f-b785-8b4b8d7571db
+
+
+
 *Mountains of Madness* е 2d платформър игра,
 която разбработвам като проект за gamedev курса във FMI.
 Това е първата игра, която съм писал, написана е с Godot 4.6
