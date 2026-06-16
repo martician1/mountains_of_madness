@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://dwq4b44gy72dj" path="res://assets/scripts/levels/level.gd" id="1_uvwpc"]
 [ext_resource type="TileSet" uid="uid://bx57wxgs00rbm" path="res://assets/resources/tileset.tres" id="2_3b76h"]
 [ext_resource type="PackedScene" uid="uid://v57g525rviso" path="res://assets/scenes/trapdoor.tscn" id="3_3b76h"]
+[ext_resource type="Script" uid="uid://crbj1p2pp147c" path="res://assets/scripts/void.gd" id="3_bmxvh"]
 [ext_resource type="PackedScene" uid="uid://p88c4ja410oo" path="res://assets/scenes/moving_platform.tscn" id="4_sutvm"]
 [ext_resource type="PackedScene" uid="uid://qpoe144uru2c" path="res://assets/scenes/enemies/zombie.tscn" id="5_jgc3l"]
 [ext_resource type="PackedScene" uid="uid://yan4celdv4pu" path="res://assets/scenes/spawner.tscn" id="6_16j7o"]
 [ext_resource type="PackedScene" uid="uid://c6c8dsw5uupud" path="res://assets/scenes/enemies/elemental.tscn" id="6_c37eg"]
 [ext_resource type="Script" uid="uid://denyb3fuhr72y" path="res://assets/scripts/enemies/fly_wave.gd" id="9_bmxvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu3f3"]
+size = Vector2(5550, 221)
 
 [sub_resource type="Curve2D" id="Curve2D_bmxvh"]
 resource_local_to_scene = true
@@ -49,6 +53,17 @@ position = Vector2(4160, -1285)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1971599548]
 position = Vector2(0, -128)
+
+[node name="Void" type="Area2D" parent="." unique_id=1862039156 node_paths=PackedStringArray("tile_map_layer")]
+collision_mask = 7
+script = ExtResource("3_bmxvh")
+tile_map_layer = NodePath("../TileMapLayer")
+metadata/_custom_type_script = "uid://crbj1p2pp147c"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Void" unique_id=1336533227]
+position = Vector2(1960, 174.5)
+shape = SubResource("RectangleShape2D_wu3f3")
+debug_color = Color(0.8862745, 0.023529412, 0.11372549, 0.41960785)
 
 [node name="Trapdoors" type="Node2D" parent="." unique_id=1467376976]
 

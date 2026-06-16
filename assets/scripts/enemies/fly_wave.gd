@@ -37,7 +37,6 @@ class SpawnTrack extends Node:
 			visible_rect.size.x / 2.0,
 			-visible_rect.size.y / 2.0
 		)
-		print(top_right, y_offset_ratio, top_right + Vector2(0, y_offset_ratio * visible_rect.size.y))
 		var fly: Fly = fly_scene.instantiate()
 		fly_parent_node.add_child(fly)
 		fly.global_position = top_right + Vector2(0, y_offset_ratio * visible_rect.size.y)

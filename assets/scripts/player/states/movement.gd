@@ -25,7 +25,12 @@ func update(delta: float) -> State:
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.speed)
 
+	var was_on_floor_before_move = player.is_on_floor()
+	var old_position = player.global_position
 	player.move_and_slide()
+	var is_on_floor_after_move = player.is_on_floor()
+	if was_on_floor_before_move and not is_on_floor_after_move:
+		player.last_ground_position = old_position
 	
 	if player.is_on_floor():
 		jump_combo = 0

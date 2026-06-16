@@ -50,17 +50,22 @@ func load_level(n: int):
 	change_player(player_scene.instantiate())
 	change_level(load(path).instantiate())
 	current_level_number = n
-	
+
 	var camera = get_viewport().get_camera_2d()
 	camera.limit_bottom = int(level.bottom_left.position.y)
 	camera.limit_left = int(level.bottom_left.position.x)
 	camera.limit_top = int(level.top_right.position.y)
 	camera.limit_right = int(level.top_right.position.x)
 	player.global_position = level.player_spawn.global_position
-	
+
 	var gameplay_node: Gameplay = gameplay_scene.instantiate()
+
+	# I wanted to change the theme for the second half of the game
+	# but I ended up not liking the light background variant so
+	# levels 6-10 are set to use the dark variant for the time being 
 	gameplay_node.background_variant = gameplay_node.BackgroundVariant.Dark \
-		if n <= 5 else gameplay_node.BackgroundVariant.Light
+		if n <= 5 else gameplay_node.BackgroundVariant.Dark
+#		if n <= 5 else gameplay_node.BackgroundVariant.Light
 	get_tree().change_scene_to_node(gameplay_node)
 
 	level_start_time = int(Time.get_unix_time_from_system())

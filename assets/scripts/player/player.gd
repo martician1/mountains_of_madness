@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var plunge_attack_damage := 1
 
 @onready var state_machine: PlayerStateMachine = %StateMachine
+var last_ground_position: Vector2
 
 var enemies_killed := 0
 var damage_received := 0

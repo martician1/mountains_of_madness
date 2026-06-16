@@ -15,6 +15,7 @@ func update(_delta: float) -> State:
 		return self
 	
 	if attack_component.attack():
+		(%DieComponent as EnemyDieComponent).drop_pickup_component = null
 		return %Dying
 
 	if wakeup_component.is_awake:
