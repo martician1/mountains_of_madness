@@ -38,6 +38,8 @@ func update(delta: float) -> State:
 	return self
 
 func handle_input() -> State:
+	direction_component.direction.x = Input.get_axis("strafe_left", "strafe_right")
+
 	if hit_processing_component.process_last_hit():
 		return %Hurt
 
@@ -48,7 +50,6 @@ func handle_input() -> State:
 	if Input.is_action_just_pressed("jump") and jump_combo < player.max_jump_combo:
 		should_jump = true
 	
-	direction_component.direction.x = Input.get_axis("strafe_left", "strafe_right")
 	return self
 
 func get_animation():
