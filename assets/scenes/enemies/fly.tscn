@@ -298,10 +298,10 @@ radius = 9.0
 height = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wecym"]
-size = Vector2(26, 27)
+size = Vector2(26, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1au8"]
-size = Vector2(20, 13)
+size = Vector2(20, 21)
 
 [node name="Fly" type="CharacterBody2D" unique_id=841111888]
 collision_layer = 4
@@ -371,7 +371,7 @@ metadata/_custom_type_script = "uid://rprt7a0ohqif"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=169749571]
 unique_name_in_owner = true
 z_index = 300
-position = Vector2(0, -10)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_tvmbs")
 animation = &"idle"
 
@@ -395,7 +395,7 @@ metadata/_custom_type_script = "uid://bnjeug7o85ced"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=548797433]
 unique_name_in_owner = true
-position = Vector2(0, -9)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_0u6fe")
 
 [node name="CollisionFlipper" type="Node2D" parent="." unique_id=663038399]
@@ -409,7 +409,7 @@ collision_mask = 67108864
 
 [node name="HitboxShape" type="CollisionShape2D" parent="CollisionFlipper/Hitbox" unique_id=1348601291]
 unique_name_in_owner = true
-position = Vector2(-2, -9.5)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_wecym")
 debug_color = Color(0.8862745, 0.023529412, 0.11372549, 0.41960785)
 
@@ -419,15 +419,15 @@ collision_mask = 33554432
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="CollisionFlipper/Hurtbox" unique_id=618303797]
 unique_name_in_owner = true
-position = Vector2(0, -6.5)
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_r1au8")
 debug_color = Color(0.30588236, 0.61960787, 0.26666668, 0.41960785)
 
 [node name="ManaBallSpawnpointPivot" type="Node2D" parent="CollisionFlipper" unique_id=1924090636]
 
 [node name="ManaBallSpawnpoint" type="Marker2D" parent="CollisionFlipper/ManaBallSpawnpointPivot" unique_id=1751363733]
-position = Vector2(0, -7)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=64587982]
 unique_name_in_owner = true
+position = Vector2(0, 7)
 rect = Rect2(-11, -22, 22, 22)

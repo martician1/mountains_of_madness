@@ -421,8 +421,9 @@ metadata/_custom_type_script = "uid://rprt7a0ohqif"
 unique_name_in_owner = true
 position = Vector2(0, -20)
 sprite_frames = ExtResource("17_3cqe0")
-animation = &"die"
+animation = &"hurt"
 autoplay = "idle"
+frame = 1
 
 [node name="EnemySpriteAnimator" type="AnimationPlayer" parent="Animator" unique_id=109818184 node_paths=PackedStringArray("sprite", "direction_component", "state_machine")]
 root_node = NodePath("../..")

@@ -8,11 +8,12 @@ extends State
 
 @export var enemy_scene_name : String = "res://assets/scenes/enemies/zombie.tscn"
 @onready var enemy_scene: PackedScene = load(enemy_scene_name)
+@onready var spawnpoint: Marker2D = %Spawnpoint
 
 func spawn_enemy():
 	var enemy_node = enemy_scene.instantiate()
 	GameManager.level.add_child(enemy_node)
-	enemy_node.global_position = owner.global_position
+	enemy_node.global_position = spawnpoint.global_position
 
 func update(_delta) -> State:
 	if not GameManager.player.is_alive():

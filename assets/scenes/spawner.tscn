@@ -255,9 +255,10 @@ script = ExtResource("4_60tuw")
 health = 20
 metadata/_custom_type_script = "uid://bi4cnikpklgpw"
 
-[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1772304872 node_paths=PackedStringArray("health_component")]
+[node name="HitProcessingComponent" type="Node" parent="Components" unique_id=1772304872 node_paths=PackedStringArray("shield_cooldown_component", "health_component")]
 unique_name_in_owner = true
 script = ExtResource("2_ksnns")
+shield_cooldown_component = NodePath("../ShieldCooldownComponent")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://cdtxydymn1r63"
 
@@ -331,3 +332,7 @@ unique_name_in_owner = true
 process_callback = 0
 wait_time = 5.0
 one_shot = true
+
+[node name="Spawnpoint" type="Marker2D" parent="." unique_id=479745660]
+unique_name_in_owner = true
+position = Vector2(0, -32)
