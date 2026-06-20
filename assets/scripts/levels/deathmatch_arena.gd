@@ -36,6 +36,8 @@ func spawn_wave() -> void:
 func spawn_enemy(spawn: EnemySpawn) -> void:
 	var enemy: Enemy = spawn.scene.instantiate()
 	Util.get_component(enemy, "DieComponent").died.connect(_on_enemy_died)
+	if spawn.variant:
+		enemy.variant = spawn.variant
 	add_child(enemy, true)
 	enemy.global_position = (get_node(spawn.spawn) as Marker2D).global_position
 

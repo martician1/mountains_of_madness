@@ -4,3 +4,4 @@ extends Resource
 @export var spawn: NodePath
 @export var delay := 0.0
 @export var scene: PackedScene
+@export var variant: EnemyVariant = null
