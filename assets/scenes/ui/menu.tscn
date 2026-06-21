@@ -14,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xuqax")
-start_from_level_menu = true
 
 [node name="Background" type="TextureRect" parent="." unique_id=1073606244]
 layout_mode = 1
