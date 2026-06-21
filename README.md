@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/b6457d8c-56e8-477f-b785-8b4b8d7571db
 
 6. Exploration ниво ✅ (Elemental чудовище, нови skin-ове на чудовищата, движещи се платформи, trapdoors)
 7. Exploration ниво ✅ (Най-трудното и интересно ниво досега, предизвикателен терен и сблъсък с вълни от мухи)
-8. Deathmatch ниво ⏳
+8. Deathmatch ниво ✅
 9. Exploration ниво ➖
 10. Boss ниво ➖
 
