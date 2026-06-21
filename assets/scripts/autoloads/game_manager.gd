@@ -76,6 +76,7 @@ func reload_level():
 func quit_gameplay(next_scene: Node = null):
 	if next_scene == null:
 		next_scene = load("res://assets/scenes/ui/menu.tscn").instantiate()
+		next_scene.start_from_level_menu = true
 
 	var gameplay_scene = get_tree().current_scene
 	assert(gameplay_scene is Gameplay)

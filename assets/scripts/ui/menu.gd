@@ -1,3 +1,4 @@
+class_name MainMenu
 extends Control
 
 @export var start_from_level_menu := false

@@ -18,5 +18,7 @@ func _ready() -> void:
 	GameManager.quit_gameplay(self)
 
 func _on_button_button_up() -> void:
-	get_tree().change_scene_to_file("res://assets/scenes/ui/menu.tscn")
+	var main_menu_node: MainMenu = (load("res://assets/scenes/ui/menu.tscn") as PackedScene).instantiate()
+	main_menu_node.start_from_level_menu = true
+	get_tree().change_scene_to_node(main_menu_node)
 	queue_free()
