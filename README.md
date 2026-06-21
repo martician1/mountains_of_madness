@@ -11,6 +11,10 @@ https://github.com/user-attachments/assets/b6457d8c-56e8-477f-b785-8b4b8d7571db
 Това е първата игра, която съм писал, написана е с Godot 4.6
 и е вдъхновена от флаш играта [TMNT Double Damage](https://kbhgames.com/game/tmnt-double-damage).
 
+# Full Playthrough
+
+https://youtu.be/RNMw0Tbfcpc
+
 # Механики на героя
 - Движение на ляво и надясно
 - Скок
