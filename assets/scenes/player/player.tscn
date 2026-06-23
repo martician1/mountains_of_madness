@@ -2448,6 +2448,7 @@ speed = 140.0
 jump_speed = 320.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1618531626]
+process_callback = 0
 position_smoothing_enabled = true
 editor_draw_drag_margin = true
 
