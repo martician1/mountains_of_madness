@@ -13,7 +13,7 @@ https://github.com/user-attachments/assets/b6457d8c-56e8-477f-b785-8b4b8d7571db
 
 # Full Playthrough
 
-https://youtu.be/RNMw0Tbfcpc
+https://www.youtube.com/watch?v=kB-CmtifyGM
 
 # Механики на героя
 - Движение на ляво и надясно
