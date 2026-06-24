@@ -1,3 +1,4 @@
+class_name PulseEffect
 extends Node
 
 @export var oscillation_time := 1.0

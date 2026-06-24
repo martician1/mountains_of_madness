@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dagb2v8e7emnc" path="res://assets/sprites/trap_platform_atlas_transparent.png" id="1_34rvj"]
 [ext_resource type="Script" uid="uid://che6a2hfoldsk" path="res://assets/scripts/trapdoor.gd" id="1_mv48x"]
-[ext_resource type="Script" uid="uid://bfocx5t5xt5c8" path="res://assets/scripts/trap_area.gd" id="2_34rvj"]
 
 [sub_resource type="Animation" id="Animation_34rvj"]
 length = 0.001
@@ -79,23 +78,21 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 16)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=789058447]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_r3ykt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=668823647]
+[node name="TrapdoorCollisionShape2D" type="CollisionShape2D" parent="." unique_id=668823647]
+unique_name_in_owner = true
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_34rvj")
 
-[node name="TrapArea" type="Area2D" parent="." unique_id=175748055 node_paths=PackedStringArray("animation_player", "trapdoor_collision_shape", "trap_area_collision_shape", "trapdoor")]
+[node name="TrapArea" type="Area2D" parent="." unique_id=175748055]
 collision_layer = 256
-script = ExtResource("2_34rvj")
-animation_player = NodePath("../AnimationPlayer")
-trapdoor_collision_shape = NodePath("../CollisionShape2D")
-trap_area_collision_shape = NodePath("CollisionShape2D")
-trapdoor = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapArea" unique_id=168477792]
+[node name="TrapAreaCollisionShape2D" type="CollisionShape2D" parent="TrapArea" unique_id=168477792]
+unique_name_in_owner = true
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_mv48x")
 debug_color = Color(0.8252861, 0.32435504, 0.599737, 0.41960785)
 
-[connection signal="body_entered" from="TrapArea" to="TrapArea" method="_on_body_entered"]
+[connection signal="body_entered" from="TrapArea" to="." method="_on_trap_area_body_entered"]

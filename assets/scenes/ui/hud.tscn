@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://4og2sn1476wv" path="res://assets/scripts/ui/mana_bar.gd" id="6_25gpa"]
 [ext_resource type="Texture2D" uid="uid://bu4c27bvfnbdv" path="res://assets/sprites/ui/fireball_2.png" id="7_mig6y"]
 [ext_resource type="Script" uid="uid://bfwcn0wfjuyi6" path="res://assets/scripts/ui/top_left_bar.gd" id="8_ckp1a"]
-[ext_resource type="PackedScene" uid="uid://bpk170gjw5mgy" path="res://assets/scenes/pulse_effect.tscn" id="9_mig6y"]
+[ext_resource type="Script" uid="uid://bmmycgb7neemu" path="res://assets/scripts/effects/pulse_effect.gd" id="10_xf4to"]
 
 [sub_resource type="GDScript" id="GDScript_78wrq"]
 script/source = "extends PanelContainer
@@ -116,10 +116,12 @@ color = Color(1, 0, 1, 1)
 [node name="Threshold" type="ColorRect" parent="TopLeftBar/ManaBar" unique_id=1772493059]
 layout_mode = 2
 
-[node name="PulseEffect" parent="TopLeftBar/ManaBar" unique_id=1363210171 node_paths=PackedStringArray("modulate_target") instance=ExtResource("9_mig6y")]
+[node name="PulseEffect" type="Node" parent="TopLeftBar/ManaBar" unique_id=2053240041 node_paths=PackedStringArray("modulate_target")]
+script = ExtResource("10_xf4to")
 oscillation_time = 1.5
 modulate_target = NodePath("../Mana")
 target_alpha = 0.5
+metadata/_custom_type_script = "uid://bmmycgb7neemu"
 
 [node name="MenuButton" type="Button" parent="." unique_id=1097455819]
 layout_mode = 1
