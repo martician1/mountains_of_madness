@@ -12,11 +12,6 @@ func enter() -> void:
 	evil_princess.velocity.y = attack_component.attack_speed
 
 func update(delta: float) -> State:
-	var player := GameManager.player
-
-	if not player.is_alive():
-		return self
-
 	evil_princess.move_and_slide()
 	var collision: KinematicCollision2D = evil_princess.get_last_slide_collision()
 	var has_collided_with_floor: bool = collision and is_equal_approx(collision.get_angle(), 0.0)
